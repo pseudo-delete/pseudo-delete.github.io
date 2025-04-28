@@ -1,0 +1,20 @@
+body *
+{
+    border: 1px solid black;
+}
+
+body
+{
+    background-color: black;
+}
+
+main
+{
+    text-align: center;
+}
+
+#btn-menu-play
+{
+    width: 100px;
+    height: 35px;
+}

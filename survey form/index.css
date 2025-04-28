@@ -1,0 +1,15 @@
+div
+{
+    border: 1px solid black;
+}
+
+.survey-container
+{
+    background-color: gray;
+    width: 60%;
+    margin-left: 20%;
+}
+
+#title
+{
+}
