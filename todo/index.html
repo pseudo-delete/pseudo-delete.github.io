@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Todo</title>
+
+        <link rel="stylesheet" href="todo.css">
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+        <script src="todo.js" defer></script>
+    </head>
+
+    <body>
+
+        <div id="brand-name-container">
+            <label id="brand-name">To-do.</label>
+        </div>
+
+        <div id="add-task-container">
+            <div id = "inner-add-task-container">
+                <input id = "task-input" type="text" placeholder="Type task here..."/>
+                <button id="btn-add-task" title="Add Task"><img src="add.png"/></button>
+            </div>
+        </div>
+
+        <div id="no-task-label-container">
+            <label id="no-task-label">No Task</label>
+        </div>
+
+        <div id="task-list-container">
+            <!-- There will be values here, this is a dynamic container for task card, coded on todo.js-->
+        </div>
+
+        <h2 id="title-completed">Completed</h2>
+        <div id="completed-task-container">
+            <!-- Dynamic container for completed task card, coded on todo.js-->
+        </div>
+    </body>
+</html>
