@@ -34,7 +34,23 @@ div
   width: 100px;
   height: 1px;
   background-color: black;
+}
+
+.line-diagonal-downward
+{
+  width: 100px;
+  height: 1px;
+  background-color: black;
   transform: rotate(45deg);
+  transform-origin: left;
+}
+
+.line-diagonal-upward
+{
+  width: 100px;
+  height: 1px;
+  background-color: black;
+  transform: rotate(-45deg);
   transform-origin: left;
 }
 /*End area of global use codes*/
