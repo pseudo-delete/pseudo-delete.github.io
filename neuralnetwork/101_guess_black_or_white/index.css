@@ -2,3 +2,9 @@ div
 {
   border: 1px solid black;
 }
+
+.panel-ai
+{
+  width: 250px;
+  height: 50px;
+}
