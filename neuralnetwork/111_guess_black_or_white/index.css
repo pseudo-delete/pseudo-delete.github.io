@@ -34,6 +34,8 @@ div
   width: 100px;
   height: 1px;
   background-color: black;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .line-diagonal-downward
@@ -52,6 +54,12 @@ div
   background-color: black;
   transform: rotate(-45deg);
   transform-origin: left;
+}
+
+.line-container
+{
+  width: 100px;
+  height: 100px;
 }
 /*End area of global use codes*/
 
