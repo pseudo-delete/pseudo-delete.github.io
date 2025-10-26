@@ -53,6 +53,8 @@ div
 .neural-zone
 {
   border: 2px solid blue;
+  display: flex;
+  flex-direction: row;
 }
 
 .ai-pixel, .pixel-container
