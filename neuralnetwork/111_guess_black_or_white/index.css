@@ -38,16 +38,16 @@ div
   height: auto;
 }
 
-.panel-ai, .panel-generate
-{
-  min-width: 250px;
-  min-height: 50px;
-}
-
 .panel-ai
 {
-  width: 250px;
-  height: 50px;
+  min-width: 600px;
+  min-height: 100px;
+}
+
+.panel-generate
+{
+  width: 300px;
+  height: 100px;
 }
 
 .neural-zone
