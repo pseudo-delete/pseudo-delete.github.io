@@ -3,6 +3,13 @@ div
   border: 1px solid black;
 }
 
+/*For global use*/
+.circle
+{
+  border-radius: 50%;
+}
+/*End area of global use codes*/
+
 .main
 {
   display: flex;
