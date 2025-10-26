@@ -9,6 +9,7 @@ div
   flex-direction: column;
   gap: 10px;
   background-color: red;
+  height: auto;
 }
 
 .panel-ai, .panel-generate
