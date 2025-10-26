@@ -24,7 +24,7 @@ div
   height: 50px;
 }
 
-.ai-pixel
+.ai-pixel, .pixel-container
 {
   width: 20px;
   height: 20px;
