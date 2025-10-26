@@ -4,8 +4,25 @@ div
 }
 
 /*For global use*/
-.circle
+.circle-input/*input layer*/
 {
+  border: 1px solid light blue;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.circle-hidden/*hidden layer*/
+{ 
+  border: 1px solid violet;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.circle-output/*output layer*/
+{
+  border: 1px solid brown;
   width: 100px;
   height: 100px;
   border-radius: 50%;
