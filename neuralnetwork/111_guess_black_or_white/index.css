@@ -31,6 +31,11 @@ div
   height: 50px;
 }
 
+.neural-zone
+{
+  border: 2px solid blue;
+}
+
 .ai-pixel, .pixel-container
 {
   width: 20px;
