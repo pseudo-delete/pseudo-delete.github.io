@@ -74,6 +74,11 @@ div
 {
   margin: auto;
 }
+
+.weight-value
+{
+  z-index: 1;
+}
 /* End of neuron value alignments */
 
 .main
