@@ -69,7 +69,7 @@ div
 /*End area of global use codes*/
 
 /* Neuron value alignments */
-.neuron-value
+.neuron-value, .weight-value
 {
   margin: auto;
 }
