@@ -44,6 +44,7 @@ div
 
 .line-diagonal-downward
 {
+  position: absolute;
   width: 100px;
   height: 1px;
   background-color: black;
@@ -53,6 +54,7 @@ div
 
 .line-diagonal-upward
 {
+  position: absolute;
   width: 100px;
   height: 1px;
   background-color: black;
