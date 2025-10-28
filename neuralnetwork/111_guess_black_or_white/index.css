@@ -65,6 +65,13 @@ div
 }
 /*End area of global use codes*/
 
+/* Neuron value alignments */
+.neuron-value
+{
+  margin: auto;
+}
+/* End of neuron value alignments */
+
 .main
 {
   display: flex;
