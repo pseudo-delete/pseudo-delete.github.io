@@ -48,13 +48,15 @@
 
                             $("#btn-fire").on('click', function()
                             {
+                                let input1 = $("#input1-val").text();
+                                
                                 let weight1 = $("#weight1-val").text();
                                 let weight2 = $("#weight2-val").text();
 
                                 let bias1 = $("#bias1-val").text();
                                 let bias2 = $("#bias2-val").text();
                                 
-                                let hidden1 = sigmoid((weight1*input) + bias1);
+                                let hidden1 = sigmoid((weight1*input1) + bias1);
                                 $("#hidden1-val").text(hidden1);
                                 
                                 let output1 = sigmoid((weight2*hidden1) + bias2);
