@@ -74,14 +74,14 @@ div
 /*End area of global use codes*/
 
 /* Neuron value alignments */
-.neuron-value, .weight-value
+.neuron-value/*, .weight-value*/
 {
   margin: auto;
 }
 
 .weight-value
 {
-  margin-top: 40px;
+  margin-top: 40px auto auto auto;
   z-index: 1;
 }
 /* End of neuron value alignments */
