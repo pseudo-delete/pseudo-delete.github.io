@@ -84,6 +84,12 @@ div
   margin: auto auto 60% auto;
   z-index: 1;
 }
+
+.bias-value
+{
+  margin: auto auto 60% 5%;
+  z-index: 2;
+}
 /* End of neuron value alignments */
 
 .main
