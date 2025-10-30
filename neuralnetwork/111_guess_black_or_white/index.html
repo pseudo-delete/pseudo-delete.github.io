@@ -30,6 +30,11 @@
                     <script>
                         $(function()
                         {
+                            function sigmoid(x)
+                            {
+                                return 1/(1+math.exp(-x));
+                            }
+                            
                             $("#btn-generate-neural-val").on('click', function()
                             {
                                 $("#input1-val").text(Math.random());
