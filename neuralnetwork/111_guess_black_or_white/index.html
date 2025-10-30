@@ -48,13 +48,13 @@
 
                             $("#btn-fire").on('click', function()
                             {
-                                let input1 = $("#input1-val").text();
+                                let input1 = parseFloat($("#input1-val").text());
                                 
-                                let weight1 = $("#weight1-val").text();
-                                let weight2 = $("#weight2-val").text();
+                                let weight1 = parseFloat($("#weight1-val").text());
+                                let weight2 = parseFloat($("#weight2-val").text());
 
-                                let bias1 = $("#bias1-val").text();
-                                let bias2 = $("#bias2-val").text();
+                                let bias1 = parseFloat($("#bias1-val").text());
+                                let bias2 = parseFloat($("#bias2-val").text());
                                 
                                 let hidden1 = sigmoid((weight1*input1) + bias1);
                                 $("#hidden1-val").text(hidden1);
