@@ -5,7 +5,7 @@ div
 
 button
 {
-  cursor: hand;
+  hover: cursor;
 }
 
 /*For global use*/
