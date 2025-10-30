@@ -32,6 +32,8 @@
                         {
                             $("#btn-generate-neural-val").on('click', function()
                             {
+                                $("#input1-val").text(Math.random());
+                                
                                 $("#weight1-val").text(Math.random());
                                 $("#weight2-val").text(Math.random());
 
@@ -41,8 +43,17 @@
 
                             $("#btn-fire").on('click', function()
                             {
+                                let weight1 = $("#weight1-val").text();
+                                let weight2 = $("#weight2-val").text();
+
+                                let bias1 = $("#bias1-val").text();
+                                let bias2 = $("#bias2-val").text();
+                                
+                                let hidden1 = sigmoid((weight1*input) + bias1);
+                                
+                                let output1 = sigmoid((weight2*hidden1) + bias2);
                                 /*
-                                hidden = sigmoid((weight1*bias) + bias1)
+                                hidden = sigmoid((weight1*input) + bias1)
                                 output = sigmoid((weight2*hidden)+ bias2)
                                 */
                                 /*
