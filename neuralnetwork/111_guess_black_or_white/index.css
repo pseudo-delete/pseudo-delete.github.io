@@ -3,6 +3,11 @@ div
   border: 1px solid black;
 }
 
+button
+{
+  cursor: hover;
+}
+
 /*For global use*/
 .circle-input/*input layer*/
 {
