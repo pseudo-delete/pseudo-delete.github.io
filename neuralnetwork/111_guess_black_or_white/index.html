@@ -50,8 +50,10 @@
                                 let bias2 = $("#bias2-val").text();
                                 
                                 let hidden1 = sigmoid((weight1*input) + bias1);
+                                $("#hidden1-val").text(hidden1);
                                 
                                 let output1 = sigmoid((weight2*hidden1) + bias2);
+                                $("#output1-val").text(output1);
                                 /*
                                 hidden = sigmoid((weight1*input) + bias1)
                                 output = sigmoid((weight2*hidden)+ bias2)
