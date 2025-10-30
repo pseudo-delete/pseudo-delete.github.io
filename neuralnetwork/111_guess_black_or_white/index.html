@@ -24,6 +24,9 @@
                     <div class="circle-hidden"><label class="neuron-value" id="hidden1-val">0</label></div>
                     <div class="line-container"><label class="weight-value" id="weight2-val">0</label><div class="line-horizontal"></div></div><!--hidden1-output1 weight-->
                     <div class="circle-output"><label class="neuron-value" id="output1-val">0</label></div>
+                    <button id="btn-fire" type="button">Fire</button>
+                    <button id="btn-train" type="button">Train</button>
+                    
                     <script>
                         $(function()
                         {
@@ -31,6 +34,30 @@
                             {
                                 $("#weight1-val").text(Math.random());
                                 $("#weight2-val").text(Math.random());
+                            });
+
+                            $("#btn-fire").on('click', function()
+                            {
+                                /*
+                                1️⃣ Forward:
+                                h=σ(w1x+b1)h = \sigma(w_1 x + b_1)h=σ(w1​x+b1​)
+                                y=σ(w2h+b2)y = \sigma(w_2 h + b_2)y=σ(w2​h+b2​)
+                                */
+                            });
+
+                            $("#btn-train").on('click', function()
+                            {
+                                /*
+                                2️⃣ Backprop:
+                                δout=(t−y)⋅y⋅(1−y)\delta_{out} = (t - y) \cdot y \cdot (1 - y)δout​=(t−y)⋅y⋅(1−y)
+                                δhid=δout⋅w2⋅h⋅(1−h)\delta_{hid} = \delta_{out} \cdot w_2 \cdot h \cdot (1 - h)δhid​=δout​⋅w2​⋅h⋅(1−h)
+                                
+                                3️⃣ Adjust:
+                                w2=w2+η⋅δout⋅hw_2 = w_2 + \eta \cdot \delta_{out} \cdot hw2​=w2​+η⋅δout​⋅h
+                                b2=b2+η⋅δoutb_2 = b_2 + \eta \cdot \delta_{out}b2​=b2​+η⋅δout​
+                                w1=w1+η⋅δhid⋅xw_1 = w_1 + \eta \cdot \delta_{hid} \cdot xw1​=w1​+η⋅δhid​⋅x
+                                b1=b1+η⋅δhidb_1 = b_1 + \eta \cdot \delta_{hid}b1​=b1​+η⋅δhid​
+                                */
                             });
                         });
                     </script>
