@@ -75,19 +75,29 @@
                             $("#btn-train").on('click', function()
                             {
                                 /*
-                                
+                                output layer:
+                                    error_output = target - output
+                                    delta_output = error_output * (output * (1 - output))
+
+                                hidden layer:
+                                    error_hidden = delta_output * w2
+                                    delta_hidden = error_hidden * (hidden * (1 - hidden))
+
+                                weight and bias updates:
+                                    w2 = w2 + learning_rate * delta_output * hidden
+                                    b2 = b2 + learning_rate * delta_output
+                                    
+                                    w1 = w1 + learning_rate * delta_hidden * input
+                                    b1 = b1 + learning_rate * delta_hidden
+
                                 */
-                                /*
-                                2️⃣ Backprop:
-                                δout=(t−y)⋅y⋅(1−y)\delta_{out} = (t - y) \cdot y \cdot (1 - y)δout​=(t−y)⋅y⋅(1−y)
-                                δhid=δout⋅w2⋅h⋅(1−h)\delta_{hid} = \delta_{out} \cdot w_2 \cdot h \cdot (1 - h)δhid​=δout​⋅w2​⋅h⋅(1−h)
-                                
-                                3️⃣ Adjust:
-                                w2=w2+η⋅δout⋅hw_2 = w_2 + \eta \cdot \delta_{out} \cdot hw2​=w2​+η⋅δout​⋅h
-                                b2=b2+η⋅δoutb_2 = b_2 + \eta \cdot \delta_{out}b2​=b2​+η⋅δout​
-                                w1=w1+η⋅δhid⋅xw_1 = w_1 + \eta \cdot \delta_{hid} \cdot xw1​=w1​+η⋅δhid​⋅x
-                                b1=b1+η⋅δhidb_1 = b_1 + \eta \cdot \delta_{hid}b1​=b1​+η⋅δhid​
-                                */
+
+                                // output layer
+                                let error_output1 = target1 - output1;
+                                let delta_output1 = error_output1 * (output1 * (1-output1));
+
+                                // hidden layer
+                                let error_hidden1 = delta_output1 * weight2;
                             });
                         });
                     </script>
