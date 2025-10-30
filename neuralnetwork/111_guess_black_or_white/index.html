@@ -98,6 +98,14 @@
 
                                 // hidden layer
                                 let error_hidden1 = delta_output1 * weight2;
+                                let delta_hidden1 = error_hidden1 * (hidden1 * (1-hidden1));
+
+                                // weight and bias updates
+                                weight1 = weight1 + learning_rate * delta_hidden1 * input1;
+                                bias1 = bias1 + learning_rate * delta_hidden1;
+                                
+                                weight2 = weight2 + learning_rate * delta_output1 * hidden1;
+                                bias2 = bias2 + learning_rate * delta_output1;
                             });
                         });
                     </script>
