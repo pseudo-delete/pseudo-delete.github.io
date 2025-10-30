@@ -42,6 +42,10 @@
                             $("#btn-fire").on('click', function()
                             {
                                 /*
+                                hidden = sigmoid((weight1*bias) + bias1)
+                                output = sigmoid((weight2*hidden)+ bias2)
+                                */
+                                /*
                                 1️⃣ Forward:
                                 h=σ(w1x+b1)h = \sigma(w_1 x + b_1)h=σ(w1​x+b1​)
                                 y=σ(w2h+b2)y = \sigma(w_2 h + b_2)y=σ(w2​h+b2​)
@@ -50,6 +54,9 @@
 
                             $("#btn-train").on('click', function()
                             {
+                                /*
+                                
+                                */
                                 /*
                                 2️⃣ Backprop:
                                 δout=(t−y)⋅y⋅(1−y)\delta_{out} = (t - y) \cdot y \cdot (1 - y)δout​=(t−y)⋅y⋅(1−y)
