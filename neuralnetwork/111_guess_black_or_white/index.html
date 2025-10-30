@@ -91,6 +91,19 @@
                                     b1 = b1 + learning_rate * delta_hidden
 
                                 */
+                                let learning_rate = 0.01;
+
+                                let input1 = parseFloat($("#input1-val").text());
+                                
+                                let weight1 = parseFloat($("#weight1-val").text());
+                                let weight2 = parseFloat($("#weight2-val").text());
+
+                                let bias1 = parseFloat($("#bias1-val").text());
+                                let bias2 = parseFloat($("#bias2-val").text());
+
+                                let hidden1 = parseFloat($("#hidden1-val").text());
+
+                                let output1 = parseFloat($("#output1-val").text());
 
                                 // output layer
                                 let error_output1 = target1 - output1;
