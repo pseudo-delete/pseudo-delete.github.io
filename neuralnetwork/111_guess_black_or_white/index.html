@@ -69,8 +69,8 @@
                     <div class="neural-row">
                         <div class="circle-input"><label class="neuron-value" id="input2-val">0</label></div>
                         <div class="line-container">
-                            <label class="weight-value" id="weight2-val">0</label>
-                            <label class="bias-value" id="bias3-val">0</label>
+                            <label class="weight-value" id="weight3-val">0</label>
+                            <label class="bias-value" id="bias1-val">0</label>
                             <canvas id="line3-canvas" width="100" height="100"></canvas>
                             <script>
                                 $(function()
@@ -104,12 +104,14 @@
                             function fire()
                             {
                                 let input1 = parseFloat($("#input1-val").text());
+                                let input2 = parseFloat($("#input2-val").text());
                                 
-                                let weight1 = parseFloat($("#weight1-val").text());
-                                let weight2 = parseFloat($("#weight2-val").text());
+                                let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1
+                                let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1
+                                let weight3 = parseFloat($("#weight2-val").text());// input2 - hidden1
 
-                                let bias1 = parseFloat($("#bias1-val").text());
-                                let bias2 = parseFloat($("#bias2-val").text());
+                                let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
+                                let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
                                 
                                 let hidden1 = sigmoid((weight1*input1) + bias1);
                                 $("#hidden1-val").text(hidden1.toFixed(4));
@@ -135,9 +137,11 @@
                             $("#btn-generate-neural-val").on('click', function()
                             {
                                 $("#input1-val").text(Math.random());
+                                $("#input2-val").text(Math.random());
                                 
                                 $("#weight1-val").text(Math.random());
                                 $("#weight2-val").text(Math.random());
+                                $("#weight3-val").text(Math.random());
 
                                 $("#bias1-val").text(Math.random());
                                 $("#bias2-val").text(Math.random());
@@ -157,16 +161,20 @@
                                 let g1 = parseInt(rgbColor1[1]);// will be target2
                                 let b1 = parseInt(rgbColor1[2]);// will be target3
                                 
-                                let target1 = r1/255;
+                                let target1 = r1/256;// output 1 target
+                                let target2 = g1/256;// output 2 target
+                                let target3 = g1/256;// output 3 target
                                 let learning_rate = 1;
 
                                 let input1 = parseFloat($("#input1-val").text());
+                                let input2 = parseFloat($("#input2-val").text());
                                 
-                                let weight1 = parseFloat($("#weight1-val").text());
-                                let weight2 = parseFloat($("#weight2-val").text());
+                                let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1 weight
+                                let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1 weight
+                                let weight3 = parseFloat($("#weight3-val").text());// input2 - hidden1 weight 
 
-                                let bias1 = parseFloat($("#bias1-val").text());
-                                let bias2 = parseFloat($("#bias2-val").text());
+                                let bias1 = parseFloat($("#bias1-val").text());// hidden1 bias
+                                let bias2 = parseFloat($("#bias2-val").text());// output1 bias
 
                                 let hidden1 = parseFloat($("#hidden1-val").text());
 
@@ -198,14 +206,18 @@
                                 let delta_hidden1 = error_hidden1 * (hidden1 * (1-hidden1));
 
                                 // weight and bias updates
-                                weight1 = weight1 + learning_rate * delta_hidden1 * input1;
+                                // input - hidden
+                                weight1 = weight1 + learning_rate * delta_hidden1 * input1;// input1
+                                weight3 = weight3 + learning_rate * delta_hidden1 * input2;// input2
                                 bias1 = bias1 + learning_rate * delta_hidden1;
-                                
+
                                 weight2 = weight2 + learning_rate * delta_output1 * hidden1;
                                 bias2 = bias2 + learning_rate * delta_output1;
 
+
                                 // assignment of weights and biases to the labels
                                 $("#weight1-val").text(weight1);
+                                $("#weight3-val").text(weight3);
                                 $("#bias1-val").text(bias1);
 
                                 $("#weight2-val").text(weight2);
