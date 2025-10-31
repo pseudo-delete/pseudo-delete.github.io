@@ -130,3 +130,9 @@ button
   width: 20px;
   height: 20px;
 }
+
+/* RGB colors */
+.000
+{
+  color: RGB(0,0,0);
+}
