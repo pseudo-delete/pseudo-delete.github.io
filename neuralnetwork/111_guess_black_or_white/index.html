@@ -52,7 +52,7 @@
                                 $("#output1-val").text(output1.toFixed(4));
 
                                 // setting ai-pixel1 color based on fired value
-                                let r1 = parseFloat($("#output1-val").text()) * 255;// Output1: R
+                                let r1 = parseInt(parseFloat($("#output1-val").text()) * 255);// Output1: R
                                 // pixel1 - (RGB):
                                 $(".ai-pixel1").css("background-color", "rgb(${r1}, 0, 0)");
                                 /*
