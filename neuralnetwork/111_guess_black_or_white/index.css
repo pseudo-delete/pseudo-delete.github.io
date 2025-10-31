@@ -125,14 +125,14 @@ button
 {
   border: 2px solid blue;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: auto;
 }
 
 .neural-row
 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .ai-pixel, .pixel-container
