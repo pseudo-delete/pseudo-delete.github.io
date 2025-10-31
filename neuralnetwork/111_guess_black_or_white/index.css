@@ -11,6 +11,7 @@ button
 /*For global use*/
 .circle-input/*input layer*/
 {
+  background-color: light blue;
   border: 1px solid light blue;
   display: flex;
   width: 100px;
@@ -20,6 +21,7 @@ button
 
 .circle-hidden/*hidden layer*/
 { 
+  background-color: violet;
   border: 1px solid violet;
   display: flex;
   width: 100px;
@@ -29,6 +31,7 @@ button
 
 .circle-output/*output layer*/
 {
+  background-color: brown;
   border: 1px solid brown;
   display: flex;
   width: 100px;
