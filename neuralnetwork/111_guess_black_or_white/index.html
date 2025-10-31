@@ -81,7 +81,7 @@
                             {
                                 // extracted RGB color from pixel 1
                                 let pColor1 = $(".pixel-container1").css("background-color");// rgb
-                                let rgbColor1 = color.match(/\d+/g);// extracts numbers -> ["120", "50", "200"]
+                                let rgbColor1 = pColor1.match(/\d+/g);// extracts numbers -> ["120", "50", "200"]
                                 let r1 = parseInt(rgbColor1[0]);// will be target1
                                 let g1 = parseInt(rgbColor1[1]);// will be target2
                                 let b1 = parseInt(rgbColor1[2]);// will be target3
