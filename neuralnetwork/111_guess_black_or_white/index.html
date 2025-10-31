@@ -54,7 +54,7 @@
                                 // setting ai-pixel1 color based on fired value
                                 let r1 = parseInt(parseFloat($("#output1-val").text()) * 255);// Output1: R
                                 // pixel1 - (RGB):
-                                $(".ai-pixel1").css("background-color", "rgb(${r1}, 0, 0)");
+                                $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", 0, 0)");
                                 /*
                                 hidden = sigmoid((weight1*input) + bias1)
                                 output = sigmoid((weight2*hidden)+ bias2)
