@@ -21,7 +21,27 @@
                 <div class="neural-zone">
                     <div class="neural-row">
                         <div class="circle-input"><label class="neuron-value" id="input1-val">0</label></div>
-                        <div class="line-container"><label class="weight-value" id="weight1-val">0</label><label class="bias-value" id="bias3-val">0</label><!--<div class="line-horizontal"></div>--></div><!--input1-hidden1 weight-->
+                        <div class="line-container">
+                            <label class="weight-value" id="weight1-val">0</label>
+                            <label class="bias-value" id="bias3-val">0</label>
+                            <canvas id="line1-canvas" width="100" height="100"></canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas1 = $("#line1-canvas")[0];
+                                    let canvasContext1 = lineCanvas1.getContext("2d");
+
+                                    // drawing line from point a to point b
+                                    canvasContext1.beginPath();
+                                    canvasContext1.moveTo(0, 50);
+                                    canvasContext1.lineTo(100, 50);
+                                    canvasContext1.strokeStyle = "black";
+                                    canvasContext1.lineWidth = 1;
+                                    canvasContext1.stroke();
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div><!--input1-hidden1 weight-->
                         <div class="circle-hidden"><label class="neuron-value" id="hidden1-val">0</label></div>
                         <div class="line-container"><label class="weight-value" id="weight2-val">0</label><label class="bias-value" id="bias2-val">0</label><div class="line-horizontal"></div></div><!--hidden1-output1 weight-->
                         <div class="circle-output"><label class="neuron-value" id="output1-val">0</label></div><br>
