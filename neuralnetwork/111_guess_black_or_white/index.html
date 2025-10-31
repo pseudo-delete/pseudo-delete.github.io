@@ -74,23 +74,6 @@
 
                             $("#btn-train").on('click', function()
                             {
-                                /*
-                                output layer:
-                                    error_output = target - output
-                                    delta_output = error_output * (output * (1 - output))
-
-                                hidden layer:
-                                    error_hidden = delta_output * w2
-                                    delta_hidden = error_hidden * (hidden * (1 - hidden))
-
-                                weight and bias updates:
-                                    w2 = w2 + learning_rate * delta_output * hidden
-                                    b2 = b2 + learning_rate * delta_output
-                                    
-                                    w1 = w1 + learning_rate * delta_hidden * input
-                                    b1 = b1 + learning_rate * delta_hidden
-
-                                */
                                 let learning_rate = 0.01;
 
                                 let input1 = parseFloat($("#input1-val").text());
@@ -104,6 +87,23 @@
                                 let hidden1 = parseFloat($("#hidden1-val").text());
 
                                 let output1 = parseFloat($("#output1-val").text());
+
+                                /*
+                                output layer:
+                                    error_output = target - output
+                                    delta_output = error_output * (output * (1 - output))
+
+                                hidden layer:
+                                    error_hidden = delta_output * w2
+                                    delta_hidden = error_hidden * (hidden * (1 - hidden))
+
+                                weight and bias updates:
+                                    w1 = w1 + learning_rate * delta_hidden * input
+                                    b1 = b1 + learning_rate * delta_hidden
+                                    
+                                    w2 = w2 + learning_rate * delta_output * hidden
+                                    b2 = b2 + learning_rate * delta_output
+                                */
 
                                 // output layer
                                 let error_output1 = target1 - output1;
@@ -119,6 +119,13 @@
                                 
                                 weight2 = weight2 + learning_rate * delta_output1 * hidden1;
                                 bias2 = bias2 + learning_rate * delta_output1;
+
+                                // assignment of weights and biases to the labels
+                                $("#weight1-val").text(weight1);
+                                $("#bias1-val").text(bias1);
+
+                                $("#weight2-val").text(weight2);
+                                $("#bias2-val").text(bias2);
                             });
                         });
                     </script>
