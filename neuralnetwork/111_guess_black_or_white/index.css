@@ -11,8 +11,8 @@ button
 /*For global use*/
 .circle-input/*input layer*/
 {
-  background-color: light blue;
-  border: 1px solid light blue;
+  background-color: lightblue;
+  border: 1px solid lightblue;
   display: flex;
   width: 100px;
   height: 100px;
