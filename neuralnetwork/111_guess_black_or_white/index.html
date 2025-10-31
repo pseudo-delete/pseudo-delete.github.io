@@ -166,10 +166,23 @@
         </div>
       
         <div class="panel-generate">
-            <button type="button">Generate Pixel</button>
+            <button id="btn-generate-pixel" type="button">Generate Pixel</button>
             
             <div class="pixel-container pixel-container1">
             </div>
+
+            <script>
+                $(function()
+                {
+                    $("#btn-generate-pixel").on('click', function()
+                    {
+                        let R = Math.random()*255;
+                        let G = Math.random()*255;
+                        let B = Math.random()*255;
+                        $(".pixel-container1").css("background-color", "RGB(" + R + "," + G + "," + B + ")");
+                    });
+                });
+            </script>
         </div>
     </div>
 </body>
