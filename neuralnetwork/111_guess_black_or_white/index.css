@@ -123,16 +123,11 @@ button
   border: 2px solid blue;
   display: flex;
   flex-direction: row;
+  height: auto;
 }
 
 .ai-pixel, .pixel-container
 {
   width: 20px;
   height: 20px;
-}
-
-/* RGB colors */
-.000
-{
-  color: RGB(0,0,0);
 }
