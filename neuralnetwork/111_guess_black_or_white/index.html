@@ -34,19 +34,8 @@
                             {
                                 return 1/(1+Math.exp(-x));
                             }
-                            
-                            $("#btn-generate-neural-val").on('click', function()
-                            {
-                                $("#input1-val").text(Math.random());
-                                
-                                $("#weight1-val").text(Math.random());
-                                $("#weight2-val").text(Math.random());
 
-                                $("#bias1-val").text(Math.random());
-                                $("#bias2-val").text(Math.random());
-                            });
-
-                            $("#btn-fire").on('click', function()
+                            function fire()
                             {
                                 let input1 = parseFloat($("#input1-val").text());
                                 
@@ -75,6 +64,22 @@
                                 h=σ(w1x+b1)h = \sigma(w_1 x + b_1)h=σ(w1​x+b1​)
                                 y=σ(w2h+b2)y = \sigma(w_2 h + b_2)y=σ(w2​h+b2​)
                                 */
+                            }
+                            
+                            $("#btn-generate-neural-val").on('click', function()
+                            {
+                                $("#input1-val").text(Math.random());
+                                
+                                $("#weight1-val").text(Math.random());
+                                $("#weight2-val").text(Math.random());
+
+                                $("#bias1-val").text(Math.random());
+                                $("#bias2-val").text(Math.random());
+                            });
+
+                            $("#btn-fire").on('click', function()
+                            {
+                                fire();
                             });
 
                             $("#btn-train").on('click', function()
