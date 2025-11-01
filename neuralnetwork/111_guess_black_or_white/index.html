@@ -113,7 +113,7 @@
                                 let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
                                 
-                                let hidden1 = sigmoid(((weight1*input1) + (weight3*input2) + bias1);
+                                let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + bias1);
                                 $("#hidden1-val").text(hidden1.toFixed(4));
                                 
                                 let output1 = sigmoid((weight2*hidden1) + bias2);
