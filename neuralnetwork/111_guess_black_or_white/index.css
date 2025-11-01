@@ -8,6 +8,11 @@ button
   cursor: pointer;
 }
 
+canvas
+{
+  background-color: transparent;
+}
+
 /*For global use*/
 .circle-input/*input layer*/
 {
