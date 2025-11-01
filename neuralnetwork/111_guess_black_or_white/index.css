@@ -78,8 +78,7 @@ canvas
 .line-container
 {
   display: flex;
-  
-  position: relative;
+  flex-direction: column;
   min-width: 100px;
   min-height: 49px;
   max-width: 100px;
