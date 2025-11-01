@@ -113,7 +113,7 @@
                                 let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
                                 
-                                let hidden1 = sigmoid((weight1*input1) + bias1);
+                                let hidden1 = sigmoid(((weight1*input1) + (weight3*input2) + bias1);
                                 $("#hidden1-val").text(hidden1.toFixed(4));
                                 
                                 let output1 = sigmoid((weight2*hidden1) + bias2);
@@ -202,7 +202,7 @@
                                 let delta_output1 = error_output1 * (output1 * (1-output1));
 
                                 // hidden layer
-                                let error_hidden1 = delta_output1 * weight2;
+                                let error_hidden1 = delta_output1 * weight2;// weight 2 is hidden1-output 1 weight
                                 let delta_hidden1 = error_hidden1 * (hidden1 * (1-hidden1));
 
                                 // weight and bias updates
