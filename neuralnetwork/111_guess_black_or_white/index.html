@@ -292,10 +292,13 @@
                                 let weight4 = parseFloat($("#weight4-val").text());// input1 - hidden2
                                 let weight5 = parseFloat($("#weight5-val").text());// input2 - hidden2
                                 let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1
+                                let weight7 = parseFloat($("#weight7-val").text());// hidden1 - output2
+                                let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2
 
                                 let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
                                 let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
+                                let bias4 = parseFloat($("#bias4-val").text());// to output2 bias
                                 
                                 let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + bias1);
                                 $("#hidden1-val").text(hidden1);
@@ -306,10 +309,14 @@
                                 let output1 = sigmoid((weight6*hidden2) + (weight2*hidden1) + bias2);
                                 $("#output1-val").text(output1);
 
+                                let output2 = sigmoid((weight7*hidden2) + (weight8*hidden1) + bias4);
+                                $("#output2-val").text(output2);
+
                                 // setting ai-pixel1 color based on fired value
-                                let r1 = parseInt(parseFloat($("#output1-val").text()) * 255);// Output1: R
+                                let r1 = parseInt(parseFloat($("#output1-val").text()) * 256);// Output1: R
+                                let g1 = parseInt(parseFloat($("#output2-val").text()) * 256);// Output1: G
                                 // pixel1 - (RGB):
-                                $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", 0, 0)");
+                                $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", " + g1 + ", 0)");
                                 /*
                                 hidden = sigmoid((weight1*input) + bias1)
                                 output = sigmoid((weight2*hidden)+ bias2)
@@ -332,10 +339,13 @@
                                 $("#weight4-val").text(Math.random());
                                 $("#weight5-val").text(Math.random());
                                 $("#weight6-val").text(Math.random());
+                                $("#weight7-val").text(Math.random());
+                                $("#weight8-val").text(Math.random());
 
                                 $("#bias1-val").text(Math.random());
                                 $("#bias2-val").text(Math.random());
                                 $("#bias3-val").text(Math.random());
+                                $("#bias4-val").text(Math.random());
                             });
 
                             $("#btn-fire").on('click', function()
@@ -366,15 +376,19 @@
                                 let weight4 = parseFloat($("#weight4-val").text());// input1 - hidden2 weight
                                 let weight5 = parseFloat($("#weight5-val").text());// input2 - hidden2 weight
                                 let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1 weight 
+                                let weight7 = parseFloat($("#weight7-val").text());// hidden1 - output2 weight
+                                let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2 weight 
 
                                 let bias1 = parseFloat($("#bias1-val").text());// hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// output1 bias
                                 let bias3 = parseFloat($("#bias3-val").text());// hidden2 bias
+                                let bias4 = parseFloat($("#bias4-val").text());// output2 bias
 
                                 let hidden1 = parseFloat($("#hidden1-val").text());
                                 let hidden2 = parseFloat($("#hidden2-val").text());
 
                                 let output1 = parseFloat($("#output1-val").text());
+                                let output2 = parseFloat($("#output2-val").text());
 
                                 /*
                                 output layer:
@@ -396,13 +410,19 @@
                                 // output layer
                                 let error_output1 = target1 - output1;
                                 let delta_output1 = error_output1 * (output1 * (1-output1));
+                                
+                                let error_output2 = target2 - output2;
+                                let delta_output2 = error_output2 * (output2 * (1-output2));
 
-                                // hidden layer
+                                // hidden layer 
+                                // delta_h1 = (delta_y1 * w2 + delta_y2 * w3) * h1 * (1 - h1);
                                 let error_hidden1 = delta_output1 * weight2;// weight 2 is hidden1-output 1 weight
-                                let delta_hidden1 = error_hidden1 * (hidden1 * (1-hidden1));
+                                let error2_hidden1 = delta_output2 * weight7;// weight 7 is hidden1-output 2 weight
+                                let delta_hidden1 = (error_hidden1 + error2_hidden1) * hidden1 * (1-hidden1);
 
-                                let error_hidden2 = delta_output1 * weight6;// weight 6 is hidden2-output 1 weight
-                                let delta_hidden2 = error_hidden2 * (hidden2 * (1-hidden2));
+                                let error_hidden2 = delta_output2 * weight6;// weight 6 is hidden2-output 1 weight
+                                let error2_hidden2 = delta_output2 * weight8;// weight 8 is hidden2-output 2 weight
+                                let delta_hidden2 = (error_hidden2 + error2_hidden2) * hidden2 * (1-hidden2);
 
                                 // weight and bias updates
                                 // input - hidden1
@@ -420,6 +440,10 @@
                                 weight6 = weight6 + learning_rate * delta_output1 * hidden2;// hidden2 - output1 connection
                                 bias2 = bias2 + learning_rate * delta_output1;
 
+                                // hidden - output2
+                                weight7 = weight7 + learning_rate * delta_output2 * hidden1;// hidden1 - output2 connection
+                                weight8 = weight8 + learning_rate * delta_output2 * hidden2;// hidden2 - output2 connection
+                                bias4 = bias4 + learning_rate * delta_output2;
 
                                 // assignment of weights and biases to the labels
                                 $("#weight1-val").text(weight1);
@@ -433,6 +457,10 @@
                                 $("#weight2-val").text(weight2);
                                 $("#weight6-val").text(weight6);
                                 $("#bias2-val").text(bias2);
+
+                                $("#weight7-val").text(weight7);
+                                $("#weight8-val").text(weight8);
+                                $("#bias4-val").text(bias4);
 
                                 // fire neural network once again
                                 fire();
