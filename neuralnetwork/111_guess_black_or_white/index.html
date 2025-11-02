@@ -25,8 +25,7 @@
                 W7: <span id="weight7-val">0</span><br>
                 W8: <span id="weight8-val">0</span><br>
                 W9: <span id="weight9-val">0</span><br>
-                W10: <span id="weight10-val">0</span><br>
-                W11: <span id="weight11-val">0</span><br><br>
+                W10: <span id="weight10-val">0</span><br><br>
 
                 B1(For H1): <span id="bias1-val">0</span><br>
                 B2(For O1): <span id="bias2-val">0</span><br>
@@ -276,6 +275,56 @@
 
                     <div class="neural-row">
                         <div class="circle-input"><label class="neuron-value" id="input3-val">0</label></div>
+                        <div class="line-container">
+                            <canvas id="line5-canvas" width="100" height="100"></canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas5 = $("#line5-canvas")[0];
+                                    let canvasContext5 = lineCanvas5.getContext("2d");
+
+                                    // drawing line from point a to point b
+                                    canvasContext5.beginPath();
+                                    canvasContext5.moveTo(0, 50);
+                                    canvasContext5.lineTo(50, 0);
+                                    canvasContext5.strokeStyle = "black";
+                                    canvasContext5.lineWidth = 1;
+                                    canvasContext5.stroke();
+
+                                    // drawing line from point a to point b
+                                    canvasContext5.beginPath();
+                                    canvasContext5.moveTo(0, 50);
+                                    canvasContext5.lineTo(100, 50);
+                                    canvasContext5.strokeStyle = "black";
+                                    canvasContext5.lineWidth = 1;
+                                    canvasContext5.stroke();
+
+                                    // drawing line from point a to point b
+                                    canvasContext5.beginPath();
+                                    canvasContext5.moveTo(50, 0);
+                                    canvasContext5.lineTo(100, 50);
+                                    canvasContext5.strokeStyle = "black";
+                                    canvasContext5.lineWidth = 1;
+                                    canvasContext5.stroke();
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext5.font = "10px Arial";
+                                    // set text color
+                                    canvasContext5.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext5.fillText("W9", 23, 23);
+
+                                    // set font style and size
+                                    canvasContext5.font = "10px Arial";
+                                    // set text color
+                                    canvasContext5.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext5.fillText("W10", 43, 53);
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div>
                     </div>
                     <button id="btn-fire" type="button">Fire</button>
                     <button id="btn-train" type="button">Train</button>
