@@ -21,11 +21,14 @@
                 W3: <span id="weight3-val">0</span><br>
                 W4: <span id="weight4-val">0</span><br>
                 W5: <span id="weight5-val">0</span><br>
-                W6: <span id="weight6-val">0</span><br><br>
+                W6: <span id="weight6-val">0</span><br>
+                W7: <span id="weight7-val">0</span><br>
+                W8: <span id="weight8-val">0</span><br><br>
 
                 B1(For H1): <span id="bias1-val">0</span><br>
                 B2(For O1): <span id="bias2-val">0</span><br>
                 B3(For H2): <span id="bias3-val">0</span><br>
+                B4(For O2): <span id="bias4-val">0</span><br>
             </p>
         </div>
         
@@ -122,6 +125,14 @@
                                     canvasContext2.lineWidth = 1;
                                     canvasContext2.stroke();
 
+                                    // drawing line from point a to point b
+                                    canvasContext2.beginPath();
+                                    canvasContext2.moveTo(0, 50);
+                                    canvasContext2.lineTo(50, 100);
+                                    canvasContext2.strokeStyle = "black";
+                                    canvasContext2.lineWidth = 1;
+                                    canvasContext2.stroke();
+
                                     /* drawing text labeling the lines */
                                     // set font style and size
                                     canvasContext2.font = "10px Arial";
@@ -129,6 +140,13 @@
                                     canvasContext2.fillStyle = "white";
                                     // draw filled text
                                     canvasContext2.fillText("W2", 43, 53);
+
+                                    // set font style and size
+                                    canvasContext2.font = "10px Arial";
+                                    // set text color
+                                    canvasContext2.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext2.fillText("W7", 23, 73);
                                 });
                             </script>
                             <!--<div class="line-horizontal"></div>-->
@@ -216,6 +234,22 @@
                                     canvasContext4.lineWidth = 1;
                                     canvasContext4.stroke();
 
+                                    // drawing line from point a to point b
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(0, 50);
+                                    canvasContext4.lineTo(100, 50);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    // drawing line from point a to point b
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(50, 0);
+                                    canvasContext4.lineTo(100, 50);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
                                     /* drawing text labeling the lines */
                                     // set font style and size
                                     canvasContext4.font = "10px Arial";
@@ -223,6 +257,13 @@
                                     canvasContext4.fillStyle = "white";
                                     // draw filled text
                                     canvasContext4.fillText("W6", 23, 23);
+
+                                    // set font style and size
+                                    canvasContext4.font = "10px Arial";
+                                    // set text color
+                                    canvasContext4.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext4.fillText("W8", 43, 53);
                                 });
                             </script>
                             <!--<div class="line-horizontal"></div>-->
