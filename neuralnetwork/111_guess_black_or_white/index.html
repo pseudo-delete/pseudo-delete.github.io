@@ -514,9 +514,9 @@
                 {
                     $("#btn-generate-pixel").on('click', function()
                     {
-                        let R = Math.random()*255;
-                        let G = Math.random()*255;
-                        let B = Math.random()*255;
+                        let R = Math.random()*256;
+                        let G = Math.random()*256;
+                        let B = Math.random()*256;
                         $(".pixel-container1").css("background-color", "RGB(" + R + "," + G + "," + B + ")");
                     });
                 });
