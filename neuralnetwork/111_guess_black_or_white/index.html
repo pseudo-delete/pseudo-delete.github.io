@@ -141,6 +141,39 @@
                             </script>
                             <!--<div class="line-horizontal"></div>-->
                         </div><!--input2-hidden2 weight-->
+
+                        <div class="circle-hidden"><label class="neuron-value" id="hidden2-val">0</label></div>
+                        <div class="line-container">
+                            <!--<div>
+                                <label class="weight-value" id="weight4-val">0</label>
+                                <label class="bias-value" id="bias3-val">0</label>
+                            </div>-->
+                            <canvas id="line4-canvas" width="100" height="100"></canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas4 = $("#line4/-canvas")[0];
+                                    let canvasContext4 = lineCanvas4.getContext("2d");
+
+                                    // drawing line from point a to point b
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(0, 50);
+                                    canvasContext4.lineTo(100, 50);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext4.font = "10px Arial";
+                                    // set text color
+                                    canvasContext4.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext4.fillText("W4", 43, 53);
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div>
                     </div>
                     <button id="btn-fire" type="button">Fire</button>
                     <button id="btn-train" type="button">Train</button>
