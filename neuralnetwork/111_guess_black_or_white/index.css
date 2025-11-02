@@ -45,6 +45,16 @@ canvas
   border-radius: 50%;
 }
 
+.circle-dead/* for neurons that doesn't have enough connection and computing process */
+{
+  background-color: gray;
+  border: 1px gray;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
 /* lines */
 .line-horizontal
 {
