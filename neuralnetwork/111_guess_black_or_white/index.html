@@ -23,7 +23,10 @@
                 W5: <span id="weight5-val">0</span><br>
                 W6: <span id="weight6-val">0</span><br>
                 W7: <span id="weight7-val">0</span><br>
-                W8: <span id="weight8-val">0</span><br><br>
+                W8: <span id="weight8-val">0</span><br>
+                W9: <span id="weight9-val">0</span><br>
+                W10: <span id="weight10-val">0</span><br>
+                W11: <span id="weight11-val">0</span><br><br>
 
                 B1(For H1): <span id="bias1-val">0</span><br>
                 B2(For O1): <span id="bias2-val">0</span><br>
@@ -270,6 +273,10 @@
                         </div>
                         <div class="circle-output"><label class="neuron-value" id="output2-val">0</label></div><br>
                     </div>
+
+                    <div class="neural-row">
+                        <div class="circle-input"><label class="neuron-value" id="input3-val">0</label></div>
+                    </div>
                     <button id="btn-fire" type="button">Fire</button>
                     <button id="btn-train" type="button">Train</button>
                     
@@ -285,6 +292,7 @@
                             {
                                 let input1 = parseFloat($("#input1-val").text());
                                 let input2 = parseFloat($("#input2-val").text());
+                                let input3 = parseFloat($("#input3-val").text());
                                 
                                 let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1
                                 let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1
@@ -294,16 +302,18 @@
                                 let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1
                                 let weight7 = parseFloat($("#weight7-val").text());// hidden1 - output2
                                 let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2
+                                let weight9 = parseFloat($("#weight9-val").text());// input3 - hidden1
+                                let weight10 = parseFloat($("#weight10-val").text());// input3 - hidden2
 
                                 let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
                                 let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
                                 let bias4 = parseFloat($("#bias4-val").text());// to output2 bias
                                 
-                                let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + bias1);
+                                let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + (weight9*input3) + bias1);
                                 $("#hidden1-val").text(hidden1);
 
-                                let hidden2 = sigmoid((weight4*input1) + (weight5*input2) + bias3);
+                                let hidden2 = sigmoid((weight4*input1) + (weight5*input2) + (weight10*input3) + bias3);
                                 $("#hidden2-val").text(hidden2);
                                 
                                 let output1 = sigmoid((weight6*hidden2) + (weight2*hidden1) + bias2);
@@ -341,6 +351,8 @@
                                 $("#weight6-val").text(Math.random());
                                 $("#weight7-val").text(Math.random());
                                 $("#weight8-val").text(Math.random());
+                                $("#weight9-val").text(Math.random());
+                                $("#weight10-val").text(Math.random());
 
                                 $("#bias1-val").text(Math.random());
                                 $("#bias2-val").text(Math.random());
@@ -369,6 +381,7 @@
 
                                 let input1 = parseFloat($("#input1-val").text());
                                 let input2 = parseFloat($("#input2-val").text());
+                                let input3 = parseFloat($("#input3-val").text());
                                 
                                 let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1 weight
                                 let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1 weight
@@ -378,6 +391,8 @@
                                 let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1 weight 
                                 let weight7 = parseFloat($("#weight7-val").text());// hidden1 - output2 weight
                                 let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2 weight 
+                                let weight9 = parseFloat($("#weight7-val").text());// input3 - hidden1 weight
+                                let weight10 = parseFloat($("#weight8-val").text());// input3 - hidden2 weight 
 
                                 let bias1 = parseFloat($("#bias1-val").text());// hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// output1 bias
@@ -428,11 +443,13 @@
                                 // input - hidden1
                                 weight1 = weight1 + learning_rate * delta_hidden1 * input1;// input1
                                 weight3 = weight3 + learning_rate * delta_hidden1 * input2;// input2
+                                weight9 = weight9 + learning_rate * delta_hidden1 * input3;// input3
                                 bias1 = bias1 + learning_rate * delta_hidden1;
 
                                 // input - hidden2
                                 weight4 = weight4 + learning_rate * delta_hidden2 * input1;// input1
                                 weight5 = weight5 + learning_rate * delta_hidden2 * input2;// input2
+                                weight10 = weight10 + learning_rate * delta_hidden1 * input3;// input3
                                 bias3 = bias3 + learning_rate * delta_hidden2;
 
                                 // hidden - output1
@@ -448,10 +465,12 @@
                                 // assignment of weights and biases to the labels
                                 $("#weight1-val").text(weight1);
                                 $("#weight3-val").text(weight3);
+                                $("#weight9-val").text(weight9);
                                 $("#bias1-val").text(bias1);
 
                                 $("#weight4-val").text(weight4);
                                 $("#weight5-val").text(weight5);
+                                $("#weight10-val").text(weight10);
                                 $("#bias3-val").text(bias3);
 
                                 $("#weight2-val").text(weight2);
