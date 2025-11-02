@@ -238,14 +238,21 @@
                                 let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1
                                 let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1
                                 let weight3 = parseFloat($("#weight3-val").text());// input2 - hidden1
+                                let weight4 = parseFloat($("#weight4-val").text());// input1 - hidden2
+                                let weight5 = parseFloat($("#weight5-val").text());// input2 - hidden2
+                                let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1
 
                                 let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
+                                let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
                                 
                                 let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + bias1);
                                 $("#hidden1-val").text(hidden1.toFixed(4));
+
+                                let hidden2 = sigmoid((weight4*input1) + (weight5*input2) + bias3);
+                                $("#hidden2-val").text(hidden2.toFixed(4));
                                 
-                                let output1 = sigmoid((weight2*hidden1) + bias2);
+                                let output1 = sigmoid((weight6*hidden2) + (weight2*hidden1) + bias2);
                                 $("#output1-val").text(output1.toFixed(4));
 
                                 // setting ai-pixel1 color based on fired value
@@ -271,9 +278,13 @@
                                 $("#weight1-val").text(Math.random());
                                 $("#weight2-val").text(Math.random());
                                 $("#weight3-val").text(Math.random());
+                                $("#weight4-val").text(Math.random());
+                                $("#weight5-val").text(Math.random());
+                                $("#weight6-val").text(Math.random());
 
                                 $("#bias1-val").text(Math.random());
                                 $("#bias2-val").text(Math.random());
+                                $("#bias3-val").text(Math.random());
                             });
 
                             $("#btn-fire").on('click', function()
@@ -301,11 +312,16 @@
                                 let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1 weight
                                 let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1 weight
                                 let weight3 = parseFloat($("#weight3-val").text());// input2 - hidden1 weight 
+                                let weight4 = parseFloat($("#weight4-val").text());// input1 - hidden2 weight
+                                let weight5 = parseFloat($("#weight5-val").text());// input2 - hidden2 weight
+                                let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1 weight 
 
                                 let bias1 = parseFloat($("#bias1-val").text());// hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// output1 bias
+                                let bias3 = parseFloat($("#bias3-val").text());// hidden2 bias
 
                                 let hidden1 = parseFloat($("#hidden1-val").text());
+                                let hidden2 = parseFloat($("#hidden2-val").text());
 
                                 let output1 = parseFloat($("#output1-val").text());
 
@@ -334,13 +350,23 @@
                                 let error_hidden1 = delta_output1 * weight2;// weight 2 is hidden1-output 1 weight
                                 let delta_hidden1 = error_hidden1 * (hidden1 * (1-hidden1));
 
+                                let error_hidden2 = delta_output1 * weight6;// weight 6 is hidden2-output 1 weight
+                                let delta_hidden2 = error_hidden2 * (hidden2 * (1-hidden2));
+
                                 // weight and bias updates
-                                // input - hidden
+                                // input - hidden1
                                 weight1 = weight1 + learning_rate * delta_hidden1 * input1;// input1
                                 weight3 = weight3 + learning_rate * delta_hidden1 * input2;// input2
                                 bias1 = bias1 + learning_rate * delta_hidden1;
 
-                                weight2 = weight2 + learning_rate * delta_output1 * hidden1;
+                                // input - hidden2
+                                weight4 = weight4 + learning_rate * delta_hidden2 * input1;// input1
+                                weight5 = weight5 + learning_rate * delta_hidden2 * input2;// input2
+                                bias3 = bias3 + learning_rate * delta_hidden2;
+
+                                // hidden - output1
+                                weight2 = weight2 + learning_rate * delta_output1 * hidden1;// hidden1 - output1 connection
+                                weight6 = weight6 + learning_rate * delta_output1 * hidden2;// hidden2 - output1 connection
                                 bias2 = bias2 + learning_rate * delta_output1;
 
 
@@ -349,7 +375,12 @@
                                 $("#weight3-val").text(weight3);
                                 $("#bias1-val").text(bias1);
 
+                                $("#weight4-val").text(weight4);
+                                $("#weight5-val").text(weight5);
+                                $("#bias3-val").text(bias3);
+
                                 $("#weight2-val").text(weight2);
+                                $("#weight6-val").text(weight6);
                                 $("#bias2-val").text(bias2);
 
                                 // fire neural network once again
