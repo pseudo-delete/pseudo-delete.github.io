@@ -255,13 +255,13 @@
                                 let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
                                 
                                 let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + bias1);
-                                $("#hidden1-val").text(hidden1.toFixed(4));
+                                $("#hidden1-val").text(hidden1.toFixed(7));
 
                                 let hidden2 = sigmoid((weight4*input1) + (weight5*input2) + bias3);
-                                $("#hidden2-val").text(hidden2.toFixed(4));
+                                $("#hidden2-val").text(hidden2.toFixed(7));
                                 
                                 let output1 = sigmoid((weight6*hidden2) + (weight2*hidden1) + bias2);
-                                $("#output1-val").text(output1.toFixed(4));
+                                $("#output1-val").text(output1.toFixed(7));
 
                                 // setting ai-pixel1 color based on fired value
                                 let r1 = parseInt(parseFloat($("#output1-val").text()) * 255);// Output1: R
