@@ -28,7 +28,9 @@
                 W10: <span id="weight10-val">0</span><br>
                 W11: <span id="weight11-val">0</span><br>
                 W12: <span id="weight12-val">0</span><br>
-                W13: <span id="weight13-val">0</span><br><br>
+                W13: <span id="weight13-val">0</span><br>
+                W14: <span id="weight14-val">0</span><br>
+                W15: <span id="weight15-val">0</span><br><br>
 
                 B1(For H1): <span id="bias1-val">0</span><br>
                 B2(For O1): <span id="bias2-val">0</span><br>
@@ -377,6 +379,48 @@
                             <!--<div class="line-horizontal"></div>-->
                         </div>
                         <div class="circle-hidden"><label class="neuron-value" id="hidden2-val">0</label></div>
+                        <div class="line-container">
+                            <canvas id="line6-canvas" width="100" height="100"></canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas6 = $("#line6-canvas")[0];
+                                    let canvasContext6 = lineCanvas6.getContext("2d");
+
+                                    // drawing line from point a to point b - weight 14
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(0, 50);
+                                    canvasContext6.lineTo(25, 0);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+                                    
+                                    // drawing line from point a to point b - weight 15
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(0, 50);
+                                    canvasContext6.lineTo(50, 0);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext6.font = "10px Arial";
+                                    // set text color
+                                    canvasContext6.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext6.fillText("W14", 3, 23);
+
+                                    // set font style and size
+                                    canvasContext6.font = "10px Arial";
+                                    // set text color
+                                    canvasContext6.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext6.fillText("W15", 23, 23);
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div>
                     </div>
                     <button id="btn-fire" type="button">Fire</button>
                     <button id="btn-train" type="button">Train</button>
@@ -405,11 +449,15 @@
                                 let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2
                                 let weight9 = parseFloat($("#weight9-val").text());// input3 - hidden1
                                 let weight10 = parseFloat($("#weight10-val").text());// input3 - hidden2
+                                let weight11 = parseFloat($("#weight11-val").text());// input1 - hidden3
+                                let weight12 = parseFloat($("#weight12-val").text());// input2 - hidden3
+                                let weight13 = parseFloat($("#weight13-val").text());// input3 - hidden3
 
                                 let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
                                 let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
                                 let bias4 = parseFloat($("#bias4-val").text());// to output2 bias
+                                let bias5 = parseFloat($("#bias5-val").text());// to hidden3 bias
                                 
                                 let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + (weight9*input3) + bias1);
                                 $("#hidden1-val").text(hidden1);
@@ -417,10 +465,13 @@
                                 let hidden2 = sigmoid((weight4*input1) + (weight5*input2) + (weight10*input3) + bias3);
                                 $("#hidden2-val").text(hidden2);
                                 
-                                let output1 = sigmoid((weight6*hidden2) + (weight2*hidden1) + bias2);
+                                let hidden3 = sigmoid((weight11*input1) + (weight12*input2) + (weight13*input3) + bias3);
+                                $("#hidden2-val").text(hidden2);
+                                
+                                let output1 = sigmoid((weight2*hidden1) + (weight6*hidden2) + (weight14*hidden3) + bias2);
                                 $("#output1-val").text(output1);
 
-                                let output2 = sigmoid((weight7*hidden2) + (weight8*hidden1) + bias4);
+                                let output2 = sigmoid((weight8*hidden1) + (weight7*hidden2) + (weight15*hidden3) + bias4);
                                 $("#output2-val").text(output2);
 
                                 // setting ai-pixel1 color based on fired value
