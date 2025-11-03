@@ -25,12 +25,16 @@
                 W7: <span id="weight7-val">0</span><br>
                 W8: <span id="weight8-val">0</span><br>
                 W9: <span id="weight9-val">0</span><br>
-                W10: <span id="weight10-val">0</span><br><br>
+                W10: <span id="weight10-val">0</span><br>
+                W11: <span id="weight11-val">0</span><br>
+                W12: <span id="weight12-val">0</span><br>
+                W13: <span id="weight13-val">0</span><br><br>
 
                 B1(For H1): <span id="bias1-val">0</span><br>
                 B2(For O1): <span id="bias2-val">0</span><br>
                 B3(For H2): <span id="bias3-val">0</span><br>
                 B4(For O2): <span id="bias4-val">0</span><br>
+                B5(For H3): <span id="bias5-val">0</span><br>
             </p>
         </div>
         
@@ -88,6 +92,14 @@
                                     canvasContext1.lineWidth = 1;
                                     canvasContext1.stroke();
 
+                                    // drawing line from point a to point b - weight 11
+                                    canvasContext1.beginPath();
+                                    canvasContext1.moveTo(0, 50);
+                                    canvasContext1.lineTo(25, 100);
+                                    canvasContext1.strokeStyle = "black";
+                                    canvasContext1.lineWidth = 1;
+                                    canvasContext1.stroke();
+
                                     /* drawing text labeling the lines */
                                     // set font style and size
                                     canvasContext1.font = "10px Arial";
@@ -102,6 +114,13 @@
                                     canvasContext1.fillStyle = "white";
                                     // draw filled text
                                     canvasContext1.fillText("W4", 18, 73);
+
+                                    // set font style and size
+                                    canvasContext1.font = "10px Arial";
+                                    // set text color
+                                    canvasContext1.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext1.fillText("W11", 3, 93);
                                 });
                             </script>
                             <!--<div class="line-horizontal"></div>-->
@@ -218,6 +237,14 @@
                                     canvasContext3.lineWidth = 1;
                                     canvasContext3.stroke();
 
+                                    // drawing line from point a to point b - weight 11
+                                    canvasContext1.beginPath();
+                                    canvasContext1.moveTo(25, 0);
+                                    canvasContext1.lineTo(75, 100);
+                                    canvasContext1.strokeStyle = "black";
+                                    canvasContext1.lineWidth = 1;
+                                    canvasContext1.stroke();
+
                                     /* drawing text labeling the lines */
                                     // set font style and size
                                     canvasContext3.font = "10px Arial";
@@ -322,6 +349,14 @@
                                     canvasContext5.strokeStyle = "black";
                                     canvasContext5.lineWidth = 1;
                                     canvasContext5.stroke();
+
+                                    // drawing line from point a to point b - weight 11
+                                    canvasContext1.beginPath();
+                                    canvasContext1.moveTo(75, 0);
+                                    canvasContext1.lineTo(100, 50);
+                                    canvasContext1.strokeStyle = "black";
+                                    canvasContext1.lineWidth = 1;
+                                    canvasContext1.stroke();
 
                                     /* drawing text labeling the lines */
                                     // set font style and size
