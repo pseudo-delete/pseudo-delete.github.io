@@ -529,8 +529,8 @@
                                 let hidden2 = sigmoid((weight4*input1) + (weight5*input2) + (weight10*input3) + bias3);
                                 $("#hidden2-val").text(hidden2);
                                 
-                                let hidden3 = sigmoid((weight11*input1) + (weight12*input2) + (weight13*input3) + bias3);
-                                $("#hidden2-val").text(hidden2);
+                                let hidden3 = sigmoid((weight11*input1) + (weight12*input2) + (weight13*input3) + bias5);
+                                $("#hidden3-val").text(hidden3);
                                 
                                 let output1 = sigmoid((weight2*hidden1) + (weight6*hidden2) + (weight14*hidden3) + bias2);
                                 $("#output1-val").text(output1);
