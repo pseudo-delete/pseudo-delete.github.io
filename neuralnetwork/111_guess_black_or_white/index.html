@@ -30,13 +30,17 @@
                 W12: <span id="weight12-val">0</span><br>
                 W13: <span id="weight13-val">0</span><br>
                 W14: <span id="weight14-val">0</span><br>
-                W15: <span id="weight15-val">0</span><br><br>
+                W15: <span id="weight15-val">0</span><br>
+                W16: <span id="weight16-val">0</span><br>
+                W17: <span id="weight17-val">0</span><br>
+                W18: <span id="weight18-val">0</span><br><br>
 
                 B1(For H1): <span id="bias1-val">0</span><br>
                 B2(For O1): <span id="bias2-val">0</span><br>
                 B3(For H2): <span id="bias3-val">0</span><br>
                 B4(For O2): <span id="bias4-val">0</span><br>
                 B5(For H3): <span id="bias5-val">0</span><br>
+                B6(For O3): <span id="bias6-val">0</span><br>
             </p>
         </div>
         
@@ -172,6 +176,14 @@
                                     canvasContext2.lineWidth = 1;
                                     canvasContext2.stroke();
 
+                                    // drawing line from point a to point b - weight 16
+                                    canvasContext2.beginPath();
+                                    canvasContext2.moveTo(0, 50);
+                                    canvasContext2.lineTo(25, 100);
+                                    canvasContext2.strokeStyle = "black";
+                                    canvasContext2.lineWidth = 1;
+                                    canvasContext2.stroke();
+
                                     /* drawing text labeling the lines */
                                     // set font style and size
                                     canvasContext2.font = "10px Arial";
@@ -186,6 +198,13 @@
                                     canvasContext2.fillStyle = "white";
                                     // draw filled text
                                     canvasContext2.fillText("W7", 23, 73);
+
+                                    // set font style and size
+                                    canvasContext2.font = "10px Arial";
+                                    // set text color
+                                    canvasContext2.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext2.fillText("W16", 23, 73);
                                 });
                             </script>
                             <!--<div class="line-horizontal"></div>-->
@@ -344,6 +363,22 @@
                                     canvasContext4.lineWidth = 1;
                                     canvasContext4.stroke();
 
+                                    // drawing line from point a to point b - weight 16
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(25, 0);
+                                    canvasContext4.lineTo(75, 100);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    // drawing line from point a to point b - weight 17
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(0, 50);
+                                    canvasContext4.lineTo(50, 100);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
                                     /* drawing text labeling the lines */
                                     // set font style and size
                                     canvasContext4.font = "10px Arial";
@@ -358,6 +393,13 @@
                                     canvasContext4.fillStyle = "white";
                                     // draw filled text
                                     canvasContext4.fillText("W8", 43, 53);
+
+                                    // set font style and size
+                                    canvasContext4.font = "10px Arial";
+                                    // set text color
+                                    canvasContext4.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext4.fillText("W17", 23, 73);
                                 });
                             </script>
                             <!--<div class="line-horizontal"></div>-->
@@ -465,6 +507,30 @@
                                     canvasContext6.lineWidth = 1;
                                     canvasContext6.stroke();
 
+                                    // drawing line from point a to point b - weight 16
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(75, 0);
+                                    canvasContext6.lineTo(100, 50);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+
+                                    // drawing line from point a to point b - weight 17
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(50, 0);
+                                    canvasContext6.lineTo(100, 50);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+
+                                    // drawing line from point a to point b - weight 18
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(0, 50);
+                                    canvasContext6.lineTo(100, 50);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+
                                     /* drawing text labeling the lines */
                                     // set font style and size
                                     canvasContext6.font = "10px Arial";
@@ -479,6 +545,13 @@
                                     canvasContext6.fillStyle = "white";
                                     // draw filled text
                                     canvasContext6.fillText("W15", 23, 23);
+
+                                    // set font style and size
+                                    canvasContext6.font = "10px Arial";
+                                    // set text color
+                                    canvasContext6.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext6.fillText("W18", 23, 53);
                                 });
                             </script>
                             <!--<div class="line-horizontal"></div>-->
@@ -517,12 +590,17 @@
                                 let weight13 = parseFloat($("#weight13-val").text());// input3 - hidden3
                                 let weight14 = parseFloat($("#weight14-val").text());// hidden3 - output1
                                 let weight15 = parseFloat($("#weight15-val").text());// hidden3 - output2
+                                
+                                let weight16 = parseFloat($("#weight16-val").text());// hidden1 - output3
+                                let weight17 = parseFloat($("#weight17-val").text());// hidden2 - output3
+                                let weight18 = parseFloat($("#weight18-val").text());// hidden3 - output3
 
                                 let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
                                 let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
                                 let bias4 = parseFloat($("#bias4-val").text());// to output2 bias
                                 let bias5 = parseFloat($("#bias5-val").text());// to hidden3 bias
+                                let bias6 = parseFloat($("#bias6-val").text());// to output3 bias
                                 
                                 let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + (weight9*input3) + bias1);
                                 $("#hidden1-val").text(hidden1);
@@ -539,11 +617,15 @@
                                 let output2 = sigmoid((weight8*hidden1) + (weight7*hidden2) + (weight15*hidden3) + bias4);
                                 $("#output2-val").text(output2);
 
+                                let output3 = sigmoid((weight16*hidden1) + (weight17*hidden2) + (weight18*hidden3) + bias6);
+                                $("#output3-val").text(output3);
+
                                 // setting ai-pixel1 color based on fired value
                                 let r1 = parseInt(parseFloat($("#output1-val").text()) * 256);// Output1: R
                                 let g1 = parseInt(parseFloat($("#output2-val").text()) * 256);// Output1: G
+                                let b1 = parseInt(parseFloat($("#output3-val").text()) * 256);// Output1: B
                                 // pixel1 - (RGB):
-                                $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", " + g1 + ", 0)");
+                                $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", " + g1 + ", " + b1 + ")");
                                 /*
                                 hidden = sigmoid((weight1*input) + bias1)
                                 output = sigmoid((weight2*hidden)+ bias2)
@@ -576,12 +658,16 @@
                                 $("#weight13-val").text(Math.random());
                                 $("#weight14-val").text(Math.random());
                                 $("#weight15-val").text(Math.random());
+                                $("#weight16-val").text(Math.random());
+                                $("#weight17-val").text(Math.random());
+                                $("#weight18-val").text(Math.random());
 
                                 $("#bias1-val").text(Math.random());
                                 $("#bias2-val").text(Math.random());
                                 $("#bias3-val").text(Math.random());
                                 $("#bias4-val").text(Math.random());
                                 $("#bias5-val").text(Math.random());
+                                $("#bias6-val").text(Math.random());
                             });
 
                             $("#btn-fire").on('click', function()
@@ -600,7 +686,7 @@
                                 
                                 let target1 = r1/256;// output 1 target
                                 let target2 = g1/256;// output 2 target
-                                let target3 = g1/256;// output 3 target
+                                let target3 = b1/256;// output 3 target
                                 let learning_rate = 1;
 
                                 let input1 = parseFloat($("#input1-val").text());
@@ -622,12 +708,16 @@
                                 let weight13 = parseFloat($("#weight13-val").text());// input3 - hidden3 weight 
                                 let weight14 = parseFloat($("#weight14-val").text());// hidden3 - output1 weight 
                                 let weight15 = parseFloat($("#weight15-val").text());// hidden3 - output2 weight 
+                                let weight16 = parseFloat($("#weight16-val").text());// hidden1 - output3 weight 
+                                let weight17 = parseFloat($("#weight17-val").text());// hidden2 - output3 weight 
+                                let weight18 = parseFloat($("#weight18-val").text());// hidden3 - output3 weight 
 
                                 let bias1 = parseFloat($("#bias1-val").text());// hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// output1 bias
                                 let bias3 = parseFloat($("#bias3-val").text());// hidden2 bias
                                 let bias4 = parseFloat($("#bias4-val").text());// output2 bias
                                 let bias5 = parseFloat($("#bias5-val").text());// hidden3 bias
+                                let bias6 = parseFloat($("#bias6-val").text());// output3 bias
 
                                 let hidden1 = parseFloat($("#hidden1-val").text());
                                 let hidden2 = parseFloat($("#hidden2-val").text());
@@ -635,6 +725,7 @@
 
                                 let output1 = parseFloat($("#output1-val").text());
                                 let output2 = parseFloat($("#output2-val").text());
+                                let output3 = parseFloat($("#output3-val").text());
 
                                 /*
                                 output layer:
@@ -660,18 +751,24 @@
                                 let error_output2 = target2 - output2;
                                 let delta_output2 = error_output2 * (output2 * (1-output2));
 
+                                let error_output3 = target3 - output3;
+                                let delta_output3 = error_output3 * (output3 * (1-output3));
+
                                 // hidden layer 
                                 // delta_h1 = (delta_y1 * w2 + delta_y2 * w3) * h1 * (1 - h1);
                                 let error_hidden1 = delta_output1 * weight2;// weight 2 is hidden1-output 1 weight
                                 let error2_hidden1 = delta_output2 * weight7;// weight 7 is hidden1-output 2 weight
+                                let error3_hidden1 = delta_output3 * weight16;// weight 16 is hidden1-output 3 weight
                                 let delta_hidden1 = (error_hidden1 + error2_hidden1) * hidden1 * (1-hidden1);
 
                                 let error_hidden2 = delta_output2 * weight6;// weight 6 is hidden2-output 1 weight
                                 let error2_hidden2 = delta_output2 * weight8;// weight 8 is hidden2-output 2 weight
+                                let error3_hidden2 = delta_output3 * weight17;// weight 17 is hidden2-output 3 weight
                                 let delta_hidden2 = (error_hidden2 + error2_hidden2) * hidden2 * (1-hidden2);
                                 
                                 let error_hidden3 = delta_output1 * weight14;// weight 14 is hidden3-output 1 weight
                                 let error2_hidden3 = delta_output2 * weight15;// weight 15 is hidden3-output 2 weight
+                                let error3_hidden3 = delta_output3 * weight18;// weight 18 is hidden3-output 3 weight
                                 let delta_hidden3 = (error_hidden3 + error2_hidden3) * hidden3 * (1-hidden3);
 
                                 // weight and bias updates
@@ -702,8 +799,14 @@
                                 // hidden - output2
                                 weight7 = weight7 + learning_rate * delta_output2 * hidden1;// hidden1 - output2 connection
                                 weight8 = weight8 + learning_rate * delta_output2 * hidden2;// hidden2 - output2 connection
-                                weight15 = weight15 + learning_rate * delta_output2 * hidden3;// hidden2 - output2 connection
+                                weight15 = weight15 + learning_rate * delta_output2 * hidden3;// hidden3 - output2 connection
                                 bias4 = bias4 + learning_rate * delta_output2;
+
+                                // hidden - output3
+                                weight16 = weight16 + learning_rate * delta_output3 * hidden1;// hidden1 - output3 connection
+                                weight17 = weight17 + learning_rate * delta_output3 * hidden2;// hidden2 - output3 connection
+                                weight18 = weight18 + learning_rate * delta_output3 * hidden3;// hidden3 - output3 connection
+                                bias6 = bias6 + learning_rate * delta_output3;
 
                                 // assignment of weights and biases to the labels
                                 $("#weight1-val").text(weight1);
@@ -730,6 +833,11 @@
                                 $("#weight8-val").text(weight8);
                                 $("#weight15-val").text(weight15);
                                 $("#bias4-val").text(bias4);
+
+                                $("#weight16-val").text(weight16);
+                                $("#weight17-val").text(weight17);
+                                $("#weight18-val").text(weight18);
+                                $("#bias6-val").text(bias6);
 
                                 // fire neural network once again
                                 fire();
