@@ -913,7 +913,7 @@
                             const img = new Image();
                             img.onload = function()
                             {
-                                const canvas = $("#canvas-display-image");
+                                const canvas = $("#canvas-display-image")[0];
                                 const ctx = canvas.getContext("2d");
 
                                 // clear previous content
