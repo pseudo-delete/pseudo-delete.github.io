@@ -11,6 +11,45 @@
 </head>
 <body>
     <a href="../"><h1> - GERO AI- </h1></a>
+    <div class="timer-container">
+        <label id="timer">0</label>
+        <button id="btn-start-timer">Start</button>
+        <button id="btn-stop-timer">Stop</button>
+        <button id="btn-reset-timer">Reset</button>
+
+        <script>
+            $(function()
+            {
+                let count = 0;
+                let timer = null;
+
+                // Start timer
+                $("#btn-start-timer").on("click", function() {
+                    if (timer === null) { // prevent multiple intervals
+                        timer = setInterval(function() {
+                            count++;
+                            $("#timer").text(count + " seconds");
+                        }, 1000); // runs every 1000ms (1 second)
+                    }
+                });
+
+                // Stop timer
+                $("#btn-stop-timer").on("click", function() {
+                    clearInterval(timer);
+                    timer = null;
+                });
+
+                // Reset timer
+                $("#btn-reset-timer").on("click", function() {
+                    clearInterval(timer);
+                    timer = null;
+                    count = 0;
+                    $("#timer").text("0");
+                });
+
+            });
+        </script>
+    </div>
 
     <div class="main">
         <div class="div-neural-net-value">
