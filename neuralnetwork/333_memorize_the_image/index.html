@@ -881,7 +881,7 @@
         </div>
       
         <div class="panel-generate">
-            <input type="file" accept="image/*">
+            <input id="input-upload" type="file" accept="image/*">
             <canvas id="canvas-display-image" width="1600" height="900"></canvas>
 
 
@@ -899,6 +899,33 @@
                         let G = Math.random()*256;
                         let B = Math.random()*256;
                         $(".pixel-container1").css("background-color", "RGB(" + R + "," + G + "," + B + ")");
+                    });
+
+                    $("#input-upload").on("change", function(event)
+                    {
+                        const file = event.target.files[0];
+                        if (!file) return; // stop if no file selected
+
+                        const reader = new FileReader();
+
+                        reader.onload = function(e)
+                        {
+                            const img = new Image();
+                            img.onload = function()
+                            {
+                                const canvas = $("#canvas-display-image");
+                                const ctx = canvas.getContext("2d");
+
+                                // clear previous content
+                                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                                // draw the image on the canvas (scaled)
+                                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                            };
+                            img.src = e.target.result;
+                        }
+
+                        reader.readAsDataURL(file);
                     });
                 });
             </script>
