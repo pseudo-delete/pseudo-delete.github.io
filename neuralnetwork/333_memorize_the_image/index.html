@@ -25,8 +25,10 @@
 
                 // Start timer
                 $("#btn-start-timer").on("click", function() {
+                    fire();
                     if (timer === null) { // prevent multiple intervals
                         timer = setInterval(function() {
+                            train();
                             count++;
                             $("#timer").text(count + " seconds");
                         }, 1000); // runs every 1000ms (1 second)
@@ -709,13 +711,7 @@
                                 $("#bias6-val").text(Math.random());
                             });
 
-                            $("#btn-fire").on('click', function()
-                            {
-                                fire();
-                            });
-
-                            $("#btn-train").on('click', function()
-                            {
+                            function train(){
                                 // extracted RGB color from pixel 1
                                 let pColor1 = $(".pixel-container1").css("background-color");// rgb
                                 let rgbColor1 = pColor1.match(/\d+/g);// extracts numbers -> ["120", "50", "200"]
@@ -880,7 +876,18 @@
 
                                 // fire neural network once again
                                 fire();
+                            }
+
+                            $("#btn-fire").on('click', function()
+                            {
+                                fire();
                             });
+
+                            $("#btn-train").on('click', function()
+                            {
+                                train();
+                            });
+                            
                         });
                     </script>
                     <!--
