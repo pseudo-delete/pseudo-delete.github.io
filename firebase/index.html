@@ -1,94 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gero - Firebase Integration</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gero - Firebase Integration</title>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
 
-    <!-- Firebase App (core SDK) -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js"></script> -->
-    
-    <!-- Firestore -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js"></script> -->
+  <!-- ✅ Firebase v11 modular import -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-      import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-    </script>
+    // 🔹 Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCKVbKlfH83XULHnmoyZ_gip3UrxO_i-bc",
+      authDomain: "gero-ai.firebaseapp.com",
+      projectId: "gero-ai",
+      storageBucket: "gero-ai.firebasestorage.app",
+      messagingSenderId: "531066296143",
+      appId: "1:531066296143:web:c7d590717d81826837d73a",
+      measurementId: "G-H6THGVTKTR"
+    };
 
+    // 🔹 Initialize Firebase + Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-    <script type="module">
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyCKVbKlfH83XULHnmoyZ_gip3UrxO_i-bc",
-        authDomain: "gero-ai.firebaseapp.com",
-        projectId: "gero-ai",
-        storageBucket: "gero-ai.firebasestorage.app",
-        messagingSenderId: "531066296143",
-        appId: "1:531066296143:web:c7d590717d81826837d73a",
-        measurementId: "G-H6THGVTKTR"
-      };
-    
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
+    // 🔹 Add data
+    window.saveInfo = async function() {
+      const firstname = $("#input-firstname").val();
+      const lastname = $("#input-lastname").val();
 
-        
-      function saveInfo() {
-        db.collection("firebase_integration").add({
-          output1: $("#input-firstname").val(),
-          output2: $("#input.lastname").val(),
-          timestamp: new Date()
-        }).then(() => {
-          console.log("Saved!");
-        });
+      if (!firstname || !lastname) {
+        alert("Please fill out both fields!");
+        return;
       }
-    </script>
 
+      await addDoc(collection(db, "firebase_integration"), {
+        firstname: firstname,
+        lastname: lastname,
+        timestamp: new Date()
+      });
 
+      alert("Saved!");
+      loadTable(); // refresh table after save
+    };
+
+    // 🔹 Load data
+    async function loadTable() {
+      const snapshot = await getDocs(collection(db, "firebase_integration"));
+      const tbody = $("#table-info tbody");
+      tbody.empty(); // clear old rows
+
+      snapshot.forEach((doc) => {
+        const d = doc.data();
+        tbody.append(`
+          <tr>
+            <td>${doc.id}</td>
+            <td>${d.firstname || ''}</td>
+            <td>${d.lastname || ''}</td>
+          </tr>
+        `);
+      });
+    }
+
+    // 🔹 Run when DOM is ready
+    $(document).ready(() => {
+      loadTable();
+    });
+  </script>
 </head>
+
 <body>
-    <h1> - GERO - </h1>
+  <h1>- GERO -</h1>
 
-    <!-- Trying making a sample form with display table here so we could observe the interaction among firebase database and the website itself-->
+  <div class="fill-up-form">
+    <label for="input-firstname">Name: </label>
+    <input type="text" id="input-firstname">
+    <label for="input-lastname">Last Name: </label>
+    <input type="text" id="input-lastname">
+    <button onclick="saveInfo()">Add</button>
+  </div>
 
-    <!-- form for example -->
-    <div class="fill-up-form">
-        <label for="input-firstname">Name: </label><input type="text" id="input-firstname">
-        <label for="input-lastname">Last Name: </label><input type="text" id="input-lastname">
-
-        <button onclick="saveInfo()">Add</button>
-    </div>
-
-    <div class="div-table-container">
-        <table id="table-info" border="1">
-            <th>
-            </th>
-
-            <script type="module">
-                $(document).ready(async function() {
-                    const snapshot = await getDocs(collection(db, "firebase_integration"));
-                    snapshot.forEach((doc) => {
-                      const d = doc.data();
-                      $("#table-info tbody").append(`
-                        <tr>
-                          <td>${doc.id}</td>
-                          <td>${d.firstname || ''}</td>
-                          <td>${d.lastname || ''}</td>
-                        </tr>
-                      `);
-                    });
-                });
-            </script>
-
-        </table>
-    </div>
+  <div class="div-table-container">
+    <table id="table-info" border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 </body>
 </html>
-
