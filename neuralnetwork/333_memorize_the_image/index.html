@@ -913,6 +913,9 @@
                             const img = new Image();
                             img.onload = function()
                             {
+                                $("#canvas-display-image").css("width", img.width);
+                                $("#canvas-display-image").css("height", img.height);
+
                                 const canvas = $("#canvas-display-image")[0];
                                 const ctx = canvas.getContext("2d");
 
