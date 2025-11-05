@@ -16,41 +16,7 @@
         <button id="btn-start-timer">Start</button>
         <button id="btn-stop-timer">Stop</button>
         <button id="btn-reset-timer">Reset</button>
-
-        <script>
-            $(function()
-            {
-                let count = 0;
-                let timer = null;
-
-                // Start timer
-                $("#btn-start-timer").on("click", function() {
-                    fire();
-                    if (timer === null) { // prevent multiple intervals
-                        timer = setInterval(function() {
-                            train();
-                            count++;
-                            $("#timer").text(count + " seconds");
-                        }, 1000); // runs every 1000ms (1 second)
-                    }
-                });
-
-                // Stop timer
-                $("#btn-stop-timer").on("click", function() {
-                    clearInterval(timer);
-                    timer = null;
-                });
-
-                // Reset timer
-                $("#btn-reset-timer").on("click", function() {
-                    clearInterval(timer);
-                    timer = null;
-                    count = 0;
-                    $("#timer").text("0");
-                });
-
-            });
-        </script>
+        <!-- timer functions script scroll down because it uses function that needs to go first -->
     </div>
 
     <div class="main">
@@ -887,7 +853,38 @@
                             {
                                 train();
                             });
-                            
+
+                            /* timer */
+                            let count = 0;
+                            let timer = null;
+
+                            // Start timer
+                            $("#btn-start-timer").on("click", function() {
+                                fire();
+                                if (timer === null) { // prevent multiple intervals
+                                    timer = setInterval(function() {
+                                        train();
+                                        count++;
+                                        $("#timer").text(count + " seconds");
+                                    }, 1000); // runs every 1000ms (1 second)
+                                }
+                            });
+
+                            // Stop timer
+                            $("#btn-stop-timer").on("click", function() {
+                                clearInterval(timer);
+                                timer = null;
+                            });
+
+                            // Reset timer
+                            $("#btn-reset-timer").on("click", function() {
+                                clearInterval(timer);
+                                timer = null;
+                                count = 0;
+                                $("#timer").text("0");
+                            });
+                            /* end of timer */
+
                         });
                     </script>
                     <!--
