@@ -12,18 +12,27 @@
     <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js"></script>
 
     <script>
-      const firebaseConfig = {
-        apiKey: "YOUR_API_KEY",
-        authDomain: "YOUR_PROJECT.firebaseapp.com",
-        projectId: "YOUR_PROJECT_ID",
-        storageBucket: "YOUR_PROJECT.appspot.com",
-        messagingSenderId: "YOUR_SENDER_ID",
-        appId: "YOUR_APP_ID"
-      };
-    
-      // Initialize
-      const app = firebase.initializeApp(firebaseConfig);
-      const db = firebase.firestore();
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+        apiKey: "AIzaSyCKVbKlfH83XULHnmoyZ_gip3UrxO_i-bc",
+        authDomain: "gero-ai.firebaseapp.com",
+        projectId: "gero-ai",
+        storageBucket: "gero-ai.firebasestorage.app",
+        messagingSenderId: "531066296143",
+        appId: "1:531066296143:web:c7d590717d81826837d73a",
+        measurementId: "G-H6THGVTKTR"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
     </script>
 
     <script>
@@ -59,27 +68,6 @@
             </th>
 
             <script type="module">
-                // Import the functions you need from the SDKs you need
-                import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-                import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
-                // TODO: Add SDKs for Firebase products that you want to use
-                // https://firebase.google.com/docs/web/setup#available-libraries
-                
-                // Your web app's Firebase configuration
-                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-                const firebaseConfig = {
-                apiKey: "AIzaSyCKVbKlfH83XULHnmoyZ_gip3UrxO_i-bc",
-                authDomain: "gero-ai.firebaseapp.com",
-                projectId: "gero-ai",
-                storageBucket: "gero-ai.firebasestorage.app",
-                messagingSenderId: "531066296143",
-                appId: "1:531066296143:web:c7d590717d81826837d73a",
-                measurementId: "G-H6THGVTKTR"
-                };
-                
-                // Initialize Firebase
-                const app = initializeApp(firebaseConfig);
-                const analytics = getAnalytics(app);
             
                 $(document).ready(async function() {
                 const snapshot = await getDocs(collection(db, "firebase_integration"));
