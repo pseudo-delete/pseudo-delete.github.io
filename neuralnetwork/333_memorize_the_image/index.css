@@ -1,0 +1,164 @@
+div
+{
+  border: 1px solid black;
+}
+
+button
+{
+  cursor: pointer;
+}
+
+canvas
+{
+  background-color: transparent;
+  position: absolute;
+}
+
+/*For global use*/
+.circle-input/*input layer*/
+{
+  background-color: lightblue;
+  border: 1px solid lightblue;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.circle-hidden/*hidden layer*/
+{ 
+  background-color: violet;
+  border: 1px solid violet;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.circle-output/*output layer*/
+{
+  background-color: brown;
+  border: 1px solid brown;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.circle-dead/* for neurons that doesn't have enough connection and computing process */
+{
+  background-color: gray;
+  border: 1px gray;
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+/* lines */
+.line-horizontal
+{
+  position: absolute;
+  width: 100px;
+  height: 1px;
+  background-color: black;
+  margin-top: 48px;
+  margin-bottom: auto;
+}
+
+.line-diagonal-downward
+{
+  position: absolute;
+  width: 100px;
+  height: 1px;
+  background-color: black;
+  transform: rotate(45deg);
+  transform-origin: left;
+}
+
+.line-diagonal-upward
+{
+  position: absolute;
+  width: 100px;
+  height: 1px;
+  background-color: black;
+  transform: rotate(-45deg);
+  transform-origin: left;
+}
+
+.line-container
+{
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+  min-height: 49px;
+  max-width: 100px;
+  max-height: 100px;
+}
+/*End area of global use codes*/
+
+/* Neuron value alignments */
+.neuron-value/*, .weight-value*/
+{
+  margin: auto;
+}
+
+.weight-value
+{
+  margin: auto auto 60% auto;
+  z-index: 1;
+}
+
+.bias-value
+{
+  margin: auto auto 60% 5%;
+  z-index: 2;
+}
+/* End of neuron value alignments */
+
+.main
+{
+  display: flex;
+  /*flex-direction: row;*/
+  gap: 10px;
+  background-color: red;
+  height: auto;
+}
+
+.panel-ai
+{
+  min-width: 600px;
+  min-height: 100px;
+}
+
+.panel-generate
+{
+  width: 300px;
+  height: 100px;
+}
+
+.neural-zone
+{
+  border: 2px solid blue;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.neural-row
+{
+  display: flex;
+  flex-direction: row;
+}
+
+.ai-pixel, .pixel-container
+{
+  width: 20px;
+  height: 20px;
+}
+
+.div-neural-net-value
+{
+  min-width: 200px;
+  height: auto;
+}

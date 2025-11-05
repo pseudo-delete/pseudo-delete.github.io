@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gero - Main Menu</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="../"><h1> - GERO AI- </h1></a>
+
+    <div class="main">
+        <div class="div-neural-net-value">
+            <h5>Weight and Bias values</h5>
+            <p>
+                W1: <span id="weight1-val">0</span><br>
+                W2: <span id="weight2-val">0</span><br>
+                W3: <span id="weight3-val">0</span><br>
+                W4: <span id="weight4-val">0</span><br>
+                W5: <span id="weight5-val">0</span><br>
+                W6: <span id="weight6-val">0</span><br>
+                W7: <span id="weight7-val">0</span><br>
+                W8: <span id="weight8-val">0</span><br>
+                W9: <span id="weight9-val">0</span><br>
+                W10: <span id="weight10-val">0</span><br>
+                W11: <span id="weight11-val">0</span><br>
+                W12: <span id="weight12-val">0</span><br>
+                W13: <span id="weight13-val">0</span><br>
+                W14: <span id="weight14-val">0</span><br>
+                W15: <span id="weight15-val">0</span><br>
+                W16: <span id="weight16-val">0</span><br>
+                W17: <span id="weight17-val">0</span><br>
+                W18: <span id="weight18-val">0</span><br><br>
+
+                B1(For H1): <span id="bias1-val">0</span><br>
+                B2(For O1): <span id="bias2-val">0</span><br>
+                B3(For H2): <span id="bias3-val">0</span><br>
+                B4(For O2): <span id="bias4-val">0</span><br>
+                B5(For H3): <span id="bias5-val">0</span><br>
+                B6(For O3): <span id="bias6-val">0</span><br>
+            </p>
+        </div>
+        
+        <div class = "panel-ai">
+            <!-- Neural Network Div-->
+            <div class="div-neural-net">
+                <h4>Neural Network</h4>
+                <button id="btn-generate-neural-val" type="button">Re/generate Neural Values</button>
+                <div class="neural-zone">
+                    <div class="neural-row">
+                        <div class="circle-input"><label class="neuron-value" id="input1-val">0</label></div>
+                        <div class="line-container">
+                            <!--<div>
+                                <label class="weight-value" id="weight1-val">0</label>
+                                <label class="bias-value" id="bias1-val">0</label>
+                            </div><br>-->
+                            <canvas id="line1-canvas" width="100" height="100">
+                                
+                            </canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas1 = $("#line1-canvas")[0];
+                                    let canvasContext1 = lineCanvas1.getContext("2d");
+
+                                    // drawing line from point a to point b - weight 1
+                                    canvasContext1.beginPath();
+                                    canvasContext1.moveTo(0, 50);
+                                    canvasContext1.lineTo(100, 50);
+                                    canvasContext1.strokeStyle = "black";
+                                    canvasContext1.lineWidth = 1;
+                                    canvasContext1.stroke();
+
+                                    // drawing line from point a to point b - weight 3
+                                    canvasContext1.beginPath();
+                                    canvasContext1.moveTo(50, 100);
+                                    canvasContext1.lineTo(100, 50);
+                                    canvasContext1.strokeStyle = "black";
+                                    canvasContext1.lineWidth = 1;
+                                    canvasContext1.stroke();
+
+                                    // drawing line from point a to point b - weight 4
+                                    canvasContext1.beginPath();
+                                    canvasContext1.moveTo(0, 50);
+                                    canvasContext1.lineTo(50, 100);
+                                    canvasContext1.strokeStyle = "black";
+                                    canvasContext1.lineWidth = 1;
+                                    canvasContext1.stroke();
+
+                                    // drawing line from point a to point b - weight 9
+                                    canvasContext1.beginPath();
+                                    canvasContext1.moveTo(75, 100);
+                                    canvasContext1.lineTo(100, 50);
+                                    canvasContext1.strokeStyle = "black";
+                                    canvasContext1.lineWidth = 1;
+                                    canvasContext1.stroke();
+
+                                    // drawing line from point a to point b - weight 11
+                                    canvasContext1.beginPath();
+                                    canvasContext1.moveTo(0, 50);
+                                    canvasContext1.lineTo(25, 100);
+                                    canvasContext1.strokeStyle = "black";
+                                    canvasContext1.lineWidth = 1;
+                                    canvasContext1.stroke();
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext1.font = "10px Arial";
+                                    // set text color
+                                    canvasContext1.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext1.fillText("W1", 43, 53);
+
+                                    // set font style and size
+                                    canvasContext1.font = "10px Arial";
+                                    // set text color
+                                    canvasContext1.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext1.fillText("W4", 18, 73);
+
+                                    // set font style and size
+                                    canvasContext1.font = "10px Arial";
+                                    // set text color
+                                    canvasContext1.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext1.fillText("W11", 3, 93);
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div><!--input1-hidden1 weight-->
+                        <div class="circle-hidden"><label class="neuron-value" id="hidden1-val">0</label></div>
+                        <div class="line-container">
+                            <!--<div>
+                                <label class="weight-value" id="weight2-val">0</label>
+                                <label class="bias-value" id="bias2-val">0</label>
+                            </div>-->
+                            <canvas id="line2-canvas" width="100" height="100"></canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas2 = $("#line2-canvas")[0];
+                                    let canvasContext2 = lineCanvas2.getContext("2d");
+
+                                    // drawing line from point a to point b
+                                    canvasContext2.beginPath();
+                                    canvasContext2.moveTo(0, 50);
+                                    canvasContext2.lineTo(100, 50);
+                                    canvasContext2.strokeStyle = "black";
+                                    canvasContext2.lineWidth = 1;
+                                    canvasContext2.stroke();
+
+                                    // drawing line from point a to point b
+                                    canvasContext2.beginPath();
+                                    canvasContext2.moveTo(50, 100);
+                                    canvasContext2.lineTo(100, 50);
+                                    canvasContext2.strokeStyle = "black";
+                                    canvasContext2.lineWidth = 1;
+                                    canvasContext2.stroke();
+
+                                    // drawing line from point a to point b
+                                    canvasContext2.beginPath();
+                                    canvasContext2.moveTo(0, 50);
+                                    canvasContext2.lineTo(50, 100);
+                                    canvasContext2.strokeStyle = "black";
+                                    canvasContext2.lineWidth = 1;
+                                    canvasContext2.stroke();
+
+                                    // drawing line from point a to point b - weight 14
+                                    canvasContext2.beginPath();
+                                    canvasContext2.moveTo(75, 100);
+                                    canvasContext2.lineTo(100, 50);
+                                    canvasContext2.strokeStyle = "black";
+                                    canvasContext2.lineWidth = 1;
+                                    canvasContext2.stroke();
+
+                                    // drawing line from point a to point b - weight 16
+                                    canvasContext2.beginPath();
+                                    canvasContext2.moveTo(0, 50);
+                                    canvasContext2.lineTo(25, 100);
+                                    canvasContext2.strokeStyle = "black";
+                                    canvasContext2.lineWidth = 1;
+                                    canvasContext2.stroke();
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext2.font = "10px Arial";
+                                    // set text color
+                                    canvasContext2.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext2.fillText("W2", 43, 53);
+
+                                    // set font style and size
+                                    canvasContext2.font = "10px Arial";
+                                    // set text color
+                                    canvasContext2.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext2.fillText("W7", 23, 73);
+
+                                    // set font style and size
+                                    canvasContext2.font = "10px Arial";
+                                    // set text color
+                                    canvasContext2.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext2.fillText("W16", 23, 73);
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div><!--hidden1-output1 weight-->
+                        <div class="circle-output"><label class="neuron-value" id="output1-val">0</label></div><br>
+                    </div>
+                    
+                    <div class="neural-row">
+                        <div class="circle-input"><label class="neuron-value" id="input2-val">0</label></div>
+                        <div class="line-container">
+                            <!--<div>
+                                <label class="weight-value" id="weight3-val">0</label>
+                                <label class="bias-value" id="bias1-val">0</label>
+                            </div>-->
+                            <canvas id="line3-canvas" width="100" height="100"></canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas3 = $("#line3-canvas")[0];
+                                    let canvasContext3 = lineCanvas3.getContext("2d");
+
+                                    // drawing line from point a to point b
+                                    canvasContext3.beginPath();
+                                    canvasContext3.moveTo(0, 50);
+                                    canvasContext3.lineTo(100, -50);
+                                    canvasContext3.strokeStyle = "black";
+                                    canvasContext3.lineWidth = 1;
+                                    canvasContext3.stroke();
+                                    
+                                    // drawing line from point a to point b - weight 4
+                                    canvasContext3.beginPath();
+                                    canvasContext3.moveTo(50, 0);
+                                    canvasContext3.lineTo(100, 50);
+                                    canvasContext3.strokeStyle = "black";
+                                    canvasContext3.lineWidth = 1;
+                                    canvasContext3.stroke();
+
+                                    // drawing line from point a to point b - weight 5
+                                    canvasContext3.beginPath();
+                                    canvasContext3.moveTo(0, 50);
+                                    canvasContext3.lineTo(100, 50);
+                                    canvasContext3.strokeStyle = "black";
+                                    canvasContext3.lineWidth = 1;
+                                    canvasContext3.stroke();
+
+                                    // drawing line from point a to point b - weight 9
+                                    canvasContext3.beginPath();
+                                    canvasContext3.moveTo(25, 100);
+                                    canvasContext3.lineTo(75, 0);
+                                    canvasContext3.strokeStyle = "black";
+                                    canvasContext3.lineWidth = 1;
+                                    canvasContext3.stroke();
+
+                                    // drawing line from point a to point b - weight 10
+                                    canvasContext3.beginPath();
+                                    canvasContext3.moveTo(50, 100);
+                                    canvasContext3.lineTo(100, 50);
+                                    canvasContext3.strokeStyle = "black";
+                                    canvasContext3.lineWidth = 1;
+                                    canvasContext3.stroke();
+
+                                    // drawing line from point a to point b - weight 11
+                                    canvasContext3.beginPath();
+                                    canvasContext3.moveTo(25, 0);
+                                    canvasContext3.lineTo(75, 100);
+                                    canvasContext3.strokeStyle = "black";
+                                    canvasContext3.lineWidth = 1;
+                                    canvasContext3.stroke();
+
+                                    // drawing line from point a to point b - weight 12
+                                    canvasContext3.beginPath();
+                                    canvasContext3.moveTo(0, 50);
+                                    canvasContext3.lineTo(50, 100);
+                                    canvasContext3.strokeStyle = "black";
+                                    canvasContext3.lineWidth = 1;
+                                    canvasContext3.stroke();
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext3.font = "10px Arial";
+                                    // set text color
+                                    canvasContext3.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext3.fillText("W3", 23, 23);
+                                    
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext3.font = "10px Arial";
+                                    // set text color
+                                    canvasContext3.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext3.fillText("W5", 23, 53);
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext3.font = "10px Arial";
+                                    // set text color
+                                    canvasContext3.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext3.fillText("W12", 13, 73);
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div><!--input2-hidden2 weight-->
+
+                        <div class="circle-hidden"><label class="neuron-value" id="hidden2-val">0</label></div>
+                        <div class="line-container">
+                            <!--<div>
+                                <label class="weight-value" id="weight4-val">0</label>
+                                <label class="bias-value" id="bias3-val">0</label>
+                            </div>-->
+                            <canvas id="line4-canvas" width="100" height="100"></canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas4 = $("#line4-canvas")[0];
+                                    let canvasContext4 = lineCanvas4.getContext("2d");
+
+                                    // drawing line from point a to point b
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(0, 50);
+                                    canvasContext4.lineTo(50, 0);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    // drawing line from point a to point b
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(0, 50);
+                                    canvasContext4.lineTo(100, 50);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    // drawing line from point a to point b
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(50, 0);
+                                    canvasContext4.lineTo(100, 50);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    // drawing line from point a to point b - weight 14
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(25, 100);
+                                    canvasContext4.lineTo(75, 0);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    // drawing line from point a to point b - weight 15
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(50, 100);
+                                    canvasContext4.lineTo(100, 50);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    // drawing line from point a to point b - weight 16
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(25, 0);
+                                    canvasContext4.lineTo(75, 100);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    // drawing line from point a to point b - weight 17
+                                    canvasContext4.beginPath();
+                                    canvasContext4.moveTo(0, 50);
+                                    canvasContext4.lineTo(50, 100);
+                                    canvasContext4.strokeStyle = "black";
+                                    canvasContext4.lineWidth = 1;
+                                    canvasContext4.stroke();
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext4.font = "10px Arial";
+                                    // set text color
+                                    canvasContext4.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext4.fillText("W6", 23, 23);
+
+                                    // set font style and size
+                                    canvasContext4.font = "10px Arial";
+                                    // set text color
+                                    canvasContext4.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext4.fillText("W8", 43, 53);
+
+                                    // set font style and size
+                                    canvasContext4.font = "10px Arial";
+                                    // set text color
+                                    canvasContext4.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext4.fillText("W17", 23, 73);
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div>
+                        <div class="circle-output"><label class="neuron-value" id="output2-val">0</label></div><br>
+                    </div>
+
+                    <div class="neural-row">
+                        <div class="circle-input"><label class="neuron-value" id="input3-val">0</label></div>
+                        <div class="line-container">
+                            <canvas id="line5-canvas" width="100" height="100"></canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas5 = $("#line5-canvas")[0];
+                                    let canvasContext5 = lineCanvas5.getContext("2d");
+
+                                    // drawing line from point a to point b - weight 9
+                                    canvasContext5.beginPath();
+                                    canvasContext5.moveTo(0, 50);
+                                    canvasContext5.lineTo(25, 0);
+                                    canvasContext5.strokeStyle = "black";
+                                    canvasContext5.lineWidth = 1;
+                                    canvasContext5.stroke();
+                                    
+                                    // drawing line from point a to point b - weight 10
+                                    canvasContext5.beginPath();
+                                    canvasContext5.moveTo(0, 50);
+                                    canvasContext5.lineTo(50, 0);
+                                    canvasContext5.strokeStyle = "black";
+                                    canvasContext5.lineWidth = 1;
+                                    canvasContext5.stroke();
+
+                                    // drawing line from point a to point b - weight 11
+                                    canvasContext5.beginPath();
+                                    canvasContext5.moveTo(75, 0);
+                                    canvasContext5.lineTo(100, 50);
+                                    canvasContext5.strokeStyle = "black";
+                                    canvasContext5.lineWidth = 1;
+                                    canvasContext5.stroke();
+
+                                    // drawing line from point a to point b - weight 12
+                                    canvasContext5.beginPath();
+                                    canvasContext5.moveTo(50, 0);
+                                    canvasContext5.lineTo(100, 50);
+                                    canvasContext5.strokeStyle = "black";
+                                    canvasContext5.lineWidth = 1;
+                                    canvasContext5.stroke();
+
+                                    // drawing line from point a to point b - weight 13
+                                    canvasContext5.beginPath();
+                                    canvasContext5.moveTo(0, 50);
+                                    canvasContext5.lineTo(100, 50);
+                                    canvasContext5.strokeStyle = "black";
+                                    canvasContext5.lineWidth = 1;
+                                    canvasContext5.stroke();
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext5.font = "10px Arial";
+                                    // set text color
+                                    canvasContext5.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext5.fillText("W9", 3, 23);
+
+                                    // set font style and size
+                                    canvasContext5.font = "10px Arial";
+                                    // set text color
+                                    canvasContext5.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext5.fillText("W10", 23, 23);
+
+                                    // set font style and size
+                                    canvasContext5.font = "10px Arial";
+                                    // set text color
+                                    canvasContext5.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext5.fillText("W13", 23, 53);
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div>
+                        <div class="circle-hidden"><label class="neuron-value" id="hidden3-val">0</label></div>
+                        <div class="line-container">
+                            <canvas id="line6-canvas" width="100" height="100"></canvas>
+                            <script>
+                                $(function()
+                                {
+                                    let lineCanvas6 = $("#line6-canvas")[0];
+                                    let canvasContext6 = lineCanvas6.getContext("2d");
+
+                                    // drawing line from point a to point b - weight 14
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(0, 50);
+                                    canvasContext6.lineTo(25, 0);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+                                    
+                                    // drawing line from point a to point b - weight 15
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(0, 50);
+                                    canvasContext6.lineTo(50, 0);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+
+                                    // drawing line from point a to point b - weight 16
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(75, 0);
+                                    canvasContext6.lineTo(100, 50);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+
+                                    // drawing line from point a to point b - weight 17
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(50, 0);
+                                    canvasContext6.lineTo(100, 50);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+
+                                    // drawing line from point a to point b - weight 18
+                                    canvasContext6.beginPath();
+                                    canvasContext6.moveTo(0, 50);
+                                    canvasContext6.lineTo(100, 50);
+                                    canvasContext6.strokeStyle = "black";
+                                    canvasContext6.lineWidth = 1;
+                                    canvasContext6.stroke();
+
+                                    /* drawing text labeling the lines */
+                                    // set font style and size
+                                    canvasContext6.font = "10px Arial";
+                                    // set text color
+                                    canvasContext6.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext6.fillText("W14", 3, 23);
+
+                                    // set font style and size
+                                    canvasContext6.font = "10px Arial";
+                                    // set text color
+                                    canvasContext6.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext6.fillText("W15", 23, 23);
+
+                                    // set font style and size
+                                    canvasContext6.font = "10px Arial";
+                                    // set text color
+                                    canvasContext6.fillStyle = "white";
+                                    // draw filled text
+                                    canvasContext6.fillText("W18", 23, 53);
+                                });
+                            </script>
+                            <!--<div class="line-horizontal"></div>-->
+                        </div>
+                        <div class="circle-output"><label class="neuron-value" id="output3-val">0</label></div>
+                    </div>
+                    <button id="btn-fire" type="button">Fire</button>
+                    <button id="btn-train" type="button">Train</button>
+                    
+                    <script>
+                        $(function()
+                        {
+                            function sigmoid(x)
+                            {
+                                return 1/(1+Math.exp(-x));
+                            }
+
+                            function fire()
+                            {
+                                let input1 = parseFloat($("#input1-val").text());
+                                let input2 = parseFloat($("#input2-val").text());
+                                let input3 = parseFloat($("#input3-val").text());
+                                
+                                let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1
+                                let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1
+                                let weight3 = parseFloat($("#weight3-val").text());// input2 - hidden1
+                                let weight4 = parseFloat($("#weight4-val").text());// input1 - hidden2
+                                let weight5 = parseFloat($("#weight5-val").text());// input2 - hidden2
+                                let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1
+                                let weight7 = parseFloat($("#weight7-val").text());// hidden1 - output2
+                                let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2
+                                let weight9 = parseFloat($("#weight9-val").text());// input3 - hidden1
+                                let weight10 = parseFloat($("#weight10-val").text());// input3 - hidden2
+                                let weight11 = parseFloat($("#weight11-val").text());// input1 - hidden3
+                                let weight12 = parseFloat($("#weight12-val").text());// input2 - hidden3
+                                let weight13 = parseFloat($("#weight13-val").text());// input3 - hidden3
+                                let weight14 = parseFloat($("#weight14-val").text());// hidden3 - output1
+                                let weight15 = parseFloat($("#weight15-val").text());// hidden3 - output2
+                                
+                                let weight16 = parseFloat($("#weight16-val").text());// hidden1 - output3
+                                let weight17 = parseFloat($("#weight17-val").text());// hidden2 - output3
+                                let weight18 = parseFloat($("#weight18-val").text());// hidden3 - output3
+
+                                let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
+                                let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
+                                let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
+                                let bias4 = parseFloat($("#bias4-val").text());// to output2 bias
+                                let bias5 = parseFloat($("#bias5-val").text());// to hidden3 bias
+                                let bias6 = parseFloat($("#bias6-val").text());// to output3 bias
+                                
+                                let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + (weight9*input3) + bias1);
+                                $("#hidden1-val").text(hidden1);
+
+                                let hidden2 = sigmoid((weight4*input1) + (weight5*input2) + (weight10*input3) + bias3);
+                                $("#hidden2-val").text(hidden2);
+                                
+                                let hidden3 = sigmoid((weight11*input1) + (weight12*input2) + (weight13*input3) + bias5);
+                                $("#hidden3-val").text(hidden3);
+                                
+                                let output1 = sigmoid((weight2*hidden1) + (weight6*hidden2) + (weight14*hidden3) + bias2);
+                                $("#output1-val").text(output1);
+
+                                let output2 = sigmoid((weight8*hidden1) + (weight7*hidden2) + (weight15*hidden3) + bias4);
+                                $("#output2-val").text(output2);
+
+                                let output3 = sigmoid((weight16*hidden1) + (weight17*hidden2) + (weight18*hidden3) + bias6);
+                                $("#output3-val").text(output3);
+
+                                // setting ai-pixel1 color based on fired value
+                                let r1 = parseInt(parseFloat($("#output1-val").text()) * 256);// Output1: R
+                                let g1 = parseInt(parseFloat($("#output2-val").text()) * 256);// Output1: G
+                                let b1 = parseInt(parseFloat($("#output3-val").text()) * 256);// Output1: B
+                                // pixel1 - (RGB):
+                                $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", " + g1 + ", " + b1 + ")");
+                                /*
+                                hidden = sigmoid((weight1*input) + bias1)
+                                output = sigmoid((weight2*hidden)+ bias2)
+                                */
+                                /*
+                                1️⃣ Forward:
+                                h=σ(w1x+b1)h = \sigma(w_1 x + b_1)h=σ(w1​x+b1​)
+                                y=σ(w2h+b2)y = \sigma(w_2 h + b_2)y=σ(w2​h+b2​)
+                                */
+                            }
+                            
+                            $("#btn-generate-neural-val").on('click', function()
+                            {
+                                $("#input1-val").text(Math.random());
+                                $("#input2-val").text(Math.random());
+                                $("#input3-val").text(Math.random());
+                                
+                                $("#weight1-val").text(Math.random());
+                                $("#weight2-val").text(Math.random());
+                                $("#weight3-val").text(Math.random());
+                                $("#weight4-val").text(Math.random());
+                                $("#weight5-val").text(Math.random());
+                                $("#weight6-val").text(Math.random());
+                                $("#weight7-val").text(Math.random());
+                                $("#weight8-val").text(Math.random());
+                                $("#weight9-val").text(Math.random());
+                                $("#weight10-val").text(Math.random());
+                                $("#weight11-val").text(Math.random());
+                                $("#weight12-val").text(Math.random());
+                                $("#weight13-val").text(Math.random());
+                                $("#weight14-val").text(Math.random());
+                                $("#weight15-val").text(Math.random());
+                                $("#weight16-val").text(Math.random());
+                                $("#weight17-val").text(Math.random());
+                                $("#weight18-val").text(Math.random());
+
+                                $("#bias1-val").text(Math.random());
+                                $("#bias2-val").text(Math.random());
+                                $("#bias3-val").text(Math.random());
+                                $("#bias4-val").text(Math.random());
+                                $("#bias5-val").text(Math.random());
+                                $("#bias6-val").text(Math.random());
+                            });
+
+                            $("#btn-fire").on('click', function()
+                            {
+                                fire();
+                            });
+
+                            $("#btn-train").on('click', function()
+                            {
+                                // extracted RGB color from pixel 1
+                                let pColor1 = $(".pixel-container1").css("background-color");// rgb
+                                let rgbColor1 = pColor1.match(/\d+/g);// extracts numbers -> ["120", "50", "200"]
+                                let r1 = parseInt(rgbColor1[0]);// will be target1
+                                let g1 = parseInt(rgbColor1[1]);// will be target2
+                                let b1 = parseInt(rgbColor1[2]);// will be target3
+                                
+                                let target1 = r1/256;// output 1 target
+                                let target2 = g1/256;// output 2 target
+                                let target3 = b1/256;// output 3 target
+                                let learning_rate = 1;
+
+                                let input1 = parseFloat($("#input1-val").text());
+                                let input2 = parseFloat($("#input2-val").text());
+                                let input3 = parseFloat($("#input3-val").text());
+                                
+                                let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1 weight
+                                let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1 weight
+                                let weight3 = parseFloat($("#weight3-val").text());// input2 - hidden1 weight 
+                                let weight4 = parseFloat($("#weight4-val").text());// input1 - hidden2 weight
+                                let weight5 = parseFloat($("#weight5-val").text());// input2 - hidden2 weight
+                                let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1 weight 
+                                let weight7 = parseFloat($("#weight7-val").text());// hidden1 - output2 weight
+                                let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2 weight 
+                                let weight9 = parseFloat($("#weight9-val").text());// input3 - hidden1 weight
+                                let weight10 = parseFloat($("#weight10-val").text());// input3 - hidden2 weight 
+                                let weight11 = parseFloat($("#weight11-val").text());// input1 - hidden3 weight 
+                                let weight12 = parseFloat($("#weight12-val").text());// input2 - hidden3 weight 
+                                let weight13 = parseFloat($("#weight13-val").text());// input3 - hidden3 weight 
+                                let weight14 = parseFloat($("#weight14-val").text());// hidden3 - output1 weight 
+                                let weight15 = parseFloat($("#weight15-val").text());// hidden3 - output2 weight 
+                                let weight16 = parseFloat($("#weight16-val").text());// hidden1 - output3 weight 
+                                let weight17 = parseFloat($("#weight17-val").text());// hidden2 - output3 weight 
+                                let weight18 = parseFloat($("#weight18-val").text());// hidden3 - output3 weight 
+
+                                let bias1 = parseFloat($("#bias1-val").text());// hidden1 bias
+                                let bias2 = parseFloat($("#bias2-val").text());// output1 bias
+                                let bias3 = parseFloat($("#bias3-val").text());// hidden2 bias
+                                let bias4 = parseFloat($("#bias4-val").text());// output2 bias
+                                let bias5 = parseFloat($("#bias5-val").text());// hidden3 bias
+                                let bias6 = parseFloat($("#bias6-val").text());// output3 bias
+
+                                let hidden1 = parseFloat($("#hidden1-val").text());
+                                let hidden2 = parseFloat($("#hidden2-val").text());
+                                let hidden3 = parseFloat($("#hidden3-val").text());
+
+                                let output1 = parseFloat($("#output1-val").text());
+                                let output2 = parseFloat($("#output2-val").text());
+                                let output3 = parseFloat($("#output3-val").text());
+
+                                /*
+                                output layer:
+                                    error_output = target - output
+                                    delta_output = error_output * (output * (1 - output))
+
+                                hidden layer:
+                                    error_hidden = delta_output * w2
+                                    delta_hidden = error_hidden * (hidden * (1 - hidden))
+
+                                weight and bias updates:
+                                    w1 = w1 + learning_rate * delta_hidden * input
+                                    b1 = b1 + learning_rate * delta_hidden
+                                    
+                                    w2 = w2 + learning_rate * delta_output * hidden
+                                    b2 = b2 + learning_rate * delta_output
+                                */
+
+                                // output layer
+                                let error_output1 = target1 - output1;
+                                let delta_output1 = error_output1 * (output1 * (1-output1));
+                                
+                                let error_output2 = target2 - output2;
+                                let delta_output2 = error_output2 * (output2 * (1-output2));
+
+                                let error_output3 = target3 - output3;
+                                let delta_output3 = error_output3 * (output3 * (1-output3));
+
+                                // hidden layer 
+                                // delta_h1 = (delta_y1 * w2 + delta_y2 * w3) * h1 * (1 - h1);
+                                let error_hidden1 = delta_output1 * weight2;// weight 2 is hidden1-output 1 weight
+                                let error2_hidden1 = delta_output2 * weight7;// weight 7 is hidden1-output 2 weight
+                                let error3_hidden1 = delta_output3 * weight16;// weight 16 is hidden1-output 3 weight
+                                let delta_hidden1 = (error_hidden1 + error2_hidden1) * hidden1 * (1-hidden1);
+
+                                let error_hidden2 = delta_output2 * weight6;// weight 6 is hidden2-output 1 weight
+                                let error2_hidden2 = delta_output2 * weight8;// weight 8 is hidden2-output 2 weight
+                                let error3_hidden2 = delta_output3 * weight17;// weight 17 is hidden2-output 3 weight
+                                let delta_hidden2 = (error_hidden2 + error2_hidden2) * hidden2 * (1-hidden2);
+                                
+                                let error_hidden3 = delta_output1 * weight14;// weight 14 is hidden3-output 1 weight
+                                let error2_hidden3 = delta_output2 * weight15;// weight 15 is hidden3-output 2 weight
+                                let error3_hidden3 = delta_output3 * weight18;// weight 18 is hidden3-output 3 weight
+                                let delta_hidden3 = (error_hidden3 + error2_hidden3) * hidden3 * (1-hidden3);
+
+                                // weight and bias updates
+                                // input - hidden1
+                                weight1 = weight1 + learning_rate * delta_hidden1 * input1;// input1
+                                weight3 = weight3 + learning_rate * delta_hidden1 * input2;// input2
+                                weight9 = weight9 + learning_rate * delta_hidden1 * input3;// input3
+                                bias1 = bias1 + learning_rate * delta_hidden1;
+
+                                // input - hidden2
+                                weight4 = weight4 + learning_rate * delta_hidden2 * input1;// input1
+                                weight5 = weight5 + learning_rate * delta_hidden2 * input2;// input2
+                                weight10 = weight10 + learning_rate * delta_hidden2 * input3;// input3
+                                bias3 = bias3 + learning_rate * delta_hidden2;
+
+                                // input - hidden3
+                                weight11 = weight11 + learning_rate * delta_hidden3 * input1;// input1
+                                weight12 = weight12 + learning_rate * delta_hidden3 * input2;// input2
+                                weight13 = weight13 + learning_rate * delta_hidden3 * input3;// input3
+                                bias5 = bias5 + learning_rate * delta_hidden3;
+
+                                // hidden - output1
+                                weight2 = weight2 + learning_rate * delta_output1 * hidden1;// hidden1 - output1 connection
+                                weight6 = weight6 + learning_rate * delta_output1 * hidden2;// hidden2 - output1 connection
+                                weight14 = weight14 + learning_rate * delta_output1 * hidden3;// hidden3 - output1 connection
+                                bias2 = bias2 + learning_rate * delta_output1;
+
+                                // hidden - output2
+                                weight7 = weight7 + learning_rate * delta_output2 * hidden1;// hidden1 - output2 connection
+                                weight8 = weight8 + learning_rate * delta_output2 * hidden2;// hidden2 - output2 connection
+                                weight15 = weight15 + learning_rate * delta_output2 * hidden3;// hidden3 - output2 connection
+                                bias4 = bias4 + learning_rate * delta_output2;
+
+                                // hidden - output3
+                                weight16 = weight16 + learning_rate * delta_output3 * hidden1;// hidden1 - output3 connection
+                                weight17 = weight17 + learning_rate * delta_output3 * hidden2;// hidden2 - output3 connection
+                                weight18 = weight18 + learning_rate * delta_output3 * hidden3;// hidden3 - output3 connection
+                                bias6 = bias6 + learning_rate * delta_output3;
+
+                                // assignment of weights and biases to the labels
+                                $("#weight1-val").text(weight1);
+                                $("#weight3-val").text(weight3);
+                                $("#weight9-val").text(weight9);
+                                $("#bias1-val").text(bias1);
+
+                                $("#weight4-val").text(weight4);
+                                $("#weight5-val").text(weight5);
+                                $("#weight10-val").text(weight10);
+                                $("#bias3-val").text(bias3);
+                                
+                                $("#weight11-val").text(weight11);
+                                $("#weight12-val").text(weight12);
+                                $("#weight13-val").text(weight13);
+                                $("#bias5-val").text(bias5);
+
+                                $("#weight2-val").text(weight2);
+                                $("#weight6-val").text(weight6);
+                                $("#weight14-val").text(weight14);
+                                $("#bias2-val").text(bias2);
+
+                                $("#weight7-val").text(weight7);
+                                $("#weight8-val").text(weight8);
+                                $("#weight15-val").text(weight15);
+                                $("#bias4-val").text(bias4);
+
+                                $("#weight16-val").text(weight16);
+                                $("#weight17-val").text(weight17);
+                                $("#weight18-val").text(weight18);
+                                $("#bias6-val").text(bias6);
+
+                                // fire neural network once again
+                                fire();
+                            });
+                        });
+                    </script>
+                    <!--
+                    1️⃣ Forward:
+                    h=σ(w1x+b1)h = \sigma(w_1 x + b_1)h=σ(w1​x+b1​)
+                    y=σ(w2h+b2)y = \sigma(w_2 h + b_2)y=σ(w2​h+b2​)
+                    
+                    2️⃣ Backprop:
+                    δout=(t−y)⋅y⋅(1−y)\delta_{out} = (t - y) \cdot y \cdot (1 - y)δout​=(t−y)⋅y⋅(1−y)
+                    δhid=δout⋅w2⋅h⋅(1−h)\delta_{hid} = \delta_{out} \cdot w_2 \cdot h \cdot (1 - h)δhid​=δout​⋅w2​⋅h⋅(1−h)
+                    
+                    3️⃣ Adjust:
+                    w2=w2+η⋅δout⋅hw_2 = w_2 + \eta \cdot \delta_{out} \cdot hw2​=w2​+η⋅δout​⋅h
+                    b2=b2+η⋅δoutb_2 = b_2 + \eta \cdot \delta_{out}b2​=b2​+η⋅δout​
+                    w1=w1+η⋅δhid⋅xw_1 = w_1 + \eta \cdot \delta_{hid} \cdot xw1​=w1​+η⋅δhid​⋅x
+                    b1=b1+η⋅δhidb_1 = b_1 + \eta \cdot \delta_{hid}b1​=b1​+η⋅δhid​
+                    -->
+                </div>
+            </div>
+            
+            <!-- Pixel Output Div-->
+            <div class = "pixel-out">
+                <h4>Output</h4>
+                <div class="ai-pixel ai-pixel1">
+                </div>
+            </div>
+            
+            <!-- Since this is 101 guess black or white, 101 means 1 input, 0 hidden, 1 output, meaning input-output only -->
+            <!--Process:
+            input got random 1 or 0
+            weight will fire to the output, equation:
+            output = sigmoid((weight*input) + bias)
+            output got bias of random
+            error = t - output, where t = target color inside the sigmoid range
+            then new_weight = learningrate * delta * input 
+            bias = learningrate * delta-->
+        </div>
+      
+        <div class="panel-generate">
+            <input type="image">
+            <canvas id="image"></canvas>
+
+
+            <button id="btn-generate-pixel" type="button">Generate Pixel</button>
+            
+            <div class="pixel-container pixel-container1">
+            </div>
+
+            <script>
+                $(function()
+                {
+                    $("#btn-generate-pixel").on('click', function()
+                    {
+                        let R = Math.random()*256;
+                        let G = Math.random()*256;
+                        let B = Math.random()*256;
+                        $(".pixel-container1").css("background-color", "RGB(" + R + "," + G + "," + B + ")");
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>
