@@ -35,9 +35,8 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
-    </script>
 
-    <script>
+        
       function saveInfo() {
         db.collection("firebase_integration").add({
           output1: $("#input-firstname").val(),
