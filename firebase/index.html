@@ -68,19 +68,18 @@
             </th>
 
             <script type="module">
-            
                 $(document).ready(async function() {
-                const snapshot = await getDocs(collection(db, "firebase_integration"));
-                snapshot.forEach((doc) => {
-                  const d = doc.data();
-                  $("#table-info tbody").append(`
-                    <tr>
-                      <td>${doc.id}</td>
-                      <td>${d.firstname || ''}</td>
-                      <td>${d.lastname || ''}</td>
-                    </tr>
-                  `);
-                });
+                    const snapshot = await getDocs(collection(db, "firebase_integration"));
+                    snapshot.forEach((doc) => {
+                      const d = doc.data();
+                      $("#table-info tbody").append(`
+                        <tr>
+                          <td>${doc.id}</td>
+                          <td>${d.firstname || ''}</td>
+                          <td>${d.lastname || ''}</td>
+                        </tr>
+                      `);
+                    });
                 });
             </script>
 
