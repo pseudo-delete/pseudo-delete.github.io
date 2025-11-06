@@ -928,8 +928,8 @@
         <div class="panel-generate">
             <input id="input-upload" type="file" accept="image/*">
             <p>
-                Uploaded Image Resolution: <span id="uploaded-image-resolution-width">0</span> x <span id="uploaded-image-resolution-height"></span>
-                Calculated Pixel Count: <span id="calculated-pixel-count"></span>
+                Uploaded Image Resolution: <span id="uploaded-image-resolution-width">0</span> x <span id="uploaded-image-resolution-height">0</span><br>
+                Calculated Pixel Count: <span id="calculated-pixel-count">0px</span>
             </p>
             <canvas id="canvas-display-image" width="1600" height="900"></canvas>
 
@@ -967,7 +967,7 @@
                                 $("#canvas-display-image").css("height", img.height);
                                 $("#uploaded-image-resolution-width").text(img.width);
                                 $("#uploaded-image-resolution-height").text(img.height);
-                                $("#calculated-pixel-count").text(img.width * img.height);
+                                $("#calculated-pixel-count").text(img.width * img.height + "px");
 
                                 // ai canvas resolution setting also according to uploaded image size
                                 $("#ai-canvas-display").css("width", img.width);
