@@ -910,6 +910,8 @@
                 <h4>Output</h4>
                 <div class="ai-pixel ai-pixel1">
                 </div>
+                
+                <canvas id="ai-canvas-display"></canvas>
             </div>
             
             <!-- Since this is 101 guess black or white, 101 means 1 input, 0 hidden, 1 output, meaning input-output only -->
@@ -925,6 +927,10 @@
       
         <div class="panel-generate">
             <input id="input-upload" type="file" accept="image/*">
+            <p>
+                Uploaded Image Resolution: <span id="uploaded-image-resolution-width">0</span> x <span id="uploaded-image-resolution-height"></span>
+                Calculated Pixel Count: <span id="calculated-pixel-count"></span>
+            </p>
             <canvas id="canvas-display-image" width="1600" height="900"></canvas>
 
 
@@ -956,8 +962,16 @@
                             const img = new Image();
                             img.onload = function()
                             {
+                                // user canvas resolution setting according to uploaded image size
                                 $("#canvas-display-image").css("width", img.width);
                                 $("#canvas-display-image").css("height", img.height);
+                                $("#uploaded-image-resolution-width").text(img.width);
+                                $("#uploaded-image-resolution-height").text(img.height);
+                                $("#calculated-pixel-count").text(img.width * img.height);
+
+                                // ai canvas resolution setting also according to uploaded image size
+                                $("#ai-canvas-display").css("width", img.width);
+                                $("#ai-canvas-display").css("height", img.height);
 
                                 const canvas = $("#canvas-display-image")[0];
                                 const ctx = canvas.getContext("2d");
