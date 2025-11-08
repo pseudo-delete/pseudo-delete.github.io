@@ -646,6 +646,10 @@
                             
                             $("#btn-generate-neural-val").on('click', function()
                             {
+                                /* randomize each and save on table/firebase database */
+                                // 1. get the total pixel count of an uploaded image
+                                // 2. After this button is clicked, it'll start to generate random values in the table so each neuron elements and values on each network are saved
+
                                 $("#input1-val").text(Math.random());
                                 $("#input2-val").text(Math.random());
                                 $("#input3-val").text(Math.random());
