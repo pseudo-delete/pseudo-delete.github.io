@@ -102,6 +102,7 @@ async function loadTable() {
     tbody.append(`
       <tr>
         <td>${doc.id}</td>
+        <td>${d.id || ''}</td>
         <td>${d.input_1 || ''}</td>
         <td>${d.input_2 || ''}</td>
         <td>${d.input_3 || ''}</td>
