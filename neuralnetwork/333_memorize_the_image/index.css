@@ -170,7 +170,7 @@ canvas
   border-color: black;
 }
 
-tr.hover
+tr:hover
 {
   background-color: gray;
 }
