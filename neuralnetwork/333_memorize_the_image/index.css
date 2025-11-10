@@ -170,6 +170,11 @@ canvas
   border-color: black;
 }
 
+#data-table
+{
+  height: auto;
+}
+
 tr:hover
 {
   background-color: gray;
