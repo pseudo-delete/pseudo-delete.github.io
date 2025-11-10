@@ -60,6 +60,7 @@
             <div class="div-neural-net">
                 <h4>Neural Network</h4>
                 <button id="btn-generate-neural-val" type="button">Re/generate Neural Values</button>
+                <button id="btn-clear-neural-val" type="button">Clear Neural Values</button>
                 <div class="neural-zone">
                     <div class="neural-row">
                         <div class="circle-input"><label class="neuron-value" id="input1-val">0</label></div>
@@ -647,13 +648,17 @@
                                 y=σ(w2h+b2)y = \sigma(w_2 h + b_2)y=σ(w2​h+b2​)
                                 */
                             }
-                            
-                            $("#btn-generate-neural-val").on('click', function()
+
+                            $("#btn-clear-neural-val").on('click', function()
                             {
                                 /* Cleaning up the data-table for new collection */
                                 deleteCollection("image_integration_collection")// Initial delete of all documents in the collection for cleaning up the data-table for use
                                 .then(() => console.log("All documents deleted"))
                                 .catch(console.error);
+                            });
+
+                            $("#btn-generate-neural-val").on('click', function()
+                            {
 
                                 createCollection("image_integration_collection"); // initial birth of deleted collection
                                 /* End of Cleaning up the data-table for new collection */
