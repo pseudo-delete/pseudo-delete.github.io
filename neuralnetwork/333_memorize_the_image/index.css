@@ -133,7 +133,7 @@ canvas
 
 .panel-generate
 {
-  width: 300px;
+  width: auto;
   height: 100px;
 }
 
