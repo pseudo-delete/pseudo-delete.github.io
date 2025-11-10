@@ -3,6 +3,7 @@ import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.c
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKVbKlfH83XULHnmoyZ_gip3UrxO_i-bc",
+  authDomain: "gero-ai.firebaseapp.com",
   projectId: "gero-ai"
 };
 
