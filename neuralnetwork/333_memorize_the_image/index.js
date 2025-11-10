@@ -108,7 +108,7 @@ async function loadTable() {
 }
 
 // deleting all the documents in the collection
-async function deleteCollection(collectionPath, batchSize = 500) {
+await function deleteCollection(collectionPath, batchSize = 500) {
   const colRef = collection(db, collectionPath);
   const q = query(colRef, limit(batchSize));
 
@@ -118,7 +118,7 @@ async function deleteCollection(collectionPath, batchSize = 500) {
 }
 
 // 🔹 Equivalent of deleteQueryBatch()
-async function deleteQueryBatch(db, q, resolve) {
+await function deleteQueryBatch(db, q, resolve) {
   const snapshot = await getDocs(q);
 
   if (snapshot.empty) {
@@ -142,7 +142,7 @@ async function deleteQueryBatch(db, q, resolve) {
 
 // creating collection
 // Create a new collection and document, collectionName will be the container for the name of collection
-async function createCollection(collectionName) {
+await function createCollection(collectionName) {
   await setDoc(doc(db, collectionName, "docu1"), {
     fld: "initialization"
   });
