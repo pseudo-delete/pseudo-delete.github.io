@@ -133,8 +133,8 @@ canvas
 
 .panel-generate
 {
-  width: 1600px;
-  height: 100px;
+  min-width: auto;
+  min-height: auto;
 }
 
 .neural-zone
