@@ -149,7 +149,7 @@ async function deleteQueryBatch(dbase, query, resolve) {
 // end of deleting all the documents in the collection
 
 // creating collection
-// Create a new collection and document
+// Create a new collection and document, collectionName will be the container for the name of collection
 async function createCollection(collectionName) {
   await setDoc(doc(db, collectionName, "docu1"), {
     fld: "initialization"
