@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+import { getFirestore, collection, doc, addDoc, setDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKVbKlfH83XULHnmoyZ_gip3UrxO_i-bc",
@@ -149,9 +149,6 @@ async function deleteQueryBatch(dbase, query, resolve) {
 // end of deleting all the documents in the collection
 
 // creating collection
-import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
-
-
 // Create a new collection and document
 async function createCollection(collectionName) {
   await setDoc(doc(db, collectionName, "docu1"), {
