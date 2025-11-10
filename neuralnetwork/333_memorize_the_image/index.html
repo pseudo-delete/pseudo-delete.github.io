@@ -11,6 +11,10 @@
 
     <script type="module" src="index.js"></script><!-- all about firebase functions-->
 
+    <!-- Disabling buttons that shouldn't be available for a moment-->
+    <script>
+        $("#btn-generate-neural-val").prop("disabled", true);
+    </script>
 </head>
 <body>
     <a href="../"><h1> - GERO AI- </h1></a>
@@ -654,35 +658,38 @@
                                 let totalPixelCount = parseInt($("#calculated-pixel-count").text());
                                 // 2. After this button is clicked, it'll start to generate random values in the table so each neuron elements and values on each network are saved
 
-                                $("#input1-val").text(Math.random());
-                                $("#input2-val").text(Math.random());
-                                $("#input3-val").text(Math.random());
-                                
-                                $("#weight1-val").text(Math.random());
-                                $("#weight2-val").text(Math.random());
-                                $("#weight3-val").text(Math.random());
-                                $("#weight4-val").text(Math.random());
-                                $("#weight5-val").text(Math.random());
-                                $("#weight6-val").text(Math.random());
-                                $("#weight7-val").text(Math.random());
-                                $("#weight8-val").text(Math.random());
-                                $("#weight9-val").text(Math.random());
-                                $("#weight10-val").text(Math.random());
-                                $("#weight11-val").text(Math.random());
-                                $("#weight12-val").text(Math.random());
-                                $("#weight13-val").text(Math.random());
-                                $("#weight14-val").text(Math.random());
-                                $("#weight15-val").text(Math.random());
-                                $("#weight16-val").text(Math.random());
-                                $("#weight17-val").text(Math.random());
-                                $("#weight18-val").text(Math.random());
+                                for (let i=0; i<totalPixelCount; i++){
+                                    $("#input1-val").text(Math.random());
+                                    $("#input2-val").text(Math.random());
+                                    $("#input3-val").text(Math.random());
+                                    
+                                    $("#weight1-val").text(Math.random());
+                                    $("#weight2-val").text(Math.random());
+                                    $("#weight3-val").text(Math.random());
+                                    $("#weight4-val").text(Math.random());
+                                    $("#weight5-val").text(Math.random());
+                                    $("#weight6-val").text(Math.random());
+                                    $("#weight7-val").text(Math.random());
+                                    $("#weight8-val").text(Math.random());
+                                    $("#weight9-val").text(Math.random());
+                                    $("#weight10-val").text(Math.random());
+                                    $("#weight11-val").text(Math.random());
+                                    $("#weight12-val").text(Math.random());
+                                    $("#weight13-val").text(Math.random());
+                                    $("#weight14-val").text(Math.random());
+                                    $("#weight15-val").text(Math.random());
+                                    $("#weight16-val").text(Math.random());
+                                    $("#weight17-val").text(Math.random());
+                                    $("#weight18-val").text(Math.random());
 
-                                $("#bias1-val").text(Math.random());
-                                $("#bias2-val").text(Math.random());
-                                $("#bias3-val").text(Math.random());
-                                $("#bias4-val").text(Math.random());
-                                $("#bias5-val").text(Math.random());
-                                $("#bias6-val").text(Math.random());
+                                    $("#bias1-val").text(Math.random());
+                                    $("#bias2-val").text(Math.random());
+                                    $("#bias3-val").text(Math.random());
+                                    $("#bias4-val").text(Math.random());
+                                    $("#bias5-val").text(Math.random());
+                                    $("#bias6-val").text(Math.random());
+                                    addData();
+                                }
                             });
 
                             function train(){
@@ -989,6 +996,8 @@
 
                                 // draw the image on the canvas (scaled)
                                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                                $("#btn-generate-neural-val").prop("disabled", false);
                             };
                             img.src = e.target.result;
                         }
