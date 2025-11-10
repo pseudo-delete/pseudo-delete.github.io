@@ -169,3 +169,8 @@ canvas
   border-style: solid;
   border-color: black;
 }
+
+tr.hover
+{
+  background-color: gray;
+}
