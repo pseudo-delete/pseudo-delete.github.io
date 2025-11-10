@@ -93,7 +93,7 @@ async function addData(data_id) {
 
 // 🔹 Load data
 async function loadTable() {
-  const snapshot = await getDocs(collection(db, "image_integration_collection"), orderBy("id"));
+  const snapshot = await getDocs(collection(db, "image_integration_collection"), orderBy("id", "desc"));
   const tbody = $("#data-table tbody");
   tbody.empty(); // clear old rows
 
