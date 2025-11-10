@@ -108,44 +108,36 @@ async function loadTable() {
 }
 
 // deleting all the documents in the collection
-const admin = require("firebase-admin");
-
-admin.initializeApp({
-  credential: admin.credential.applicationDefault() // or your serviceAccountKey
-});
-
-const dbase = admin.firestore();
-
 async function deleteCollection(collectionPath, batchSize = 500) {
-  const collectionRef = dbase.collection(collectionPath);
-  const query = collectionRef.limit(batchSize);
+  const colRef = collection(db, collectionPath);
+  const q = query(colRef, limit(batchSize));
 
   return new Promise((resolve, reject) => {
-    deleteQueryBatch(dbase, query, resolve).catch(reject);
+    deleteQueryBatch(db, q, resolve).catch(reject);
   });
 }
 
-async function deleteQueryBatch(dbase, query, resolve) {
-  const snapshot = await query.get();
+// 🔹 Equivalent of deleteQueryBatch()
+async function deleteQueryBatch(db, q, resolve) {
+  const snapshot = await getDocs(q);
 
-  if (snapshot.size === 0) {
+  if (snapshot.empty) {
     resolve();
     return;
   }
 
-  const batch = dbase.batch();
-  snapshot.docs.forEach((doc) => {
-    batch.delete(doc.ref);
+  const batch = writeBatch(db);
+  snapshot.docs.forEach((docSnap) => {
+    batch.delete(docSnap.ref);
   });
 
   await batch.commit();
 
-  // Recurse on the next batch
-  process.nextTick(() => {
-    deleteQueryBatch(dbase, query, resolve);
-  });
+  // Recurse on next batch (browser version of process.nextTick)
+  setTimeout(() => {
+    deleteQueryBatch(db, q, resolve);
+  }, 0);
 }
-
 // end of deleting all the documents in the collection
 
 // creating collection
