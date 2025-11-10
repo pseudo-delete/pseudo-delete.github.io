@@ -170,7 +170,7 @@ canvas
   border-color: black;
 }
 
-#data-table
+.data-table-container, #data-table
 {
   height: auto;
 }
