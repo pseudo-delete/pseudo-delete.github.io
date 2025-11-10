@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="index.css">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script src="index.js"></script><!-- all about firebase functions-->
+
 </head>
 <body>
     <a href="../"><h1> - GERO AI- </h1></a>
@@ -648,6 +651,7 @@
                             {
                                 /* randomize each and save on table/firebase database */
                                 // 1. get the total pixel count of an uploaded image
+                                let totalPixelCount = parseInt($("#calculated-pixel-count").text());
                                 // 2. After this button is clicked, it'll start to generate random values in the table so each neuron elements and values on each network are saved
 
                                 $("#input1-val").text(Math.random());
