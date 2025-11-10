@@ -163,7 +163,7 @@ canvas
   height: auto;
 }
 
-#data-table
+#data-table, th, td, tr
 {
   border-width: 1px;
   border-style: solid;
