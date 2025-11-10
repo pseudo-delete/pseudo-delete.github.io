@@ -163,6 +163,6 @@ deleteCollection("image_integration_collection")// Initial delete of all documen
   .then(() => console.log("All documents deleted"))
   .catch(console.error);
 
-createCollection(); // initial birth of deleted collection
+createCollection("image_integration_collection"); // initial birth of deleted collection
 
 loadTable(); // initial load
