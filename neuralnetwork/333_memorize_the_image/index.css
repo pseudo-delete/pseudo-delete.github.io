@@ -162,3 +162,10 @@ canvas
   min-width: 200px;
   height: auto;
 }
+
+#data-table
+{
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
