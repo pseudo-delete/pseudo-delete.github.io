@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, orderBy } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKVbKlfH83XULHnmoyZ_gip3UrxO_i-bc",
@@ -93,7 +93,7 @@ async function addData(data_id) {
 
 // 🔹 Load data
 async function loadTable() {
-  const snapshot = await getDocs(collection(db, "image_integration_collection"));
+  const snapshot = await getDocs(collection(db, "image_integration_collection"), orderBy("id"));
   const tbody = $("#data-table tbody");
   tbody.empty(); // clear old rows
 
