@@ -150,3 +150,5 @@ window.addDoc = addDoc; // so you can access it from console for debugging
 window.getDocs = getDocs; // so you can access it from console for debugging
 window.addData = addData; // so you can call it from button onclick
 window.loadTable = loadTable; // so you can call it from button onclick
+
+loadTable(); // initial load
