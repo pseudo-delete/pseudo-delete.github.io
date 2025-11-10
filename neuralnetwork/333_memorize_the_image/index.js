@@ -10,44 +10,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-    /*
-    input_1
-    input_2
-    input_3
-    hidden_1
-    hidden_2
-    hidden_3
-    output_1
-    output_2
-    output_3
-    target_1
-    target_2
-    target_3
-    weight_1
-    weight_2
-    weight_3
-    weight_4
-    weight_5
-    weight_6
-    weight_7
-    weight_8
-    weight_9
-    weight_10
-    weight_11
-    weight_12
-    weight_13
-    weight_14
-    weight_15
-    weight_16
-    weight_17
-    weight_18
-    bias_1
-    bias_2
-    bias_3
-    bias_4
-    bias_5
-    bias_6
-     */
+// adding data, with custom id
 async function addData(data_id) {
   await addDoc(collection(db, "image_integration_collection"), {
     id: data_id,
@@ -144,11 +107,73 @@ async function loadTable() {
   });
 }
 
+// deleting all the documents in the collection
+const admin = require("firebase-admin");
+
+admin.initializeApp({
+  credential: admin.credential.applicationDefault() // or your serviceAccountKey
+});
+
+const dbase = admin.firestore();
+
+async function deleteCollection(collectionPath, batchSize = 500) {
+  const collectionRef = dbase.collection(collectionPath);
+  const query = collectionRef.limit(batchSize);
+
+  return new Promise((resolve, reject) => {
+    deleteQueryBatch(dbase, query, resolve).catch(reject);
+  });
+}
+
+async function deleteQueryBatch(dbase, query, resolve) {
+  const snapshot = await query.get();
+
+  if (snapshot.size === 0) {
+    resolve();
+    return;
+  }
+
+  const batch = dbase.batch();
+  snapshot.docs.forEach((doc) => {
+    batch.delete(doc.ref);
+  });
+
+  await batch.commit();
+
+  // Recurse on the next batch
+  process.nextTick(() => {
+    deleteQueryBatch(dbase, query, resolve);
+  });
+}
+
+// end of deleting all the documents in the collection
+
+// creating collection
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+
+
+// Create a new collection and document
+async function createCollection(collectionName) {
+  await setDoc(doc(db, collectionName, "docu1"), {
+    fld: "initialization"
+  });
+
+  console.log("Collection " + collectionName + " and document 'docu1' created!");
+}
+// end of create collection
+
 window.db = db; // so you can access it from console for debugging
 window.collection = collection; // so you can access it from console for debugging
 window.addDoc = addDoc; // so you can access it from console for debugging
 window.getDocs = getDocs; // so you can access it from console for debugging
 window.addData = addData; // so you can call it from button onclick
 window.loadTable = loadTable; // so you can call it from button onclick
+
+
+deleteCollection("image_integration_collection")// Initial delete of all documents in the collection for cleaning up the data-table for use
+  .then(() => console.log("All documents deleted"))
+  .catch(console.error);
+
+createCollection(); // initial birth of deleted collection
 
 loadTable(); // initial load

@@ -650,6 +650,14 @@
                             
                             $("#btn-generate-neural-val").on('click', function()
                             {
+                                /* Cleaning up the data-table for new collection */
+                                deleteCollection("image_integration_collection")// Initial delete of all documents in the collection for cleaning up the data-table for use
+                                .then(() => console.log("All documents deleted"))
+                                .catch(console.error);
+
+                                createCollection("image_integration_collection"); // initial birth of deleted collection
+                                /* End of Cleaning up the data-table for new collection */
+
                                 /* randomize each and save on table/firebase database */
                                 // 1. get the total pixel count of an uploaded image
                                 let totalPixelCount = parseInt($("#calculated-pixel-count").text());
