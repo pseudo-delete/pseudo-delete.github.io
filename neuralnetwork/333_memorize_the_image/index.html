@@ -690,6 +690,8 @@
                                     $("#bias6-val").text(Math.random());
                                     addData();
                                 }
+
+                                loadTable();
                             });
 
                             function train(){
@@ -1010,52 +1012,55 @@
 
         <div class="data-table-container">
             <table id="data-table">
-                <tr>
-                    <th colspan="3">Input</th>
-                    <th colspan="3">Hidden</th>
-                    <th colspan="3">Output</th>
-                    <th colspan="3">Target</th>
-                    <th colspan="18">Weight</th>
-                    <th colspan="6">Bias</th>
-                </tr>
-                <tr>
-                    <th>Input 1</th>
-                    <th>Input 2</th>
-                    <th>Input 3</th>
-                    <th>Hidden 1</th>
-                    <th>Hidden 2</th>
-                    <th>Hidden 3</th>
-                    <th>Output 1</th>
-                    <th>Output 2</th>
-                    <th>Output 3</th>
-                    <th>Target 1</th>
-                    <th>Target 2</th>
-                    <th>Target 3</th>
-                    <th>Weight 1</th>
-                    <th>Weight 2</th>
-                    <th>Weight 3</th>
-                    <th>Weight 4</th>
-                    <th>Weight 5</th>
-                    <th>Weight 6</th>
-                    <th>Weight 7</th>
-                    <th>Weight 8</th>
-                    <th>Weight 9</th>
-                    <th>Weight 10</th>
-                    <th>Weight 11</th>
-                    <th>Weight 12</th>
-                    <th>Weight 13</th>
-                    <th>Weight 14</th>
-                    <th>Weight 15</th>
-                    <th>Weight 16</th>
-                    <th>Weight 17</th>
-                    <th>Weight 18</th>
-                    <th>Bias 1</th>
-                    <th>Bias 2</th>
-                    <th>Bias 3</th>
-                    <th>Bias 4</th>
-                    <th>Bias 5</th>
-                    <th>Bias 6</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th colspan="3">Input</th>
+                        <th colspan="3">Hidden</th>
+                        <th colspan="3">Output</th>
+                        <th colspan="3">Target</th>
+                        <th colspan="18">Weight</th>
+                        <th colspan="6">Bias</th>
+                    </tr>
+                    <tr>
+                        <th>Input 1</th>
+                        <th>Input 2</th>
+                        <th>Input 3</th>
+                        <th>Hidden 1</th>
+                        <th>Hidden 2</th>
+                        <th>Hidden 3</th>
+                        <th>Output 1</th>
+                        <th>Output 2</th>
+                        <th>Output 3</th>
+                        <th>Target 1</th>
+                        <th>Target 2</th>
+                        <th>Target 3</th>
+                        <th>Weight 1</th>
+                        <th>Weight 2</th>
+                        <th>Weight 3</th>
+                        <th>Weight 4</th>
+                        <th>Weight 5</th>
+                        <th>Weight 6</th>
+                        <th>Weight 7</th>
+                        <th>Weight 8</th>
+                        <th>Weight 9</th>
+                        <th>Weight 10</th>
+                        <th>Weight 11</th>
+                        <th>Weight 12</th>
+                        <th>Weight 13</th>
+                        <th>Weight 14</th>
+                        <th>Weight 15</th>
+                        <th>Weight 16</th>
+                        <th>Weight 17</th>
+                        <th>Weight 18</th>
+                        <th>Bias 1</th>
+                        <th>Bias 2</th>
+                        <th>Bias 3</th>
+                        <th>Bias 4</th>
+                        <th>Bias 5</th>
+                        <th>Bias 6</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
             </table>
         </div>
     </div>

@@ -90,4 +90,57 @@ async function addData() {
   console.log("Document added!");
 }
 
+// 🔹 Load data
+async function loadTable() {
+  const snapshot = await getDocs(collection(db, "image_integration_collection"));
+  const tbody = $("#data-table tbody");
+  tbody.empty(); // clear old rows
+
+  snapshot.forEach((doc) => {
+    const d = doc.data();
+    tbody.append(`
+      <tr>
+        <td>${doc.id}</td>
+        <td>${d.input_1 || ''}</td>
+        <td>${d.input_2 || ''}</td>
+        <td>${d.input_3 || ''}</td>
+        <td>${d.hidden_1 || ''}</td>
+        <td>${d.hidden_2 || ''}</td>
+        <td>${d.hidden_3 || ''}</td>
+        <td>${d.output_1 || ''}</td>
+        <td>${d.output_2 || ''}</td>
+        <td>${d.output_3 || ''}</td>
+        <td>${d.target_1 || ''}</td>
+        <td>${d.target_2 || ''}</td>
+        <td>${d.target_3 || ''}</td>
+        <td>${d.weight_1 || ''}</td>
+        <td>${d.weight_2 || ''}</td>
+        <td>${d.weight_3 || ''}</td>
+        <td>${d.weight_4 || ''}</td>
+        <td>${d.weight_5 || ''}</td>
+        <td>${d.weight_6 || ''}</td>
+        <td>${d.weight_7 || ''}</td>
+        <td>${d.weight_8 || ''}</td>
+        <td>${d.weight_9 || ''}</td>
+        <td>${d.weight_10 || ''}</td>
+        <td>${d.weight_11 || ''}</td>
+        <td>${d.weight_12 || ''}</td>
+        <td>${d.weight_13 || ''}</td>
+        <td>${d.weight_14 || ''}</td>
+        <td>${d.weight_15 || ''}</td>
+        <td>${d.weight_16 || ''}</td>
+        <td>${d.weight_17 || ''}</td>
+        <td>${d.weight_18 || ''}</td>
+        <td>${d.bias_1 || ''}</td>
+        <td>${d.bias_2 || ''}</td>
+        <td>${d.bias_3 || ''}</td>
+        <td>${d.bias_4 || ''}</td>
+        <td>${d.bias_5 || ''}</td>
+        <td>${d.bias_6 || ''}</td>
+      </tr>
+    `);
+  });
+}
+
 window.addData = addData; // so you can call it from button onclick
+window.loadTable = loadTable; // so you can call it from button onclick
