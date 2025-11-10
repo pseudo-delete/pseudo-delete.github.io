@@ -174,3 +174,8 @@ tr:hover
 {
   background-color: gray;
 }
+
+td:hover
+{
+  background-color: green;
+}
