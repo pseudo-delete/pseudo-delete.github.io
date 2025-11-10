@@ -48,9 +48,9 @@ const db = getFirestore(app);
     bias_5
     bias_6
      */
-async function addData() {
+async function addData(data_id) {
   await addDoc(collection(db, "image_integration_collection"), {
-    id: 1,
+    id: data_id,
     input_1: $("#input1-val").text(),
     input_2: $("#input2-val").text(),
     input_3: $("#input3-val").text(),
