@@ -118,7 +118,7 @@ await function deleteCollection(collectionPath, batchSize = 500) {
 }
 
 // 🔹 Equivalent of deleteQueryBatch()
-await function deleteQueryBatch(db, q, resolve) {
+async function deleteQueryBatch(db, q, resolve) {
   const snapshot = await getDocs(q);
 
   if (snapshot.empty) {
@@ -142,7 +142,7 @@ await function deleteQueryBatch(db, q, resolve) {
 
 // creating collection
 // Create a new collection and document, collectionName will be the container for the name of collection
-await function createCollection(collectionName) {
+async function createCollection(collectionName) {
   await setDoc(doc(db, collectionName, "docu1"), {
     fld: "initialization"
   });
@@ -161,10 +161,10 @@ window.deleteCollection = deleteCollection; // so you can call it from button on
 window.loadTable = loadTable; // so you can call it from button onclick
 
 
-deleteCollection("image_integration_collection")// Initial delete of all documents in the collection for cleaning up the data-table for use
+await deleteCollection("image_integration_collection")// Initial delete of all documents in the collection for cleaning up the data-table for use
   .then(() => console.log("All documents deleted"))
   .catch(console.error);
 
-createCollection("image_integration_collection"); // initial birth of deleted collection
+await createCollection("image_integration_collection"); // initial birth of deleted collection
 
 loadTable(); // initial load
