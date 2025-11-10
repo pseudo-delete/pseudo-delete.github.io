@@ -108,7 +108,7 @@ async function loadTable() {
 }
 
 // deleting all the documents in the collection
-await function deleteCollection(collectionPath, batchSize = 500) {
+async function deleteCollection(collectionPath, batchSize = 500) {
   const colRef = collection(db, collectionPath);
   const q = query(colRef, limit(batchSize));
 
