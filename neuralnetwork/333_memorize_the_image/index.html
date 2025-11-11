@@ -1287,8 +1287,8 @@
                                 $("#calculated-pixel-count").text(totalPixelCount);
 
                                 // ai canvas resolution setting also according to uploaded image size
-                                $("#ai-canvas-display").css("width", img.width);
-                                $("#ai-canvas-display").css("height", img.height);
+                                $("#ai-canvas-display").css("width", img.width*2);
+                                $("#ai-canvas-display").css("height", img.height*2);
 
                                 ctx.scale(scale, scale);// to handle high-dpi screens;
                                 // // Disable smoothing for crisp pixels
