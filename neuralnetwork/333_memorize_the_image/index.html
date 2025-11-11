@@ -24,7 +24,8 @@
 
         <div class="current-pixel-id-display-container">
             <label>Current Pixel ID: <span id="current-pixel-id-display">0/0</span></label>
-            <label>Current Cycle: <span id="cycle-counter">0</span></label>
+            <label>| Current Cycle: <span id="cycle-counter">0</span></label>
+            <label>X:<span id="x-id">0</span>px Y:<span id="y-id">0</span>px</label>
         </div>
     </div>
 
@@ -1048,6 +1049,12 @@
                             /* pixel id initialization */
                             let pixId = -1;
 
+                            // pixel id but x and y coordinates
+                            let xId = $("#x-id").text();
+                            let yId = $("#y-id").text();
+                            let uploadedResolutionWidth = parseInt($("#uploaded-image-resolution-width").text());
+                            let uploadedResolutionHeight = parseInt($("#uploaded-image-resolution-height").text());
+
                             /* Cycle Counter Initialization */
                             let cycleCounter = 1;
                             $("#cycle-counter").text(cycleCounter);
@@ -1061,6 +1068,26 @@
 
                                         count++;
                                         $("#timer").text(count + " seconds");
+
+                                        // pixel coordinate display
+                                        if(xId<uploadedResolutionWidth)
+                                        {
+                                            xId++;
+                                        }
+                                        else
+                                        {
+                                            xId=0;
+                                            if(yId<uploadedResolutionHeight)
+                                            {
+                                                yId++;
+                                            }
+                                            else
+                                            {
+                                                yId=0;
+                                            }
+                                        }
+                                        $("#x-id").text(xId);
+                                        $("#y-id").text(yId);
 
                                         // pixel increment loop
                                         let maxPixId = parseInt($("#calculated-pixel-count").text())-1;
