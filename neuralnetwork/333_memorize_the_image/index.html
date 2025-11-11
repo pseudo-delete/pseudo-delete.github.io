@@ -797,6 +797,15 @@
                                 let b1 = parseInt(parseFloat($("#output3-val").text()) * 256);// Output1: B
                                 // pixel1 - (RGB):
                                 $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", " + g1 + ", " + b1 + ")");
+
+                                const canvas = document.getElementById("ai-canvas-display");
+                                const ctxAi = canvas.getContext("2d");
+
+                                let xAi = parseInt($("#x-id").text());
+                                let yAi = parseInt($("#y-id").text());
+
+                                ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
+                                ctxAi.fillRect(xAi, yAi, 1, 1); // 1x1 pixel
                                 /*
                                 hidden = sigmoid((weight1*input) + bias1)
                                 output = sigmoid((weight2*hidden)+ bias2)
@@ -866,16 +875,9 @@
                             });
 
                             function train(){
-                                // extracted RGB color from pixel 1
-                                let pColor1 = $(".pixel-container1").css("background-color");// rgb
-                                let rgbColor1 = pColor1.match(/\d+/g);// extracts numbers -> ["120", "50", "200"]
-                                let r1 = parseInt(rgbColor1[0]);// will be target1
-                                let g1 = parseInt(rgbColor1[1]);// will be target2
-                                let b1 = parseInt(rgbColor1[2]);// will be target3
-                                
-                                let target1 = r1/256;// output 1 target
-                                let target2 = g1/256;// output 2 target
-                                let target3 = b1/256;// output 3 target
+                                let target1 = $("#target1-val").text();// output 1 target
+                                let target2 = $("#target2-val").text();// output 2 target
+                                let target3 = $("#target3-val").text();// output 3 target
                                 let learning_rate = 0.1;
 
                                 let input1 = parseFloat($("#input1-val").text());
