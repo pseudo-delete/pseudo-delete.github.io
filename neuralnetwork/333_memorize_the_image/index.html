@@ -1152,15 +1152,15 @@
                                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
                                 // extracting rgba per pixels
-                                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                                const imageData = ctx.getImageData(0, 0, img.width, img.height);
                                 const data = imageData.data;// flat array of [r,g,b,a,r,g,b,a]
 
                                 // loop through each pixel
                                 for(let i=0;i<data.length;i+=4)
                                 {
                                     let pixelIndex = i / 4;
-                                    let x = pixelIndex % canvas.width;
-                                    let y = Math.floor(pixelIndex / canvas.width);
+                                    let x = pixelIndex % img.width;
+                                    let y = Math.floor(pixelIndex / img.width);
 
                                     let r = data[i];// red
                                     let g = data[i + 1];// green
