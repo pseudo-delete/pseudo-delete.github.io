@@ -108,7 +108,8 @@ async function loadTable() {
 }
 // end of loading data
 
-// updating data
+/* updating data */
+// for a specific field
 async function updateField(collectionName, docId, fieldName, newValue) {
   const docRef = doc(db, collectionName, docId);
 
@@ -122,7 +123,14 @@ async function updateField(collectionName, docId, fieldName, newValue) {
   }
 }
 
-// end of updating data
+// batch update
+await updateDoc(doc(db, "users", "user123"), {
+  name: "Alice",
+  age: 30,
+  active: true
+});
+
+/* end of updating data */
 
 // deleting all the documents in the collection
 async function deleteCollection(collectionPath, batchSize = 500) {
