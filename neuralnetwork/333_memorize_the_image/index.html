@@ -740,6 +740,9 @@
                                 loadTable();
                             }
 
+                            
+                            const canvasAi = document.getElementById("ai-canvas-display");
+                            const ctxAi = canvasAi.getContext("2d");
                             function fire()
                             {
                                 let input1 = parseFloat($("#input1-val").text());
@@ -1271,9 +1274,6 @@
                             {
                                 const canvas = $("#canvas-display-image")[0];
                                 const ctx = canvas.getContext("2d");
-
-                                const canvasAi = $("#ai-canvas-display")[0];
-                                const ctxAi = canvasAi.getContext("2d");
                                 
                                 const scale = window.devicePixelRatio;// to handle high-dpi screens;
 
