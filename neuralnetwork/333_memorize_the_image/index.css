@@ -14,6 +14,12 @@ canvas
   position: absolute;
 }
 
+canvas-display-image
+{
+  width: auto;
+  height: auto;
+}
+
 /*For global use*/
 .circle-input/*input layer*/
 {
