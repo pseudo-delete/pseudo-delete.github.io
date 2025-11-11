@@ -24,6 +24,7 @@
 
         <div class="current-pixel-id-display-container">
             <label>Current Pixel ID: <span id="current-pixel-id-display">0/0</span></label>
+            <label>Current Cycle: <span id="cycle-counter">0</span></label>
         </div>
     </div>
 
@@ -640,6 +641,103 @@
                                 $("#target2-val").text($("#target2-"+id).text());// target2-val
                                 $("#target3-val").text($("#target3-"+id).text());// target3-val
                             }
+                            /* end of function tableToNetwork(id) */
+
+                            function networktoTable()
+                            {
+                                let input = [];
+                                input.push($("#input1-val").text());// input1-val
+                                input.push($("#input2-val").text());// input2-val
+                                input.push($("#input3-val").text());// input3-val
+
+                                let hidden = [];
+                                hidden.push($("#hidden1-val").text());// hidden1-val
+                                hidden.push($("#hidden2-val").text());// hidden2-val
+                                hidden.push($("#hidden3-val").text());// hidden3-val
+
+                                let output = [];
+                                output.push($("#output1-val").text());// output1-val
+                                output.push($("#output2-val").text());// output2-val
+                                output.push($("#output3-val").text());// output3-val
+
+                                $("#doc-id-val").text();// document id value
+                                $("#id-val").text();// field id value
+
+                                let weight = [];
+                                weight.push($("#weight1-val").text());// weight1-val
+                                weight.push($("#weight2-val").text());// weight2-val
+                                weight.push($("#weight3-val").text());// weight3-val
+                                weight.push($("#weight4-val").text());// weight4-val
+                                weight.push($("#weight5-val").text());// weight5-val
+                                weight.push($("#weight6-val").text());// weight6-val
+                                weight.push($("#weight7-val").text());// weight7-val
+                                weight.push($("#weight8-val").text());// weight8-val
+                                weight.push($("#weight9-val").text());// weight9-val
+                                weight.push($("#weight10-val").text());// weight10-val
+                                weight.push($("#weight11-val").text());// weight11-val
+                                weight.push($("#weight12-val").text());// weight12-val
+                                weight.push($("#weight13-val").text());// weight13-val
+                                weight.push($("#weight14-val").text());// weight14-val
+                                weight.push($("#weight15-val").text());// weight15-val
+                                weight.push($("#weight16-val").text());// weight16-val
+                                weight.push($("#weight17-val").text());// weight17-val
+                                weight.push($("#weight18-val").text());// weight18-val
+
+                                let bias = [];
+                                bias.push($("#bias1-val").text());// bias1-val
+                                bias.push($("#bias2-val").text());// bias2-val
+                                bias.push($("#bias3-val").text());// bias3-val
+                                bias.push($("#bias4-val").text());// bias4-val
+                                bias.push($("#bias5-val").text());// bias5-val
+                                bias.push($("#bias6-val").text());// bias6-val
+
+                                let target = [];
+                                target.push($("#target1-val").text());// target1-val
+                                target.push($("#target2-val").text());// target2-val
+                                target.push($("#target3-val").text());// target3-val
+
+                                updateDoc(doc(db, "image_integration_collection", $("#doc-id-val").text()),
+                                {
+                                    input_1: parseFloat(input[0]),
+                                    input_2: parseFloat(input[1]),
+                                    input_3: parseFloat(input[2]),
+                                    hidden_1: parseFloat(hidden[0]),
+                                    hidden_2: parseFloat(hidden[1]),
+                                    hidden_3: parseFloat(hidden[2]),
+                                    output_1: parseFloat(output[0]),
+                                    output_2: parseFloat(output[1]),
+                                    output_3: parseFloat(output[2]),
+                                    weight_1: parseFloat(weight[0]),
+                                    weight_2: parseFloat(weight[1]),
+                                    weight_3: parseFloat(weight[2]),
+                                    weight_4: parseFloat(weight[3]),
+                                    weight_5: parseFloat(weight[4]),
+                                    weight_6: parseFloat(weight[5]),
+                                    weight_7: parseFloat(weight[6]),
+                                    weight_8: parseFloat(weight[7]),
+                                    weight_9: parseFloat(weight[8]),
+                                    weight_10: parseFloat(weight[9]),
+                                    weight_11: parseFloat(weight[10]),
+                                    weight_12: parseFloat(weight[11]),
+                                    weight_13: parseFloat(weight[12]),
+                                    weight_14: parseFloat(weight[13]),
+                                    weight_15: parseFloat(weight[14]),
+                                    weight_16: parseFloat(weight[15]),
+                                    weight_17: parseFloat(weight[16]),
+                                    weight_18: parseFloat(weight[17]),
+                                    bias_1: parseFloat(bias[0]),
+                                    bias_2: parseFloat(bias[1]),
+                                    bias_3: parseFloat(bias[2]),
+                                    bias_4: parseFloat(bias[3]),
+                                    bias_5: parseFloat(bias[4]),
+                                    bias_6: parseFloat(bias[5]),
+                                    target_1: parseFloat(target[0]),
+                                    target_2: parseFloat(target[1]),
+                                    target_3: parseFloat(target[2])
+                                });
+
+                                loadTable();
+                            }
 
                             function fire()
                             {
@@ -950,6 +1048,10 @@
                             /* pixel id initialization */
                             let pixId = -1;
 
+                            /* Cycle Counter Initialization */
+                            let cycleCounter = 1;
+                            $("#cycle-counter").text(cycleCounter);
+
                             // Start timer
                             $("#btn-start-timer").on("click", function() {
                                 fire();
@@ -970,9 +1072,11 @@
                                         else
                                         {
                                             pixId=0;
+                                            cycleCounter++;
                                         }
                                         $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
                                         $("#row-" + pixId).css("background-color", "yellow");
+                                        $("#cycle-counter").text(cycleCounter);
 
                                         tableToNetwork(pixId);
 

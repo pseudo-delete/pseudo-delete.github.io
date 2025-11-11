@@ -181,6 +181,7 @@ async function createCollection(collectionName) {
 window.db = db; // so you can access it from console for debugging
 window.collection = collection; // so you can access it from console for debugging
 window.addDoc = addDoc; // so you can access it from console for debugging
+window.updateDoc = updateDoc; // so you can access it from console for debugging
 window.getDocs = getDocs; // so you can access it from console for debugging
 window.addData = addData; // so you can call it from button onclick
 window.createCollection = createCollection; // so you can call it from button onclick
