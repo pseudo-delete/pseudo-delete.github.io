@@ -740,6 +740,9 @@
                                 loadTable();
                             }
 
+                            
+                            const canvasAi = document.getElementById("ai-canvas-display");
+                            const ctxAi = canvasAi.getContext("2d");
                             function fire()
                             {
                                 let input1 = parseFloat($("#input1-val").text());
@@ -796,10 +799,7 @@
                                 let g1 = parseInt(parseFloat($("#output2-val").text()) * 256);// Output1: G
                                 let b1 = parseInt(parseFloat($("#output3-val").text()) * 256);// Output1: B
                                 // pixel1 - (RGB):
-                                $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", " + g1 + ", " + b1 + ")");
-
-                                const canvas = document.getElementById("ai-canvas-display");
-                                const ctxAi = canvas.getContext("2d");
+                                // $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", " + g1 + ", " + b1 + ")");
 
                                 let xAi = parseInt($("#x-id").text());
                                 let yAi = parseInt($("#y-id").text());
