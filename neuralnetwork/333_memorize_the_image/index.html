@@ -659,6 +659,8 @@
                                 deleteCollection("image_integration_collection")// Initial delete of all documents in the collection for cleaning up the data-table for use
                                 .then(() => console.log("All documents deleted"))
                                 .catch(console.error);
+
+                                loadTable();
                             });
 
                             $("#btn-generate-neural-val").on('click', function()
