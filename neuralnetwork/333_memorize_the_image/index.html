@@ -21,6 +21,10 @@
         <button id="btn-stop-timer">Stop</button>
         <button id="btn-reset-timer">Reset</button>
         <!-- timer functions script scroll down because it uses function that needs to go first -->
+
+        <div class="current-pixel-id-display-container">
+            <label>Current Pixel ID: <span id="current-pixel-id-display"></span></label>
+        </div>
     </div>
 
     <div class="main">
@@ -885,6 +889,11 @@
                             let count = 0;
                             let timer = null;
 
+                            /* pixel id initialization */
+                            let pixId = 0;
+                            let maxPixId = parseInt($("#calculated-pixel-count").text());
+                            $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
+
                             // Start timer
                             $("#btn-start-timer").on("click", function() {
                                 fire();
@@ -893,6 +902,14 @@
                                         train();
                                         count++;
                                         $("#timer").text(count + " seconds");
+
+                                        // pixel increment loop
+                                        if(pixId<maxPixId)
+                                        {
+                                            pixId++;
+                                        }
+                                        $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
+
                                     }, 1000); // runs every 1000ms (1 second)
                                 }
                             });
