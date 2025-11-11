@@ -1070,24 +1070,24 @@
                                         $("#timer").text(count + " seconds");
 
                                         // pixel coordinate display
-                                        if(xId<uploadedResolutionWidth-1)
-                                        {
-                                            xId++;
-                                        }
-                                        else
-                                        {
-                                            xId=0;
-                                            if(yId<uploadedResolutionHeight-1)
-                                            {
-                                                yId++;
-                                            }
-                                            else
-                                            {
-                                                yId=0;
-                                            }
-                                        }
-                                        $("#x-id").text(xId);
-                                        $("#y-id").text(yId);
+                                        // if(xId<uploadedResolutionWidth-1)
+                                        // {
+                                        //     xId++;
+                                        // }
+                                        // else
+                                        // {
+                                        //     xId=0;
+                                        //     if(yId<uploadedResolutionHeight-1)
+                                        //     {
+                                        //         yId++;
+                                        //     }
+                                        //     else
+                                        //     {
+                                        //         yId=0;
+                                        //     }
+                                        // }
+                                        $("#x-id").text(uploadedResolutionWidth);
+                                        $("#y-id").text(uploadedResolutionHeight);
 
                                         // pixel increment loop
                                         let maxPixId = parseInt($("#calculated-pixel-count").text())-1;
