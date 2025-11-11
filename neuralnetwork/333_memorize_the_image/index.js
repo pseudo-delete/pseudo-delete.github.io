@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-import { getFirestore, collection, doc, addDoc, setDoc, getDocs, query, orderBy, limit, writeBatch, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+import { getFirestore, collection, doc, addDoc, setDoc, getDocs, query, orderBy, limit, writeBatch, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKVbKlfH83XULHnmoyZ_gip3UrxO_i-bc",
@@ -106,6 +106,23 @@ async function loadTable() {
     `);
   });
 }
+// end of loading data
+
+// updating data
+async function updateField(collectionName, docId, fieldName, newValue) {
+  const docRef = doc(db, collectionName, docId);
+
+  try {
+    await updateDoc(docRef, {
+      [fieldName]: newValue  // dynamic field key
+    });
+    console.log(`Field '${fieldName}' updated to '${newValue}'`);
+  } catch (error) {
+    console.error("Error updating field:", error);
+  }
+}
+
+// end of updating data
 
 // deleting all the documents in the collection
 async function deleteCollection(collectionPath, batchSize = 500) {
