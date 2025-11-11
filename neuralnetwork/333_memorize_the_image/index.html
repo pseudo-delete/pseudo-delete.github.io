@@ -912,6 +912,8 @@
                                             pixId=0;
                                         }
                                         $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
+                                        $(".tr-neural-data").css("background-color", "none");
+                                        $("#row-" + pixId).css("background-color", "yellow");
 
                                     }, 1000); // runs every 1000ms (1 second)
                                 }
