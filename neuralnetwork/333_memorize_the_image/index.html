@@ -1150,7 +1150,7 @@
                                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                                 // draw the image on the canvas (scaled)
-                                ctx.drawImage(img, 0, 0);
+                                ctx.drawImage(img, 0, 0, img.width, img.height);
 
                                 // extracting rgba per pixels
                                 const imageData = ctx.getImageData(0, 0, img.width, img.height);
