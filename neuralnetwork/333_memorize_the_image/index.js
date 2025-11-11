@@ -64,44 +64,44 @@ async function loadTable() {
     const d = doc.data();
     tbody.append(`
       <tr class="tr-neural-data" id="row-${d.id}">
-        <td>${doc.id}</td>
-        <td>${d.id || ''}</td>
-        <td>${d.input_1 || ''}</td>
-        <td>${d.input_2 || ''}</td>
-        <td>${d.input_3 || ''}</td>
-        <td>${d.hidden_1 || ''}</td>
-        <td>${d.hidden_2 || ''}</td>
-        <td>${d.hidden_3 || ''}</td>
-        <td>${d.output_1 || ''}</td>
-        <td>${d.output_2 || ''}</td>
-        <td>${d.output_3 || ''}</td>
-        <td>${d.target_1 || ''}</td>
-        <td>${d.target_2 || ''}</td>
-        <td>${d.target_3 || ''}</td>
-        <td>${d.weight_1 || ''}</td>
-        <td>${d.weight_2 || ''}</td>
-        <td>${d.weight_3 || ''}</td>
-        <td>${d.weight_4 || ''}</td>
-        <td>${d.weight_5 || ''}</td>
-        <td>${d.weight_6 || ''}</td>
-        <td>${d.weight_7 || ''}</td>
-        <td>${d.weight_8 || ''}</td>
-        <td>${d.weight_9 || ''}</td>
-        <td>${d.weight_10 || ''}</td>
-        <td>${d.weight_11 || ''}</td>
-        <td>${d.weight_12 || ''}</td>
-        <td>${d.weight_13 || ''}</td>
-        <td>${d.weight_14 || ''}</td>
-        <td>${d.weight_15 || ''}</td>
-        <td>${d.weight_16 || ''}</td>
-        <td>${d.weight_17 || ''}</td>
-        <td>${d.weight_18 || ''}</td>
-        <td>${d.bias_1 || ''}</td>
-        <td>${d.bias_2 || ''}</td>
-        <td>${d.bias_3 || ''}</td>
-        <td>${d.bias_4 || ''}</td>
-        <td>${d.bias_5 || ''}</td>
-        <td>${d.bias_6 || ''}</td>
+        <td id="doc-id-${d.id}">${doc.id}</td>
+        <td id="id-${d.id}">${d.id || ''}</td>
+        <td id="input1-${d.id}">${d.input_1 || ''}</td>
+        <td id="input2-${d.id}">${d.input_2 || ''}</td>
+        <td id="input3-${d.id}">${d.input_3 || ''}</td>
+        <td id="hidden1-${d.id}">${d.hidden_1 || ''}</td>
+        <td id="hidden2-${d.id}">${d.hidden_2 || ''}</td>
+        <td id="hidden3-${d.id}">${d.hidden_3 || ''}</td>
+        <td id="output1-${d.id}">${d.output_1 || ''}</td>
+        <td id="output2-${d.id}">${d.output_2 || ''}</td>
+        <td id="output3-${d.id}">${d.output_3 || ''}</td>
+        <td id="target1-${d.id}">${d.target_1 || ''}</td>
+        <td id="target2-${d.id}">${d.target_2 || ''}</td>
+        <td id="target3-${d.id}">${d.target_3 || ''}</td>
+        <td id="weight1-${d.id}">${d.weight_1 || ''}</td>
+        <td id="weight2-${d.id}">${d.weight_2 || ''}</td>
+        <td id="weight3-${d.id}">${d.weight_3 || ''}</td>
+        <td id="weight4-${d.id}">${d.weight_4 || ''}</td>
+        <td id="weight5-${d.id}">${d.weight_5 || ''}</td>
+        <td id="weight6-${d.id}">${d.weight_6 || ''}</td>
+        <td id="weight7-${d.id}">${d.weight_7 || ''}</td>
+        <td id="weight8-${d.id}">${d.weight_8 || ''}</td>
+        <td id="weight9-${d.id}">${d.weight_9 || ''}</td>
+        <td id="weight10-${d.id}">${d.weight_10 || ''}</td>
+        <td id="weight11-${d.id}">${d.weight_11 || ''}</td>
+        <td id="weight12-${d.id}">${d.weight_12 || ''}</td>
+        <td id="weight13-${d.id}">${d.weight_13 || ''}</td>
+        <td id="weight14-${d.id}">${d.weight_14 || ''}</td>
+        <td id="weight15-${d.id}">${d.weight_15 || ''}</td>
+        <td id="weight16-${d.id}">${d.weight_16 || ''}</td>
+        <td id="weight17-${d.id}">${d.weight_17 || ''}</td>
+        <td id="weight18-${d.id}">${d.weight_18 || ''}</td>
+        <td id="bias1-${d.id}">${d.bias_1 || ''}</td>
+        <td id="bias2-${d.id}">${d.bias_2 || ''}</td>
+        <td id="bias3-${d.id}">${d.bias_3 || ''}</td>
+        <td id="bias4-${d.id}">${d.bias_4 || ''}</td>
+        <td id="bias5-${d.id}">${d.bias_5 || ''}</td>
+        <td id="bias6-${d.id}">${d.bias_6 || ''}</td>
       </tr>
     `);
   });
@@ -124,11 +124,13 @@ async function updateField(collectionName, docId, fieldName, newValue) {
 }
 
 // batch update
-await updateDoc(doc(db, "users", "user123"), {
-  name: "Alice",
-  age: 30,
-  active: true
-});
+// async function batchUpdateFields(collectionName, docId, fieldsToUpdate) {
+//   await updateDoc(doc(db, collectionName, docId), {
+//     name: "Alice",
+//     age: 30,
+//     active: true
+//   });
+// }
 
 /* end of updating data */
 
