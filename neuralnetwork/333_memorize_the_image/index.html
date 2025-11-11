@@ -1052,8 +1052,6 @@
                             // pixel id but x and y coordinates
                             let xId = parseInt($("#x-id").text());
                             let yId = parseInt($("#y-id").text());
-                            let uploadedResolutionWidth = parseInt($("#uploaded-image-resolution-width").text());
-                            let uploadedResolutionHeight = parseInt($("#uploaded-image-resolution-height").text());
 
                             /* Cycle Counter Initialization */
                             let cycleCounter = 1;
@@ -1070,24 +1068,26 @@
                                         $("#timer").text(count + " seconds");
 
                                         // pixel coordinate display
-                                        // if(xId<uploadedResolutionWidth-1)
-                                        // {
-                                        //     xId++;
-                                        // }
-                                        // else
-                                        // {
-                                        //     xId=0;
-                                        //     if(yId<uploadedResolutionHeight-1)
-                                        //     {
-                                        //         yId++;
-                                        //     }
-                                        //     else
-                                        //     {
-                                        //         yId=0;
-                                        //     }
-                                        // }
-                                        $("#x-id").text(uploadedResolutionWidth);
-                                        $("#y-id").text(uploadedResolutionHeight);
+                                        let uploadedResolutionWidth = parseInt($("#uploaded-image-resolution-width").text());
+                                        let uploadedResolutionHeight = parseInt($("#uploaded-image-resolution-height").text());
+                                        if(xId<uploadedResolutionWidth-1)
+                                        {
+                                            xId++;
+                                        }
+                                        else
+                                        {
+                                            xId=0;
+                                            if(yId<uploadedResolutionHeight-1)
+                                            {
+                                                yId++;
+                                            }
+                                            else
+                                            {
+                                                yId=0;
+                                            }
+                                        }
+                                        $("#x-id").text(xId);
+                                        $("#y-id").text(yId);
 
                                         // pixel increment loop
                                         let maxPixId = parseInt($("#calculated-pixel-count").text())-1;
