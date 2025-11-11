@@ -29,8 +29,11 @@
 
     <div class="main">
         <div class="div-neural-net-value">
-            <h5>Weight and Bias values</h5>
+            <h5>Weight, Biases, and Target values</h5>
             <p>
+                Doc ID: <span id="doc-id-val">0</span><br>
+                ID: <span id="id-val">0</span><br><br>
+
                 W1: <span id="weight1-val">0</span><br>
                 W2: <span id="weight2-val">0</span><br>
                 W3: <span id="weight3-val">0</span><br>
@@ -55,7 +58,11 @@
                 B3(For H2): <span id="bias3-val">0</span><br>
                 B4(For O2): <span id="bias4-val">0</span><br>
                 B5(For H3): <span id="bias5-val">0</span><br>
-                B6(For O3): <span id="bias6-val">0</span><br>
+                B6(For O3): <span id="bias6-val">0</span><br><br>
+
+                T1: <span id="target1-val">0</span><br>
+                T2: <span id="target2-val">0</span><br>
+                T3: <span id="target3-val">0</span><br><br>
             </p>
         </div>
         
@@ -585,6 +592,55 @@
                                 return 1/(1+Math.exp(-x));
                             }
 
+                            // transferring the information from data-table to be the current selected value in the network model applying it's values
+                            function tableToNetwork(id)
+                            {
+                                $("#input1-val").text($("#input1-"+id).text());// input1-val
+                                $("#input2-val").text($("#input2-"+id).text());// input2-val
+                                $("#input3-val").text($("#input3-"+id).text());// input3-val
+
+                                $("#hidden1-val").text($("#hidden1-"+id).text());// hidden1-val
+                                $("#hidden2-val").text($("#hidden2-"+id).text());// hidden2-val
+                                $("#hidden3-val").text($("#hidden3-"+id).text());// hidden3-val
+
+                                $("#output1-val").text($("#output1-"+id).text());// output1-val
+                                $("#output2-val").text($("#output2-"+id).text());// output2-val
+                                $("#output3-val").text($("#output3-"+id).text());// output3-val
+
+                                $("#doc-id-val").text($("#doc-id-"+id).text());// document id value
+                                $("#id-val").text($("#id-"+id).text());// field id value
+
+                                $("#weight1-val").text($("#weight1-"+id).text());// weight1-val
+                                $("#weight2-val").text($("#weight2-"+id).text());// weight2-val
+                                $("#weight3-val").text($("#weight3-"+id).text());// weight3-val
+                                $("#weight4-val").text($("#weight4-"+id).text());// weight4-val
+                                $("#weight5-val").text($("#weight5-"+id).text());// weight5-val
+                                $("#weight6-val").text($("#weight6-"+id).text());// weight6-val
+                                $("#weight7-val").text($("#weight7-"+id).text());// weight7-val
+                                $("#weight8-val").text($("#weight8-"+id).text());// weight8-val
+                                $("#weight9-val").text($("#weight9-"+id).text());// weight9-val
+                                $("#weight10-val").text($("#weight10-"+id).text());// weight10-val
+                                $("#weight11-val").text($("#weight11-"+id).text());// weight11-val
+                                $("#weight12-val").text($("#weight12-"+id).text());// weight12-val
+                                $("#weight13-val").text($("#weight13-"+id).text());// weight13-val
+                                $("#weight14-val").text($("#weight14-"+id).text());// weight14-val
+                                $("#weight15-val").text($("#weight15-"+id).text());// weight15-val
+                                $("#weight16-val").text($("#weight16-"+id).text());// weight16-val
+                                $("#weight17-val").text($("#weight17-"+id).text());// weight17-val
+                                $("#weight18-val").text($("#weight18-"+id).text());// weight18-val
+
+                                $("#bias1-val").text($("#bias1-"+id).text());// bias1-val
+                                $("#bias2-val").text($("#bias2-"+id).text());// bias2-val
+                                $("#bias3-val").text($("#bias3-"+id).text());// bias3-val
+                                $("#bias4-val").text($("#bias4-"+id).text());// bias4-val
+                                $("#bias5-val").text($("#bias5-"+id).text());// bias5-val
+                                $("#bias6-val").text($("#bias6-"+id).text());// bias6-val
+
+                                $("#target1-val").text($("#target1-"+id).text());// target1-val
+                                $("#target2-val").text($("#target2-"+id).text());// target2-val
+                                $("#target3-val").text($("#target3-"+id).text());// target3-val
+                            }
+
                             function fire()
                             {
                                 let input1 = parseFloat($("#input1-val").text());
@@ -892,7 +948,7 @@
                             let timer = null;
 
                             /* pixel id initialization */
-                            let pixId = 0;
+                            let pixId = -1;
 
                             // Start timer
                             $("#btn-start-timer").on("click", function() {
@@ -917,6 +973,8 @@
                                         }
                                         $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
                                         $("#row-" + pixId).css("background-color", "yellow");
+
+                                        tableToNetwork(pixId);
 
                                     }, 1000); // runs every 1000ms (1 second)
                                 }
