@@ -740,11 +740,6 @@
                                 loadTable();
                             }
 
-                            
-                            const canvasAi = document.getElementById("ai-canvas-display");
-                            const ctxAi = canvasAi.getContext("2d");
-                            const scaleAi = window.devicePixelRatio;// to handle high-dpi screens;
-                            ctxAi.scale(scaleAi, scaleAi);// to handle high-dpi screens;
                             function fire()
                             {
                                 let input1 = parseFloat($("#input1-val").text());
@@ -1276,6 +1271,9 @@
                             {
                                 const canvas = $("#canvas-display-image")[0];
                                 const ctx = canvas.getContext("2d");
+
+                                const canvasAi = $("#ai-canvas-display")[0];
+                                const ctxAi = canvasAi.getContext("2d");
                                 
                                 const scale = window.devicePixelRatio;// to handle high-dpi screens;
 
@@ -1295,6 +1293,10 @@
                                 ctx.scale(scale, scale);// to handle high-dpi screens;
                                 // // Disable smoothing for crisp pixels
                                 ctx.imageSmoothingEnabled = false;
+
+                                ctxAi.scale(scale, scale);// to handle high-dpi screens;
+                                // // Disable smoothing for crisp pixels
+                                ctxAi.imageSmoothingEnabled = false;
 
                                 // clear previous content
                                 ctx.clearRect(0, 0, canvas.width, canvas.height);
