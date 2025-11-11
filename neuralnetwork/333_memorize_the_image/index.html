@@ -23,7 +23,7 @@
         <!-- timer functions script scroll down because it uses function that needs to go first -->
 
         <div class="current-pixel-id-display-container">
-            <label>Current Pixel ID: <span id="current-pixel-id-display"></span></label>
+            <label>Current Pixel ID: <span id="current-pixel-id-display">0/0</span></label>
         </div>
     </div>
 
@@ -891,8 +891,6 @@
 
                             /* pixel id initialization */
                             let pixId = 0;
-                            let maxPixId = parseInt($("#calculated-pixel-count").text());
-                            $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
 
                             // Start timer
                             $("#btn-start-timer").on("click", function() {
@@ -904,6 +902,7 @@
                                         $("#timer").text(count + " seconds");
 
                                         // pixel increment loop
+                                        let maxPixId = parseInt($("#calculated-pixel-count").text());
                                         if(pixId<maxPixId)
                                         {
                                             pixId++;
