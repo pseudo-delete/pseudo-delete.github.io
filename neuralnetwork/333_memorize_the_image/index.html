@@ -1158,16 +1158,18 @@
                                 // loop through each pixel
                                 for(let i=0;i<data.length;i+=4)
                                 {
-                                    const r = data[i];// red
-                                    const g = data[i + 1];// green
-                                    const b = data[i + 2];// blue
-                                    const a = data[i + 3];// alpha
+                                    let pixelIndex = i / 4;
+                                    let x = pixelIndex % canvas.width;
+                                    let y = Math.floor(pixelIndex / canvas.width);
+
+                                    let r = data[i];// red
+                                    let g = data[i + 1];// green
+                                    let b = data[i + 2];// blue
+                                    let a = data[i + 3];// alpha
 
                                     // example: log first few pixels
-                                    if(i<40)
-                                    {
-                                        console.log(`Pixel ${i/4}: R=${r}, G=${g}, B=${b}, A=${a}`);
-                                    }
+                                    
+                                    console.log(`Pixel (${x},${y}) -> R=${r}, G=${g}, B=${b}, A=${a}`);
                                 }
 
                                 // enabling re/generate neural values button
