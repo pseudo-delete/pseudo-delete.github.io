@@ -643,7 +643,7 @@
                             }
                             /* end of function tableToNetwork(id) */
 
-                            function networktoTable()
+                            function networkToTable()
                             {
                                 let input = [];
                                 input.push($("#input1-val").text());// input1-val
@@ -1059,7 +1059,6 @@
                                     timer = setInterval(function() {
                                         $(".tr-neural-data").css("background-color", "transparent");
 
-                                        train();
                                         count++;
                                         $("#timer").text(count + " seconds");
 
@@ -1079,6 +1078,15 @@
                                         $("#cycle-counter").text(cycleCounter);
 
                                         tableToNetwork(pixId);
+                                        if(cycleCounter<=1)
+                                        {
+                                            fire();
+                                        }
+                                        else if(cycleCounter>1)
+                                        {
+                                            train();
+                                        }
+                                        networkToTable();
 
                                     }, 1000); // runs every 1000ms (1 second)
                                 }
