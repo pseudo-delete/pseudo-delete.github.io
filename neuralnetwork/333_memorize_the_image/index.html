@@ -1273,6 +1273,10 @@
                                 const imageData = ctx.getImageData(0, 0, img.width, img.height);
                                 const data = imageData.data;// flat array of [r,g,b,a,r,g,b,a]
 
+                                /* Cleaning up the data-table for new collection */
+                                createCollection("image_integration_collection"); // initial birth of deleted collection
+                                /* End of Cleaning up the data-table for new collection */
+
                                 // loop through each pixel
                                 let pxI = 0;// pixel index but for looping
                                 for(let i=0;i<data.length;i+=4)
@@ -1289,9 +1293,6 @@
                                     // example: log first few pixels
                                     
                                     console.log(`Pixel (${x},${y}) -> R=${r}, G=${g}, B=${b}, A=${a}`);
-
-                                    createCollection("image_integration_collection"); // initial birth of deleted collection
-                                    /* End of Cleaning up the data-table for new collection */
 
                                     /* randomize each and save on table/firebase database */
                                     // 1. get the total pixel count of an uploaded image
