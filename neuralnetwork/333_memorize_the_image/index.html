@@ -1135,8 +1135,8 @@
                                 const scale = window.devicePixelRatio;// to handle high-dpi screens;
 
                                 // user canvas resolution setting according to uploaded image size
-                                $("#canvas-display-image").css("width", img.width*scale);
-                                $("#canvas-display-image").css("height", img.height*scale);
+                                $("#canvas-display-image").css("width", img.width);
+                                $("#canvas-display-image").css("height", img.height);
                                 $("#uploaded-image-resolution-width").text(img.width);
                                 $("#uploaded-image-resolution-height").text(img.height);
 
