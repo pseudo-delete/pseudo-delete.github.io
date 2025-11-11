@@ -63,7 +63,7 @@ async function loadTable() {
   snapshot.forEach((doc) => {
     const d = doc.data();
     tbody.append(`
-      <tr>
+      <tr id="row-${d.id}">
         <td>${doc.id}</td>
         <td>${d.id || ''}</td>
         <td>${d.input_1 || ''}</td>

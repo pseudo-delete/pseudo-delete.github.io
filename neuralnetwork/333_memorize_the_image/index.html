@@ -907,6 +907,10 @@
                                         {
                                             pixId++;
                                         }
+                                        else
+                                        {
+                                            pixId=0;
+                                        }
                                         $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
 
                                     }, 1000); // runs every 1000ms (1 second)
