@@ -897,6 +897,8 @@
                                 fire();
                                 if (timer === null) { // prevent multiple intervals
                                     timer = setInterval(function() {
+                                        $(".tr-neural-data").css("background-color", "none");
+
                                         train();
                                         count++;
                                         $("#timer").text(count + " seconds");
@@ -912,7 +914,6 @@
                                             pixId=0;
                                         }
                                         $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
-                                        $(".tr-neural-data").css("background-color", "none");
                                         $("#row-" + pixId).css("background-color", "yellow");
 
                                     }, 1000); // runs every 1000ms (1 second)
