@@ -743,6 +743,8 @@
                             
                             const canvasAi = document.getElementById("ai-canvas-display");
                             const ctxAi = canvasAi.getContext("2d");
+                            const scaleAi = window.devicePixelRatio;// to handle high-dpi screens;
+                            ctxAi.scale(scale, scale);// to handle high-dpi screens;
                             function fire()
                             {
                                 let input1 = parseFloat($("#input1-val").text());
@@ -803,6 +805,8 @@
 
                                 let xAi = parseInt($("#x-id").text());
                                 let yAi = parseInt($("#y-id").text());
+
+
 
                                 ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
                                 ctxAi.fillRect(xAi*15, yAi*15, 15, 15); // 1x1 pixel
