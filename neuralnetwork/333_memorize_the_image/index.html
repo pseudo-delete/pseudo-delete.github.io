@@ -1142,6 +1142,7 @@
                                 $("#ai-canvas-display").css("width", img.width);
                                 $("#ai-canvas-display").css("height", img.height);
 
+
                                 const canvas = $("#canvas-display-image")[0];
                                 const ctx = canvas.getContext("2d");
 
@@ -1149,7 +1150,7 @@
                                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                                 // draw the image on the canvas (scaled)
-                                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                                ctx.drawImage(img, 0, 0);
 
                                 // extracting rgba per pixels
                                 const imageData = ctx.getImageData(0, 0, img.width, img.height);
