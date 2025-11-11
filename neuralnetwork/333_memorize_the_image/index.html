@@ -1129,6 +1129,8 @@
                             const img = new Image();
                             img.onload = function()
                             {
+                                const canvas = $("#canvas-display-image")[0];
+                                const ctx = canvas.getContext("2d");
                                 
                                 const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
 
@@ -1144,10 +1146,6 @@
                                 // ai canvas resolution setting also according to uploaded image size
                                 $("#ai-canvas-display").css("width", img.width);
                                 $("#ai-canvas-display").css("height", img.height);
-
-
-                                const canvas = $("#canvas-display-image")[0];
-                                const ctx = canvas.getContext("2d");
 
                                 // clear previous content
                                 ctx.clearRect(0, 0, canvas.width, canvas.height);
