@@ -820,48 +820,48 @@
                             $("#btn-generate-neural-val").on('click', function()
                             {
 
-                                createCollection("image_integration_collection"); // initial birth of deleted collection
-                                /* End of Cleaning up the data-table for new collection */
+                                // createCollection("image_integration_collection"); // initial birth of deleted collection
+                                //     /* End of Cleaning up the data-table for new collection */
 
-                                /* randomize each and save on table/firebase database */
-                                // 1. get the total pixel count of an uploaded image
-                                let totalPixelCount = parseInt($("#calculated-pixel-count").text());
-                                // 2. After this button is clicked, it'll start to generate random values in the table so each neuron elements and values on each network are saved
+                                //     /* randomize each and save on table/firebase database */
+                                //     // 1. get the total pixel count of an uploaded image
+                                //     let totalPixelCount = parseInt($("#calculated-pixel-count").text());
+                                //     // 2. After this button is clicked, it'll start to generate random values in the table so each neuron elements and values on each network are saved
 
-                                for (let i=0; i<totalPixelCount; i++){
-                                    $("#input1-val").text(Math.random());
-                                    $("#input2-val").text(Math.random());
-                                    $("#input3-val").text(Math.random());
-                                    
-                                    $("#weight1-val").text(Math.random());
-                                    $("#weight2-val").text(Math.random());
-                                    $("#weight3-val").text(Math.random());
-                                    $("#weight4-val").text(Math.random());
-                                    $("#weight5-val").text(Math.random());
-                                    $("#weight6-val").text(Math.random());
-                                    $("#weight7-val").text(Math.random());
-                                    $("#weight8-val").text(Math.random());
-                                    $("#weight9-val").text(Math.random());
-                                    $("#weight10-val").text(Math.random());
-                                    $("#weight11-val").text(Math.random());
-                                    $("#weight12-val").text(Math.random());
-                                    $("#weight13-val").text(Math.random());
-                                    $("#weight14-val").text(Math.random());
-                                    $("#weight15-val").text(Math.random());
-                                    $("#weight16-val").text(Math.random());
-                                    $("#weight17-val").text(Math.random());
-                                    $("#weight18-val").text(Math.random());
+                                //     for (let i=0; i<totalPixelCount; i++){
+                                //         $("#input1-val").text(Math.random());
+                                //         $("#input2-val").text(Math.random());
+                                //         $("#input3-val").text(Math.random());
+                                        
+                                //         $("#weight1-val").text(Math.random());
+                                //         $("#weight2-val").text(Math.random());
+                                //         $("#weight3-val").text(Math.random());
+                                //         $("#weight4-val").text(Math.random());
+                                //         $("#weight5-val").text(Math.random());
+                                //         $("#weight6-val").text(Math.random());
+                                //         $("#weight7-val").text(Math.random());
+                                //         $("#weight8-val").text(Math.random());
+                                //         $("#weight9-val").text(Math.random());
+                                //         $("#weight10-val").text(Math.random());
+                                //         $("#weight11-val").text(Math.random());
+                                //         $("#weight12-val").text(Math.random());
+                                //         $("#weight13-val").text(Math.random());
+                                //         $("#weight14-val").text(Math.random());
+                                //         $("#weight15-val").text(Math.random());
+                                //         $("#weight16-val").text(Math.random());
+                                //         $("#weight17-val").text(Math.random());
+                                //         $("#weight18-val").text(Math.random());
 
-                                    $("#bias1-val").text(Math.random());
-                                    $("#bias2-val").text(Math.random());
-                                    $("#bias3-val").text(Math.random());
-                                    $("#bias4-val").text(Math.random());
-                                    $("#bias5-val").text(Math.random());
-                                    $("#bias6-val").text(Math.random());
-                                    addData(i);
-                                }
+                                //         $("#bias1-val").text(Math.random());
+                                //         $("#bias2-val").text(Math.random());
+                                //         $("#bias3-val").text(Math.random());
+                                //         $("#bias4-val").text(Math.random());
+                                //         $("#bias5-val").text(Math.random());
+                                //         $("#bias6-val").text(Math.random());
+                                //         addData(i);
+                                //     }
 
-                                loadTable();
+                                //     loadTable();
                             });
 
                             function train(){
@@ -1274,6 +1274,7 @@
                                 const data = imageData.data;// flat array of [r,g,b,a,r,g,b,a]
 
                                 // loop through each pixel
+                                let pxI = 0;// pixel index but for looping
                                 for(let i=0;i<data.length;i+=4)
                                 {
                                     let pixelIndex = i / 4;
@@ -1288,7 +1289,53 @@
                                     // example: log first few pixels
                                     
                                     console.log(`Pixel (${x},${y}) -> R=${r}, G=${g}, B=${b}, A=${a}`);
+
+                                    createCollection("image_integration_collection"); // initial birth of deleted collection
+                                    /* End of Cleaning up the data-table for new collection */
+
+                                    /* randomize each and save on table/firebase database */
+                                    // 1. get the total pixel count of an uploaded image
+                                    let totalPixelCount = parseInt($("#calculated-pixel-count").text());
+                                    // 2. After this button is clicked, it'll start to generate random values in the table so each neuron elements and values on each network are saved
+
+                                    $("#input1-val").text(Math.random());
+                                    $("#input2-val").text(Math.random());
+                                    $("#input3-val").text(Math.random());
+                                    
+                                    $("#weight1-val").text(Math.random());
+                                    $("#weight2-val").text(Math.random());
+                                    $("#weight3-val").text(Math.random());
+                                    $("#weight4-val").text(Math.random());
+                                    $("#weight5-val").text(Math.random());
+                                    $("#weight6-val").text(Math.random());
+                                    $("#weight7-val").text(Math.random());
+                                    $("#weight8-val").text(Math.random());
+                                    $("#weight9-val").text(Math.random());
+                                    $("#weight10-val").text(Math.random());
+                                    $("#weight11-val").text(Math.random());
+                                    $("#weight12-val").text(Math.random());
+                                    $("#weight13-val").text(Math.random());
+                                    $("#weight14-val").text(Math.random());
+                                    $("#weight15-val").text(Math.random());
+                                    $("#weight16-val").text(Math.random());
+                                    $("#weight17-val").text(Math.random());
+                                    $("#weight18-val").text(Math.random());
+
+                                    $("#bias1-val").text(Math.random());
+                                    $("#bias2-val").text(Math.random());
+                                    $("#bias3-val").text(Math.random());
+                                    $("#bias4-val").text(Math.random());
+                                    $("#bias5-val").text(Math.random());
+                                    $("#bias6-val").text(Math.random());
+
+                                    $("#target1-val").text(r/256);
+                                    $("#target2-val").text(g/256);
+                                    $("#target3-val").text(b/256);
+                                    addData(pxI);
+                                    pxI++;
                                 }
+                                
+                                loadTable();
 
                                 // enabling re/generate neural values button
                                 $("#btn-generate-neural-val").prop("disabled", false);
