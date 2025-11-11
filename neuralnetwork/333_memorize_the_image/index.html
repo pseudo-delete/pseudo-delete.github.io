@@ -1273,7 +1273,7 @@
                                 const canvas = $("#canvas-display-image")[0];
                                 const ctx = canvas.getContext("2d");
                                 
-                                const scale = window.devicePixelRatio;// to handle high-dpi screens;
+                                // const scale = window.devicePixelRatio;// to handle high-dpi screens;
 
                                 // user canvas resolution setting according to uploaded image size
                                 $("#canvas-display-image").css("width", img.width);
@@ -1285,8 +1285,8 @@
                                 $("#calculated-pixel-count").text(totalPixelCount);
 
                                 // ai canvas resolution setting also according to uploaded image size
-                                $("#ai-canvas-display").css("width", img.width*scale);
-                                $("#ai-canvas-display").css("height", img.height*scale);
+                                $("#ai-canvas-display").css("width", img.width);
+                                $("#ai-canvas-display").css("height", img.height);
 
                                 ctx.scale(scale, scale);// to handle high-dpi screens;
                                 // // Disable smoothing for crisp pixels
