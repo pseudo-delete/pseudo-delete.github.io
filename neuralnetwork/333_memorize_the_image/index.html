@@ -1134,7 +1134,9 @@
                                 $("#canvas-display-image").css("height", img.height);
                                 $("#uploaded-image-resolution-width").text(img.width);
                                 $("#uploaded-image-resolution-height").text(img.height);
-                                $("#calculated-pixel-count").text(img.width * img.height);
+
+                                let totalPixelCount = img.width * img.height;
+                                $("#calculated-pixel-count").text(totalPixelCount);
 
                                 // ai canvas resolution setting also according to uploaded image size
                                 $("#ai-canvas-display").css("width", img.width);
@@ -1149,6 +1151,26 @@
                                 // draw the image on the canvas (scaled)
                                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
+                                // extracting rgba per pixels
+                                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                                const data = imageData.data;// flat array of [r,g,b,a,r,g,b,a]
+
+                                // loop through each pixel
+                                for(let i=0;i<data.length();i+=4)
+                                {
+                                    const r = data[i];// red
+                                    const g = data[i + 1];// green
+                                    const b = data[i + 2];// blue
+                                    const a = data[i + 3];// alpha
+                                }
+
+                                // example: log first few pixels
+                                if(i<totalPixelCount)
+                                {
+                                    console.log(`Pixel ${i/4}: R=${r}, G=${g}, B=${b}, A=${a}`);
+                                }
+
+                                // enabling re/generate neural values button
                                 $("#btn-generate-neural-val").prop("disabled", false);
                             };
                             img.src = e.target.result;
