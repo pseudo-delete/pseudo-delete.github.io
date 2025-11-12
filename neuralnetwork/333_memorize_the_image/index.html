@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="index.css">
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.13.0/dist/tf.min.js"></script> -->
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -707,57 +706,140 @@
                             
                             const canvasAi = document.getElementById("ai-canvas-display");
                             const ctxAi = canvasAi.getContext("2d");
+                            function fire()
+                            {
+                                let input1 = parseFloat($("#input1-val").text());
+                                let input2 = parseFloat($("#input2-val").text());
+                                let input3 = parseFloat($("#input3-val").text());
+                                
+                                let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1
+                                let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1
+                                let weight3 = parseFloat($("#weight3-val").text());// input2 - hidden1
+                                let weight4 = parseFloat($("#weight4-val").text());// input1 - hidden2
+                                let weight5 = parseFloat($("#weight5-val").text());// input2 - hidden2
+                                let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1
+                                let weight7 = parseFloat($("#weight7-val").text());// hidden1 - output2
+                                let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2
+                                let weight9 = parseFloat($("#weight9-val").text());// input3 - hidden1
+                                let weight10 = parseFloat($("#weight10-val").text());// input3 - hidden2
+                                let weight11 = parseFloat($("#weight11-val").text());// input1 - hidden3
+                                let weight12 = parseFloat($("#weight12-val").text());// input2 - hidden3
+                                let weight13 = parseFloat($("#weight13-val").text());// input3 - hidden3
+                                let weight14 = parseFloat($("#weight14-val").text());// hidden3 - output1
+                                let weight15 = parseFloat($("#weight15-val").text());// hidden3 - output2
+                                
+                                let weight16 = parseFloat($("#weight16-val").text());// hidden1 - output3
+                                let weight17 = parseFloat($("#weight17-val").text());// hidden2 - output3
+                                let weight18 = parseFloat($("#weight18-val").text());// hidden3 - output3
+
+                                let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
+                                let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
+                                let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
+                                let bias4 = parseFloat($("#bias4-val").text());// to output2 bias
+                                let bias5 = parseFloat($("#bias5-val").text());// to hidden3 bias
+                                let bias6 = parseFloat($("#bias6-val").text());// to output3 bias
+                                
+                                let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + (weight9*input3) + bias1);
+                                $("#hidden1-val").text(hidden1);
+
+                                let hidden2 = sigmoid((weight4*input1) + (weight5*input2) + (weight10*input3) + bias3);
+                                $("#hidden2-val").text(hidden2);
+                                
+                                let hidden3 = sigmoid((weight11*input1) + (weight12*input2) + (weight13*input3) + bias5);
+                                $("#hidden3-val").text(hidden3);
+                                
+                                let output1 = sigmoid((weight2*hidden1) + (weight6*hidden2) + (weight14*hidden3) + bias2);
+                                $("#output1-val").text(output1);
+
+                                let output2 = sigmoid((weight8*hidden1) + (weight7*hidden2) + (weight15*hidden3) + bias4);
+                                $("#output2-val").text(output2);
+
+                                let output3 = sigmoid((weight16*hidden1) + (weight17*hidden2) + (weight18*hidden3) + bias6);
+                                $("#output3-val").text(output3);
+
+                                // setting ai-pixel1 color based on fired value
+                                let r1 = parseInt(parseFloat($("#output1-val").text()) * 256);// Output1: R
+                                let g1 = parseInt(parseFloat($("#output2-val").text()) * 256);// Output1: G
+                                let b1 = parseInt(parseFloat($("#output3-val").text()) * 256);// Output1: B
+                                // pixel1 - (RGB):
+                                // $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", " + g1 + ", " + b1 + ")");
+
+                                let xAi = parseInt($("#x-id").text());
+                                let yAi = parseInt($("#y-id").text());
+
+                                ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
+                                ctxAi.fillRect(xAi, yAi, 1, 1); // 1x1 pixel
+                                /*
+                                hidden = sigmoid((weight1*input) + bias1)
+                                output = sigmoid((weight2*hidden)+ bias2)
+                                */
+                                /*
+                                1️⃣ Forward:
+                                h=σ(w1x+b1)h = \sigma(w_1 x + b_1)h=σ(w1​x+b1​)
+                                y=σ(w2h+b2)y = \sigma(w_2 h + b_2)y=σ(w2​h+b2​)
+                                */
+                            }
+
                             async function fireTF() {
+                                // Ensure TensorFlow uses the GPU if available
                                 await tf.setBackend('webgl');
                                 await tf.ready();
 
-                                tf.tidy(() => {
-                                    // --- INPUT ---
-                                    const inputTensor = tf.tensor([[parseFloat($("#input1-val").text()),
-                                                                    parseFloat($("#input2-val").text()),
-                                                                    parseFloat($("#input3-val").text())]]);
+                                // --- 🔹 INPUTS ---
+                                const input1 = parseFloat($("#input1-val").text());
+                                const input2 = parseFloat($("#input2-val").text());
+                                const input3 = parseFloat($("#input3-val").text());
+                                const inputTensor = tf.tensor([[input1, input2, input3]]); // shape [1,3]
 
-                                    const W_input_hidden = tf.tensor([
-                                        [parseFloat($("#weight1-val").text()), parseFloat($("#weight4-val").text()), parseFloat($("#weight11-val").text())],
-                                        [parseFloat($("#weight3-val").text()), parseFloat($("#weight5-val").text()), parseFloat($("#weight12-val").text())],
-                                        [parseFloat($("#weight9-val").text()), parseFloat($("#weight10-val").text()), parseFloat($("#weight13-val").text())]
-                                    ]);
-                                    const bias_hidden = tf.tensor([parseFloat($("#bias1-val").text()),
-                                                                parseFloat($("#bias3-val").text()),
-                                                                parseFloat($("#bias5-val").text())]);
+                                // --- 🔹 WEIGHTS (input → hidden) ---
+                                const W_input_hidden = tf.tensor([
+                                    [parseFloat($("#weight1-val").text()), parseFloat($("#weight4-val").text()), parseFloat($("#weight11-val").text())], // from input1
+                                    [parseFloat($("#weight3-val").text()), parseFloat($("#weight5-val").text()), parseFloat($("#weight12-val").text())], // from input2
+                                    [parseFloat($("#weight9-val").text()), parseFloat($("#weight10-val").text()), parseFloat($("#weight13-val").text())]  // from input3
+                                ]); // shape [3,3]
 
-                                    const hidden = tf.sigmoid(inputTensor.matMul(W_input_hidden).add(bias_hidden));
+                                const bias_hidden = tf.tensor([
+                                    parseFloat($("#bias1-val").text()),  // bias for hidden1
+                                    parseFloat($("#bias3-val").text()),  // bias for hidden2
+                                    parseFloat($("#bias5-val").text())   // bias for hidden3
+                                ]); // shape [3]
 
-                                    const W_hidden_output = tf.tensor([
-                                        [parseFloat($("#weight2-val").text()), parseFloat($("#weight7-val").text()), parseFloat($("#weight16-val").text())],
-                                        [parseFloat($("#weight6-val").text()), parseFloat($("#weight8-val").text()), parseFloat($("#weight17-val").text())],
-                                        [parseFloat($("#weight14-val").text()), parseFloat($("#weight15-val").text()), parseFloat($("#weight18-val").text())]
-                                    ]);
-                                    const bias_output = tf.tensor([parseFloat($("#bias2-val").text()),
-                                                                parseFloat($("#bias4-val").text()),
-                                                                parseFloat($("#bias6-val").text())]);
+                                // --- 🔹 Hidden layer ---
+                                const hidden = tf.sigmoid(inputTensor.matMul(W_input_hidden).add(bias_hidden));
 
-                                    const output = tf.sigmoid(hidden.matMul(W_hidden_output).add(bias_output));
+                                // --- 🔹 WEIGHTS (hidden → output) ---
+                                const W_hidden_output = tf.tensor([
+                                    [parseFloat($("#weight2-val").text()), parseFloat($("#weight7-val").text()), parseFloat($("#weight16-val").text())], // from hidden1
+                                    [parseFloat($("#weight6-val").text()), parseFloat($("#weight8-val").text()), parseFloat($("#weight17-val").text())], // from hidden2
+                                    [parseFloat($("#weight14-val").text()), parseFloat($("#weight15-val").text()), parseFloat($("#weight18-val").text())] // from hidden3
+                                ]); // shape [3,3]
 
-                                    // Convert to RGB
-                                    const rgb = output.mul(255).dataSync(); // synchronous read is safe in tidy
-                                    const r1 = Math.min(255, Math.max(0, Math.floor(rgb[0])));
-                                    const g1 = Math.min(255, Math.max(0, Math.floor(rgb[1])));
-                                    const b1 = Math.min(255, Math.max(0, Math.floor(rgb[2])));
+                                const bias_output = tf.tensor([
+                                    parseFloat($("#bias2-val").text()),  // output1 bias
+                                    parseFloat($("#bias4-val").text()),  // output2 bias
+                                    parseFloat($("#bias6-val").text())   // output3 bias
+                                ]); // shape [3]
 
-                                    // Update display
-                                    $("#output1-val").text(r1 / 256);
-                                    $("#output2-val").text(g1 / 256);
-                                    $("#output3-val").text(b1 / 256);
+                                // --- 🔹 Output layer ---
+                                const output = tf.sigmoid(hidden.matMul(W_hidden_output).add(bias_output)); // shape [1,3]
 
-                                    // Draw pixel
-                                    const xAi = parseInt($("#x-id").text());
-                                    const yAi = parseInt($("#y-id").text());
-                                    ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
-                                    ctxAi.fillRect(xAi, yAi, 1, 1);
-                                }); // tidy automatically disposes all tensors
-                            }
+                                // --- 🔹 Convert output to RGB ---
+                                const rgb = (await output.mul(256).data());
+                                const r1 = Math.floor(rgb[0]);
+                                const g1 = Math.floor(rgb[1]);
+                                const b1 = Math.floor(rgb[2]);
 
+                                // --- 🔹 Update display ---
+                                $("#output1-val").text(r1 / 256);
+                                $("#output2-val").text(g1 / 256);
+                                $("#output3-val").text(b1 / 256);
+
+                                // --- 🔹 Draw pixel on canvas ---
+                                const xAi = parseInt($("#x-id").text());
+                                const yAi = parseInt($("#y-id").text());
+                                ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
+                                ctxAi.fillRect(xAi, yAi, 1, 1);
+                            }// tensorflow fire()
 
                             $("#btn-clear-neural-val").on('click', function()
                             {
@@ -928,7 +1010,7 @@
                                 $("#bias6-val").text(bias6);
 
                                 // fire neural network once again
-                                fireTF();
+                                fire();
                             }
 
                             $("#btn-fire").on('click', function()
@@ -987,7 +1069,7 @@
                                     tableToNetwork(pixId);
                                     if(cycleCounter<=1)
                                     {
-                                        fireTF();
+                                        fire();
                                     }
                                     else if(cycleCounter>1)
                                     {
@@ -1219,7 +1301,6 @@
                                         appendNeuralDataRow(pxI, input, target, weight, bias);
                                     }
                                 });
-
                             };
                             img.src = e.target.result;
                         }
