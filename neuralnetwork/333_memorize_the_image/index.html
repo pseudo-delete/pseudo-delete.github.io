@@ -1042,7 +1042,7 @@
                             $("#btn-start-timer").on("click", function() {
                                 async function step() {
                                     await fireTF();
-
+                                    
                                     $(".tr-neural-data").css("background-color", "transparent");
 
                                     count++;
@@ -1070,11 +1070,13 @@
                                     if(cycleCounter<=1)
                                     {
                                         fire();
+                                        train();
                                     }
                                     else if(cycleCounter>1)
                                     {
                                         train();
                                     }
+                                    train();
                                     networkToTable(pixId);
 
                                     // pixel coordinate display
