@@ -1237,13 +1237,14 @@
                                 clearNeuralDataTable();
 
                                 const canvas = $("#canvas-display-image")[0];
+                                const canvasAi = $("#ai-canvas-display")[0];
                                 const ctx = canvas.getContext("2d");
                                 
-                                const scale = window.devicePixelRatio;// to handle high-dpi screens;
+                                // const scale = window.devicePixelRatio;// to handle high-dpi screens;
 
                                 // user canvas resolution setting according to uploaded image size
-                                $("#canvas-display-image").css("width", img.width);
-                                $("#canvas-display-image").css("height", img.height);
+                                canvas.width = img.width;
+                                canvas.height = img.height;
                                 $("#uploaded-image-resolution-width").text(img.width);
                                 $("#uploaded-image-resolution-height").text(img.height);
 
@@ -1251,10 +1252,10 @@
                                 $("#calculated-pixel-count").text(totalPixelCount);
 
                                 // ai canvas resolution setting also according to uploaded image size
-                                $("#ai-canvas-display").css("width", img.width*2);
-                                $("#ai-canvas-display").css("height", img.height*2);
+                                canvasAi.width = img.width;
+                                canvasAi.height = img.height;
 
-                                ctx.scale(scale, scale);// to handle high-dpi screens;
+                                // ctx.scale(scale, scale);// to handle high-dpi screens;
                                 // // Disable smoothing for crisp pixels
                                 ctx.imageSmoothingEnabled = false;
 
@@ -1262,7 +1263,7 @@
                                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                                 // draw the image on the canvas (scaled)
-                                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                                ctx.drawImage(img, 0, 0, img.width, img.height);
 
                                 // extracting rgba per pixels
                                 const imageData = ctx.getImageData(0, 0, img.width, img.height);
