@@ -6,6 +6,11 @@
     <title>Gero - Main Menu</title>
     
     <script src="https://cdn.jsdelivr.net/npm/gpu.js@2.11.0/dist/gpu-browser.min.js"></script>
+    <script>
+    const gpu = new GPU(); // now this works
+    console.log(gpu);
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 
 
@@ -1165,7 +1170,6 @@
                             const img = new Image();
                             img.onload = function()
                             {
-                                const gpu = new GPU();
 
                                 // Prepare separate arrays for R, G, B
                                 const rArray = new Float32Array(img.width * img.height);
