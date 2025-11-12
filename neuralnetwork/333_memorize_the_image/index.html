@@ -768,7 +768,7 @@
 
 
                                 ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
-                                ctxAi.fillRect(xAi*15, yAi*10, 15, 10); // 1x1 pixel
+                                ctxAi.fillRect(xAi, yAi, 1, 1); // 1x1 pixel
                                 /*
                                 hidden = sigmoid((weight1*input) + bias1)
                                 output = sigmoid((weight2*hidden)+ bias2)
@@ -783,11 +783,13 @@
                             $("#btn-clear-neural-val").on('click', function()
                             {
                                 /* Cleaning up the data-table for new collection */
-                                deleteCollection("image_integration_collection")// Initial delete of all documents in the collection for cleaning up the data-table for use
-                                .then(() => console.log("All documents deleted"))
-                                .catch(console.error);
+                                // deleteCollection("image_integration_collection")// Initial delete of all documents in the collection for cleaning up the data-table for use
+                                // .then(() => console.log("All documents deleted"))
+                                // .catch(console.error);
 
-                                loadTable();
+                                // loadTable();
+
+                                clearNeuralDataTable();
                             });
 
                             $("#btn-generate-neural-val").on('click', function()
