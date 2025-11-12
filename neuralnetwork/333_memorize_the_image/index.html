@@ -706,80 +706,6 @@
                             
                             const canvasAi = document.getElementById("ai-canvas-display");
                             const ctxAi = canvasAi.getContext("2d");
-                            function fire()
-                            {
-                                let input1 = parseFloat($("#input1-val").text());
-                                let input2 = parseFloat($("#input2-val").text());
-                                let input3 = parseFloat($("#input3-val").text());
-                                
-                                let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1
-                                let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1
-                                let weight3 = parseFloat($("#weight3-val").text());// input2 - hidden1
-                                let weight4 = parseFloat($("#weight4-val").text());// input1 - hidden2
-                                let weight5 = parseFloat($("#weight5-val").text());// input2 - hidden2
-                                let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1
-                                let weight7 = parseFloat($("#weight7-val").text());// hidden1 - output2
-                                let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2
-                                let weight9 = parseFloat($("#weight9-val").text());// input3 - hidden1
-                                let weight10 = parseFloat($("#weight10-val").text());// input3 - hidden2
-                                let weight11 = parseFloat($("#weight11-val").text());// input1 - hidden3
-                                let weight12 = parseFloat($("#weight12-val").text());// input2 - hidden3
-                                let weight13 = parseFloat($("#weight13-val").text());// input3 - hidden3
-                                let weight14 = parseFloat($("#weight14-val").text());// hidden3 - output1
-                                let weight15 = parseFloat($("#weight15-val").text());// hidden3 - output2
-                                
-                                let weight16 = parseFloat($("#weight16-val").text());// hidden1 - output3
-                                let weight17 = parseFloat($("#weight17-val").text());// hidden2 - output3
-                                let weight18 = parseFloat($("#weight18-val").text());// hidden3 - output3
-
-                                let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
-                                let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
-                                let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
-                                let bias4 = parseFloat($("#bias4-val").text());// to output2 bias
-                                let bias5 = parseFloat($("#bias5-val").text());// to hidden3 bias
-                                let bias6 = parseFloat($("#bias6-val").text());// to output3 bias
-                                
-                                let hidden1 = sigmoid((weight1*input1) + (weight3*input2) + (weight9*input3) + bias1);
-                                $("#hidden1-val").text(hidden1);
-
-                                let hidden2 = sigmoid((weight4*input1) + (weight5*input2) + (weight10*input3) + bias3);
-                                $("#hidden2-val").text(hidden2);
-                                
-                                let hidden3 = sigmoid((weight11*input1) + (weight12*input2) + (weight13*input3) + bias5);
-                                $("#hidden3-val").text(hidden3);
-                                
-                                let output1 = sigmoid((weight2*hidden1) + (weight6*hidden2) + (weight14*hidden3) + bias2);
-                                $("#output1-val").text(output1);
-
-                                let output2 = sigmoid((weight8*hidden1) + (weight7*hidden2) + (weight15*hidden3) + bias4);
-                                $("#output2-val").text(output2);
-
-                                let output3 = sigmoid((weight16*hidden1) + (weight17*hidden2) + (weight18*hidden3) + bias6);
-                                $("#output3-val").text(output3);
-
-                                // setting ai-pixel1 color based on fired value
-                                let r1 = parseInt(parseFloat($("#output1-val").text()) * 256);// Output1: R
-                                let g1 = parseInt(parseFloat($("#output2-val").text()) * 256);// Output1: G
-                                let b1 = parseInt(parseFloat($("#output3-val").text()) * 256);// Output1: B
-                                // pixel1 - (RGB):
-                                // $(".ai-pixel1").css("background-color", "rgb("+ r1 + ", " + g1 + ", " + b1 + ")");
-
-                                let xAi = parseInt($("#x-id").text());
-                                let yAi = parseInt($("#y-id").text());
-
-                                ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
-                                ctxAi.fillRect(xAi, yAi, 1, 1); // 1x1 pixel
-                                /*
-                                hidden = sigmoid((weight1*input) + bias1)
-                                output = sigmoid((weight2*hidden)+ bias2)
-                                */
-                                /*
-                                1️⃣ Forward:
-                                h=σ(w1x+b1)h = \sigma(w_1 x + b_1)h=σ(w1​x+b1​)
-                                y=σ(w2h+b2)y = \sigma(w_2 h + b_2)y=σ(w2​h+b2​)
-                                */
-                            }
-
                             async function fireTF() {
                                 // Ensure TensorFlow uses the GPU if available
                                 await tf.setBackend('webgl');
@@ -1236,129 +1162,47 @@
                             const img = new Image();
                             img.onload = function()
                             {
-                                clearNeuralDataTable();
+                                const gpu = new GPU();
 
-                                const canvas = $("#canvas-display-image")[0];
-                                const canvasAi = $("#ai-canvas-display")[0];
-                                const ctx = canvas.getContext("2d");
-                                
-                                // const scale = window.devicePixelRatio;// to handle high-dpi screens;
+                                // Prepare separate arrays for R, G, B
+                                const rArray = new Float32Array(img.width * img.height);
+                                const gArray = new Float32Array(img.width * img.height);
+                                const bArray = new Float32Array(img.width * img.height);
 
-                                // user canvas resolution setting according to uploaded image size
-                                canvas.width = img.width;
-                                canvas.height = img.height;
-                                $("#uploaded-image-resolution-width").text(img.width);
-                                $("#uploaded-image-resolution-height").text(img.height);
+                                // Create a GPU kernel to extract RGB and normalize to 0-1
+                                const extractRGB = gpu.createKernel(function(data, width) {
+                                    const i = this.thread.x * 4; // flat RGBA index
+                                    return data[i + this.constants.channel]; // 0=R,1=G,2=B
+                                })
+                                .setOutput([img.width * img.height])
+                                .setConstants({ channel: 0 }); // will set to 0,1,2 for R,G,B
 
-                                let totalPixelCount = img.width * img.height;
-                                $("#calculated-pixel-count").text(totalPixelCount);
+                                // Extract R
+                                extractRGB.setConstants({ channel: 0 });
+                                const rGpu = extractRGB(imageData.data, img.width);
 
-                                // ai canvas resolution setting also according to uploaded image size
-                                canvasAi.width = img.width;
-                                canvasAi.height = img.height;
+                                // Extract G
+                                extractRGB.setConstants({ channel: 1 });
+                                const gGpu = extractRGB(imageData.data, img.width);
 
-                                // ctx.scale(scale, scale);// to handle high-dpi screens;
-                                // // Disable smoothing for crisp pixels
-                                ctx.imageSmoothingEnabled = false;
+                                // Extract B
+                                extractRGB.setConstants({ channel: 2 });
+                                const bGpu = extractRGB(imageData.data, img.width);
 
-                                // clear previous content
-                                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                                // Now you have GPU-processed arrays
+                                for(let pxI=0; pxI<rGpu.length; pxI++){
+                                    let r = rGpu[pxI]/256;
+                                    let g = gGpu[pxI]/256;
+                                    let b = bGpu[pxI]/256;
 
-                                // draw the image on the canvas (scaled)
-                                ctx.drawImage(img, 0, 0, img.width, img.height);
-
-                                // extracting rgba per pixels
-                                const imageData = ctx.getImageData(0, 0, img.width, img.height);
-                                const data = imageData.data;// flat array of [r,g,b,a,r,g,b,a]
-
-                                /* Cleaning up the data-table for new collection */
-                                // createCollection("image_integration_collection"); // initial birth of deleted collection
-                                /* End of Cleaning up the data-table for new collection */
-
-                                // loop through each pixel
-                                let pxI = 0;// pixel index but for looping
-                                for(let i=0;i<data.length;i+=4)
-                                {
-                                    let pixelIndex = i / 4;
-                                    let x = pixelIndex % img.width;
-                                    let y = Math.floor(pixelIndex / img.width);
-
-                                    let r = data[i];// red
-                                    let g = data[i + 1];// green
-                                    let b = data[i + 2];// blue
-                                    let a = data[i + 3];// alpha
-
-                                    // example: log first few pixels
-                                    
-                                    console.log(`Pixel (${x},${y}) -> R=${r}, G=${g}, B=${b}, A=${a}`);
-
-                                    /* randomize each and save on table/firebase database */
-                                    // 1. get the total pixel count of an uploaded image
-                                    let totalPixelCount = parseInt($("#calculated-pixel-count").text());
-                                    // 2. After this button is clicked, it'll start to generate random values in the table so each neuron elements and values on each network are saved
-
-                                    
-                                    let input = [];
-                                    for(let a=0;a<=2;a++)
-                                    {
-                                        input.push(Math.random());
-                                    }
-                                    $("#input1-val").text(input[0]);
-                                    $("#input2-val").text(input[1]);
-                                    $("#input3-val").text(input[2]);
-                                    
-                                    let weight = [];
-                                    for(let b=0;b<=18;b++)
-                                    {
-                                        weight.push(Math.random());
-                                    }
-                                    $("#weight1-val").text(weight[0]);
-                                    $("#weight2-val").text(weight[1]);
-                                    $("#weight3-val").text(weight[2]);
-                                    $("#weight4-val").text(weight[3]);
-                                    $("#weight5-val").text(weight[4]);
-                                    $("#weight6-val").text(weight[5]);
-                                    $("#weight7-val").text(weight[6]);
-                                    $("#weight8-val").text(weight[7]);
-                                    $("#weight9-val").text(weight[8]);
-                                    $("#weight10-val").text(weight[9]);
-                                    $("#weight11-val").text(weight[10]);
-                                    $("#weight12-val").text(weight[11]);
-                                    $("#weight13-val").text(weight[12]);
-                                    $("#weight14-val").text(weight[13]);
-                                    $("#weight15-val").text(weight[14]);
-                                    $("#weight16-val").text(weight[15]);
-                                    $("#weight17-val").text(weight[16]);
-                                    $("#weight18-val").text(weight[17]);
-
-                                    let bias = [];
-                                    for(let c=0;c<=6;c++)
-                                    {
-                                        bias.push(Math.random());
-                                    }
-                                    $("#bias1-val").text(bias[0]);
-                                    $("#bias2-val").text(bias[1]);
-                                    $("#bias3-val").text(bias[2]);
-                                    $("#bias4-val").text(bias[3]);
-                                    $("#bias5-val").text(bias[4]);
-                                    $("#bias6-val").text(bias[5]);
-
-                                    let target = [];
-                                    target.push(r/256);
-                                    target.push(g/256);
-                                    target.push(b/256);
-                                    $("#target1-val").text(target[0]);
-                                    $("#target2-val").text(target[1]);
-                                    $("#target3-val").text(target[2]);
+                                    let input = Array.from({length:3},()=>Math.random());
+                                    let weight = Array.from({length:19},()=>Math.random());
+                                    let bias = Array.from({length:7},()=>Math.random());
+                                    let target = [r,g,b];
 
                                     appendNeuralDataRow(pxI, input, target, weight, bias);
-                                    pxI++;
                                 }
-                                
-                                // loadTable();
 
-                                // enabling re/generate neural values button
-                                $("#btn-generate-neural-val").prop("disabled", false);
                             };
                             img.src = e.target.result;
                         }
