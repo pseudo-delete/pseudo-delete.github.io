@@ -765,10 +765,8 @@
                                 let xAi = parseInt($("#x-id").text());
                                 let yAi = parseInt($("#y-id").text());
 
-
-
                                 ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
-                                ctxAi.fillRect(xAi*10, yAi*10, 10, 10); // 1x1 pixel
+                                ctxAi.fillRect(xAi, yAi, 1, 1); // 1x1 pixel
                                 /*
                                 hidden = sigmoid((weight1*input) + bias1)
                                 output = sigmoid((weight2*hidden)+ bias2)
@@ -1036,7 +1034,7 @@
                                             }
                                         }
 
-                                    }, 10); // runs every 1000ms (1 second)
+                                    }, 1); // runs every 1000ms (1 second)
                                 }
                             });
 
@@ -1191,8 +1189,8 @@
                                 $("#calculated-pixel-count").text(totalPixelCount);
 
                                 // ai canvas resolution setting also according to uploaded image size
-                                canvasAi.width = img.width*10;
-                                canvasAi.height = img.height*10;
+                                canvasAi.width = img.width;
+                                canvasAi.height = img.height;
 
                                 // ctx.scale(scale, scale);// to handle high-dpi screens;
                                 // // Disable smoothing for crisp pixels
