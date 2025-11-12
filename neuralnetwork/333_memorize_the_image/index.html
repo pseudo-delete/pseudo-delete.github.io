@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="index.css">
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.13.0/dist/tf.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -1162,6 +1163,7 @@
                             const img = new Image();
                             img.onload = function()
                             {
+                                <!-- Make sure TensorFlow.js is loaded -->
                                 clearNeuralDataTable();
 
                                 const canvas = $("#canvas-display-image")[0];
@@ -1181,34 +1183,51 @@
                                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                                 ctx.drawImage(img, 0, 0, img.width, img.height);
 
+                                // Extract pixel data
                                 const imageData = ctx.getImageData(0, 0, img.width, img.height);
                                 const data = imageData.data; // flat RGBA array
 
-                                let pxI = 0; // pixel index
                                 const totalPixelCount = img.width * img.height;
                                 $("#calculated-pixel-count").text(totalPixelCount);
 
-                                for (let i = 0; i < data.length; i += 4) {
-                                    let x = (pxI % img.width);
-                                    let y = Math.floor(pxI / img.width);
-
-                                    let r = data[i];
-                                    let g = data[i + 1];
-                                    let b = data[i + 2];
-                                    let a = data[i + 3];
-
-                                    console.log(`Pixel (${x},${y}) -> R=${r}, G=${g}, B=${b}, A=${a}`);
-
-                                    // Prepare neural data
-                                    let input = Array.from({length: 3}, () => Math.random());
-                                    let weight = Array.from({length: 19}, () => Math.random());
-                                    let bias = Array.from({length: 7}, () => Math.random());
-                                    let target = [r / 256, g / 256, b / 256];
-
-                                    appendNeuralDataRow(pxI, input, target, weight, bias);
-
-                                    pxI++;
+                                // Convert flat RGBA array to Float32Array for RGB only and normalize
+                                const floatData = new Float32Array(totalPixelCount * 3); // [R,G,B,R,G,B,...]
+                                for (let i = 0, j = 0; i < data.length; i += 4, j += 3) {
+                                    floatData[j] = data[i] / 256;     // R normalized
+                                    floatData[j + 1] = data[i + 1] / 256; // G normalized
+                                    floatData[j + 2] = data[i + 2] / 256; // B normalized
                                 }
+
+                                // Create TensorFlow.js tensor: shape [height, width, 3]
+                                const inputTensor = tf.tensor3d(floatData, [img.height, img.width, 3]);
+
+                                // OPTIONAL: Print tensor info
+                                console.log("Tensor shape:", inputTensor.shape);
+                                console.log("Tensor dtype:", inputTensor.dtype);
+
+                                // Now feed tensor to GPU for any processing or neural calculations
+                                // Example: just read back pixels from tensor and append neural table
+                                tf.tidy(() => {
+                                    // Flatten tensor to 1D array
+                                    const tensorData = inputTensor.reshape([totalPixelCount, 3]).arraySync();
+
+                                    for (let pxI = 0; pxI < totalPixelCount; pxI++) {
+                                        const [r, g, b] = tensorData[pxI]; // normalized values 0-1
+
+                                        const x = pxI % img.width;
+                                        const y = Math.floor(pxI / img.width);
+
+                                        console.log(`Pixel (${x},${y}) -> R=${r}, G=${g}, B=${b}`);
+
+                                        // Generate random neural input/weights/bias
+                                        const input = Array.from({length: 3}, () => Math.random());
+                                        const weight = Array.from({length: 19}, () => Math.random());
+                                        const bias = Array.from({length: 7}, () => Math.random());
+                                        const target = [r, g, b];
+
+                                        appendNeuralDataRow(pxI, input, target, weight, bias);
+                                    }
+                                });
 
                             };
                             img.src = e.target.result;
