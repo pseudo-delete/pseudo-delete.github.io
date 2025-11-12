@@ -768,7 +768,7 @@
 
 
                                 ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
-                                ctxAi.fillRect(xAi, yAi, 1, 1); // 1x1 pixel
+                                ctxAi.fillRect(xAi*10, yAi*10, 10, 10); // 1x1 pixel
                                 /*
                                 hidden = sigmoid((weight1*input) + bias1)
                                 output = sigmoid((weight2*hidden)+ bias2)
@@ -1254,8 +1254,8 @@
                                 $("#calculated-pixel-count").text(totalPixelCount);
 
                                 // ai canvas resolution setting also according to uploaded image size
-                                canvasAi.width = img.width;
-                                canvasAi.height = img.height;
+                                canvasAi.width = img.width*10;
+                                canvasAi.height = img.height*10;
 
                                 // ctx.scale(scale, scale);// to handle high-dpi screens;
                                 // // Disable smoothing for crisp pixels
