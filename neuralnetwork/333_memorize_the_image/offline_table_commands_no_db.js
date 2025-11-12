@@ -84,3 +84,9 @@ function updateNeuralDataRow(id, input, hidden, output, target, weight, bias)
     $("#target2-"+id).text(parseFloat(target[1]));
     $("#target3-"+id).text(parseFloat(target[2]));
 }
+
+function clearNeuralDataTable()
+{
+    const tbody = $("#data-table tbody");
+    tbody.empty(); // clear all rows
+}
