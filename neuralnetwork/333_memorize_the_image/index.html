@@ -11,6 +11,8 @@
 
     <script type="module" src="index.js"></script><!-- all about firebase functions-->
 
+    <script src="offline_table_commands_no_db.js"></script><!-- all about offline table, no database functions-->
+
     
 </head>
 <body>
@@ -609,7 +611,7 @@
                                 $("#output2-val").text($("#output2-"+id).text());// output2-val
                                 $("#output3-val").text($("#output3-"+id).text());// output3-val
 
-                                $("#doc-id-val").text($("#doc-id-"+id).text());// document id value
+                                // $("#doc-id-val").text($("#doc-id-"+id).text());// document id value
                                 $("#id-val").text($("#id-"+id).text());// field id value
 
                                 $("#weight1-val").text($("#weight1-"+id).text());// weight1-val
@@ -644,7 +646,7 @@
                             }
                             /* end of function tableToNetwork(id) */
 
-                            function networkToTable()
+                            function networkToTable(id)
                             {
                                 let input = [];
                                 input.push($("#input1-val").text());// input1-val
@@ -697,47 +699,7 @@
                                 target.push($("#target2-val").text());// target2-val
                                 target.push($("#target3-val").text());// target3-val
 
-                                updateDoc(doc(db, "image_integration_collection", $("#doc-id-val").text()),
-                                {
-                                    input_1: parseFloat(input[0]),
-                                    input_2: parseFloat(input[1]),
-                                    input_3: parseFloat(input[2]),
-                                    hidden_1: parseFloat(hidden[0]),
-                                    hidden_2: parseFloat(hidden[1]),
-                                    hidden_3: parseFloat(hidden[2]),
-                                    output_1: parseFloat(output[0]),
-                                    output_2: parseFloat(output[1]),
-                                    output_3: parseFloat(output[2]),
-                                    weight_1: parseFloat(weight[0]),
-                                    weight_2: parseFloat(weight[1]),
-                                    weight_3: parseFloat(weight[2]),
-                                    weight_4: parseFloat(weight[3]),
-                                    weight_5: parseFloat(weight[4]),
-                                    weight_6: parseFloat(weight[5]),
-                                    weight_7: parseFloat(weight[6]),
-                                    weight_8: parseFloat(weight[7]),
-                                    weight_9: parseFloat(weight[8]),
-                                    weight_10: parseFloat(weight[9]),
-                                    weight_11: parseFloat(weight[10]),
-                                    weight_12: parseFloat(weight[11]),
-                                    weight_13: parseFloat(weight[12]),
-                                    weight_14: parseFloat(weight[13]),
-                                    weight_15: parseFloat(weight[14]),
-                                    weight_16: parseFloat(weight[15]),
-                                    weight_17: parseFloat(weight[16]),
-                                    weight_18: parseFloat(weight[17]),
-                                    bias_1: parseFloat(bias[0]),
-                                    bias_2: parseFloat(bias[1]),
-                                    bias_3: parseFloat(bias[2]),
-                                    bias_4: parseFloat(bias[3]),
-                                    bias_5: parseFloat(bias[4]),
-                                    bias_6: parseFloat(bias[5]),
-                                    target_1: parseFloat(target[0]),
-                                    target_2: parseFloat(target[1]),
-                                    target_3: parseFloat(target[2])
-                                });
-
-                                loadTable();
+                                updateNeuralDataRow(id, input, hidden, output, target, weight, bias);
                             }
 
                             
@@ -1063,7 +1025,7 @@
 
                             // Start timer
                             $("#btn-start-timer").on("click", function() {
-                                fire();
+                                // fire();
                                 if (timer === null) { // prevent multiple intervals
                                     timer = setInterval(function() {
                                         $(".tr-neural-data").css("background-color", "transparent");
@@ -1071,25 +1033,6 @@
                                         count++;
                                         $("#timer").text(count + " seconds");
 
-                                        // pixel coordinate display
-                                        let uploadedResolutionWidth = parseInt($("#uploaded-image-resolution-width").text());
-                                        let uploadedResolutionHeight = parseInt($("#uploaded-image-resolution-height").text());
-                                        if(xId<uploadedResolutionWidth-1)
-                                        {
-                                            xId++;
-                                        }
-                                        else
-                                        {
-                                            xId=0;
-                                            if(yId<uploadedResolutionHeight-1)
-                                            {
-                                                yId++;
-                                            }
-                                            else
-                                            {
-                                                yId=0;
-                                            }
-                                        }
                                         $("#x-id").text(xId);
                                         $("#y-id").text(yId);
 
@@ -1117,7 +1060,27 @@
                                         {
                                             train();
                                         }
-                                        networkToTable();
+                                        networkToTable(pixId);
+
+                                        // pixel coordinate display
+                                        let uploadedResolutionWidth = parseInt($("#uploaded-image-resolution-width").text());
+                                        let uploadedResolutionHeight = parseInt($("#uploaded-image-resolution-height").text());
+                                        if(xId<uploadedResolutionWidth-1)
+                                        {
+                                            xId++;
+                                        }
+                                        else
+                                        {
+                                            xId=0;
+                                            if(yId<uploadedResolutionHeight-1)
+                                            {
+                                                yId++;
+                                            }
+                                            else
+                                            {
+                                                yId=0;
+                                            }
+                                        }
 
                                     }, 100); // runs every 1000ms (1 second)
                                 }
@@ -1182,7 +1145,7 @@
             <table id="data-table">
                 <thead>
                     <tr>
-                        <th colspan="2">ID</th>
+                        <th colspan="1">ID</th>
                         <th colspan="3">Input</th>
                         <th colspan="3">Hidden</th>
                         <th colspan="3">Output</th>
@@ -1191,7 +1154,7 @@
                         <th colspan="6">Bias</th>
                     </tr>
                     <tr>
-                        <th>Document ID</th>
+                        <!-- <th>Document ID</th> -->
                         <th>Field ID</th>
                         <th>Input 1</th>
                         <th>Input 2</th>
@@ -1305,7 +1268,7 @@
                                 const data = imageData.data;// flat array of [r,g,b,a,r,g,b,a]
 
                                 /* Cleaning up the data-table for new collection */
-                                createCollection("image_integration_collection"); // initial birth of deleted collection
+                                // createCollection("image_integration_collection"); // initial birth of deleted collection
                                 /* End of Cleaning up the data-table for new collection */
 
                                 // loop through each pixel
@@ -1330,44 +1293,61 @@
                                     let totalPixelCount = parseInt($("#calculated-pixel-count").text());
                                     // 2. After this button is clicked, it'll start to generate random values in the table so each neuron elements and values on each network are saved
 
-                                    $("#input1-val").text(Math.random());
-                                    $("#input2-val").text(Math.random());
-                                    $("#input3-val").text(Math.random());
                                     
-                                    $("#weight1-val").text(Math.random());
-                                    $("#weight2-val").text(Math.random());
-                                    $("#weight3-val").text(Math.random());
-                                    $("#weight4-val").text(Math.random());
-                                    $("#weight5-val").text(Math.random());
-                                    $("#weight6-val").text(Math.random());
-                                    $("#weight7-val").text(Math.random());
-                                    $("#weight8-val").text(Math.random());
-                                    $("#weight9-val").text(Math.random());
-                                    $("#weight10-val").text(Math.random());
-                                    $("#weight11-val").text(Math.random());
-                                    $("#weight12-val").text(Math.random());
-                                    $("#weight13-val").text(Math.random());
-                                    $("#weight14-val").text(Math.random());
-                                    $("#weight15-val").text(Math.random());
-                                    $("#weight16-val").text(Math.random());
-                                    $("#weight17-val").text(Math.random());
-                                    $("#weight18-val").text(Math.random());
+                                    let input = [];
+                                    for(let a=0;a<=2;a++)
+                                    {
+                                        input.push(Math.random);
+                                    }
+                                    $("#input1-val").text(input[0]);
+                                    $("#input2-val").text(input[1]);
+                                    $("#input3-val").text(input[2]);
+                                    
+                                    let weight = [];
+                                    for(let b=0;b<=18;b++)
+                                    {
+                                        weight.push(Math.random);
+                                    }
+                                    $("#weight1-val").text(weight[0]);
+                                    $("#weight2-val").text(weight[1]);
+                                    $("#weight3-val").text(weight[2]);
+                                    $("#weight4-val").text(weight[3]);
+                                    $("#weight5-val").text(weight[4]);
+                                    $("#weight6-val").text(weight[5]);
+                                    $("#weight7-val").text(weight[6]);
+                                    $("#weight8-val").text(weight[7]);
+                                    $("#weight9-val").text(weight[8]);
+                                    $("#weight10-val").text(weight[9]);
+                                    $("#weight11-val").text(weight[10]);
+                                    $("#weight12-val").text(weight[11]);
+                                    $("#weight13-val").text(weight[12]);
+                                    $("#weight14-val").text(weight[13]);
+                                    $("#weight15-val").text(weight[14]);
+                                    $("#weight16-val").text(weight[15]);
+                                    $("#weight17-val").text(weight[16]);
+                                    $("#weight18-val").text(weight[17]);
 
-                                    $("#bias1-val").text(Math.random());
-                                    $("#bias2-val").text(Math.random());
-                                    $("#bias3-val").text(Math.random());
-                                    $("#bias4-val").text(Math.random());
-                                    $("#bias5-val").text(Math.random());
-                                    $("#bias6-val").text(Math.random());
+                                    let bias = [];
+                                    for(let c=0;c<=6;c++)
+                                    {
+                                        bias.push(Math.random);
+                                    }
+                                    $("#bias1-val").text(bias[0]);
+                                    $("#bias2-val").text(bias[1]);
+                                    $("#bias3-val").text(bias[2]);
+                                    $("#bias4-val").text(bias[3]);
+                                    $("#bias5-val").text(bias[4]);
+                                    $("#bias6-val").text(bias[5]);
 
                                     $("#target1-val").text(r/256);
                                     $("#target2-val").text(g/256);
                                     $("#target3-val").text(b/256);
-                                    addData(pxI);
+
+                                    appendNeuralDataRow(pxI, input, target, weight, bias);
                                     pxI++;
                                 }
                                 
-                                loadTable();
+                                // loadTable();
 
                                 // enabling re/generate neural values button
                                 $("#btn-generate-neural-val").prop("disabled", false);
