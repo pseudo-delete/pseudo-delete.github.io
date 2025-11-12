@@ -8,9 +8,12 @@ function appendNeuralDataRow(id, input, target, weight, bias) {
         <td id="input1-${id}">${input[0]}</td>
         <td id="input2-${id}">${input[1]}</td>
         <td id="input3-${id}">${input[2]}</td>
-        <td id="output1-${id}">${output[0]}</td>
-        <td id="output2-${id}">${output[1]}</td>
-        <td id="output3-${id}">${output[2]}</td>
+        <td id="hidden1-${id}"></td>
+        <td id="hidden2-${id}"></td>
+        <td id="hidden3-${id}"></td>
+        <td id="output1-${id}"></td>
+        <td id="output2-${id}"></td>
+        <td id="output3-${id}"></td>
         <td id="target1-${id}">${target[0]}</td>
         <td id="target2-${id}">${target[1]}</td>
         <td id="target3-${id}">${target[2]}</td>
