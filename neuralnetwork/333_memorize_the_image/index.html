@@ -1339,9 +1339,13 @@
                                     $("#bias5-val").text(bias[4]);
                                     $("#bias6-val").text(bias[5]);
 
-                                    $("#target1-val").text(r/256);
-                                    $("#target2-val").text(g/256);
-                                    $("#target3-val").text(b/256);
+                                    let target = [];
+                                    target.push(r/256);
+                                    target.push(g/256);
+                                    target.push(b/256);
+                                    $("#target1-val").text(target[0]);
+                                    $("#target2-val").text(target[1]);
+                                    $("#target3-val").text(target[2]);
 
                                     appendNeuralDataRow(pxI, input, target, weight, bias);
                                     pxI++;
