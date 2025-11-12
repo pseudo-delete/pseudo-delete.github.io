@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gero - Main Menu</title>
     
-    <script src="https://cdn.jsdelivr.net/npm/gpu.js@2.10.0/dist/gpu-browser.min.js"></script>
-    <script>
-    const gpu = new gpujs.GPU(); // note the `gpujs` namespace
-    console.log(gpu);
+    <script type="module">
+        import { GPU } from 'https://cdn.jsdelivr.net/npm/gpu.js@2.11.0/dist/gpu.esm.js';
+        const gpu = new GPU();
+        console.log(gpu);
     </script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
