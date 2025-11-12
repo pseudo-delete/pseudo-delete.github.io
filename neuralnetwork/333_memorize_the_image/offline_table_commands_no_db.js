@@ -3,44 +3,44 @@
 function appendNeuralDataRow(id, input, target, weight, bias) {
     const tbody = $("#data-table tbody");
     tbody.append(`
-      <tr class="tr-neural-data" id="row-`+id+`">
-        <td id="id-`+id+`">`+id+`</td>
-        <td id="input1-`+id+`">`+input[0]+`</td>
-        <td id="input2-`+id+`">`+input[1]+`</td>
-        <td id="input3-`+id+`">`+input[2]+`</td>
-        <td id="hidden1-`+id+`"></td>
-        <td id="hidden2-`+id+`"></td>
-        <td id="hidden3-`+id+`"></td>
-        <td id="output1-`+id+`"></td>
-        <td id="output2-`+id+`"></td>
-        <td id="output3-`+id+`"></td>
-        <td id="target1-`+id+`">`+target[0]+`</td>
-        <td id="target2-`+id+`">`+target[1]+`</td>
-        <td id="target3-`+id+`">`+target[2]+`</td>
-        <td id="weight1-`+id+`">`+weight[0]+`</td>
-        <td id="weight2-`+id+`">`+weight[1]+`</td>
-        <td id="weight3-`+id+`">`+weight[2]+`</td>
-        <td id="weight4-`+id+`">`+weight[3]+`</td>
-        <td id="weight5-`+id+`">`+weight[4]+`</td>
-        <td id="weight6-`+id+`">`+weight[5]+`</td>
-        <td id="weight7-`+id+`">`+weight[6]+`</td>
-        <td id="weight8-`+id+`">`+weight[7]+`</td>
-        <td id="weight9-`+id+`">`+weight[8]+`</td>
-        <td id="weight10-`+id+`">`+weight[9]+`</td>
-        <td id="weight11-`+id+`">`+weight[10]+`</td>
-        <td id="weight12-`+id+`">`+weight[11]+`</td>
-        <td id="weight13-`+id+`">`+weight[12]+`</td>
-        <td id="weight14-`+id+`">`+weight[13]+`</td>
-        <td id="weight15-`+id+`">`+weight[14]+`</td>
-        <td id="weight16-`+id+`">`+weight[15]+`</td>
-        <td id="weight17-`+id+`">`+weight[16]+`</td>
-        <td id="weight18-`+id+`">`+weight[17]+`</td>
-        <td id="bias1-`+id+`">`+bias[0]+`</td>
-        <td id="bias2-`+id+`">`+bias[1]+`</td>
-        <td id="bias3-`+id+`">`+bias[2]+`</td>
-        <td id="bias4-`+id+`">`+bias[3]+`</td>
-        <td id="bias5-`+id+`">`+bias[4]+`</td>
-        <td id="bias6-`+id+`">`+bias[5]+`</td>
+      <tr class="tr-neural-data" id="row-${id}">
+        <td id="id-${id}">${id}</td>
+        <td id="input1-${id}">${input[0]}</td>
+        <td id="input2-${id}">${input[1]}</td>
+        <td id="input3-${id}">${input[2]}</td>
+        <td id="hidden1-${id}"></td>
+        <td id="hidden2-${id}"></td>
+        <td id="hidden3-${id}"></td>
+        <td id="output1-${id}"></td>
+        <td id="output2-${id}"></td>
+        <td id="output3-${id}"></td>
+        <td id="target1-${id}">${target[0]}</td>
+        <td id="target2-${id}">${target[1]}</td>
+        <td id="target3-${id}">${target[2]}</td>
+        <td id="weight1-${id}">${weight[0]}</td>
+        <td id="weight2-${id}">${weight[1]}</td>
+        <td id="weight3-${id}">${weight[2]}</td>
+        <td id="weight4-${id}">${weight[3]}</td>
+        <td id="weight5-${id}">${weight[4]}</td>
+        <td id="weight6-${id}">${weight[5]}</td>
+        <td id="weight7-${id}">${weight[6]}</td>
+        <td id="weight8-${id}">${weight[7]}</td>
+        <td id="weight9-${id}">${weight[8]}</td>
+        <td id="weight10-${id}">${weight[9]}</td>
+        <td id="weight11-${id}">${weight[10]}</td>
+        <td id="weight12-${id}">${weight[11]}</td>
+        <td id="weight13-${id}">${weight[12]}</td>
+        <td id="weight14-${id}">${weight[13]}</td>
+        <td id="weight15-${id}">${weight[14]}</td>
+        <td id="weight16-${id}">${weight[15]}</td>
+        <td id="weight17-${id}">${weight[16]}</td>
+        <td id="weight18-${id}">${weight[17]}</td>
+        <td id="bias1-${id}">${bias[0]}</td>
+        <td id="bias2-${id}">${bias[1]}</td>
+        <td id="bias3-${id}">${bias[2]}</td>
+        <td id="bias4-${id}">${bias[3]}</td>
+        <td id="bias5-${id}">${bias[4]}</td>
+        <td id="bias6-${id}">${bias[5]}</td>
       </tr>
     `);
 }// end of function appendNeuralDataRow
@@ -83,10 +83,10 @@ function updateNeuralDataRow(id, input, hidden, output, target, weight, bias)
     $("#target1-"+id).text(parseFloat(target[0]));
     $("#target2-"+id).text(parseFloat(target[1]));
     $("#target3-"+id).text(parseFloat(target[2]));
-}// end of function updateNeuralDataRow
+}
 
 function clearNeuralDataTable()
 {
     const tbody = $("#data-table tbody");
     tbody.empty(); // clear all rows
-}// end of function clearNeuralDataTable
+}
