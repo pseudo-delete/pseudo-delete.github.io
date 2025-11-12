@@ -4,32 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gero - Main Menu</title>
-    
-    <script src="https://cdn.jsdelivr.net/npm/gpu.js@2.9.3/dist/gpu-browser.min.js"></script>
-    <script>
-    // ensure the library has loaded
-    window.addEventListener('load', () => {
-        if (!window.GPU) {
-        console.error("GPU.js not loaded correctly");
-        return;
-        }
-        const gpu = new window.GPU(); // use window.GPU explicitly
-        console.log(gpu);
-    });
-    </script>
 
+    <link rel="stylesheet" href="index.css">
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- <script type="module" src="index.js"></script>all about firebase functions -->
 
     <script src="offline_table_commands_no_db.js"></script><!-- all about offline table, no database functions-->
-
-    
-    <link rel="stylesheet" href="index.css">
     
 </head>
 <body>
@@ -1178,44 +1162,52 @@
                             const img = new Image();
                             img.onload = function()
                             {
+                                clearNeuralDataTable();
 
-                                // Prepare separate arrays for R, G, B
-                                const rArray = new Float32Array(img.width * img.height);
-                                const gArray = new Float32Array(img.width * img.height);
-                                const bArray = new Float32Array(img.width * img.height);
+                                const canvas = $("#canvas-display-image")[0];
+                                const canvasAi = $("#ai-canvas-display")[0];
+                                const ctx = canvas.getContext("2d");
 
-                                // Create a GPU kernel to extract RGB and normalize to 0-1
-                                const extractRGB = gpu.createKernel(function(data, width) {
-                                    const i = this.thread.x * 4; // flat RGBA index
-                                    return data[i + this.constants.channel]; // 0=R,1=G,2=B
-                                })
-                                .setOutput([img.width * img.height])
-                                .setConstants({ channel: 0 }); // will set to 0,1,2 for R,G,B
+                                // Set canvas size to match uploaded image
+                                canvas.width = img.width;
+                                canvas.height = img.height;
+                                canvasAi.width = img.width;
+                                canvasAi.height = img.height;
 
-                                // Extract R
-                                extractRGB.setConstants({ channel: 0 });
-                                const rGpu = extractRGB(imageData.data, img.width);
+                                $("#uploaded-image-resolution-width").text(img.width);
+                                $("#uploaded-image-resolution-height").text(img.height);
 
-                                // Extract G
-                                extractRGB.setConstants({ channel: 1 });
-                                const gGpu = extractRGB(imageData.data, img.width);
+                                ctx.imageSmoothingEnabled = false;
+                                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                                ctx.drawImage(img, 0, 0, img.width, img.height);
 
-                                // Extract B
-                                extractRGB.setConstants({ channel: 2 });
-                                const bGpu = extractRGB(imageData.data, img.width);
+                                const imageData = ctx.getImageData(0, 0, img.width, img.height);
+                                const data = imageData.data; // flat RGBA array
 
-                                // Now you have GPU-processed arrays
-                                for(let pxI=0; pxI<rGpu.length; pxI++){
-                                    let r = rGpu[pxI]/256;
-                                    let g = gGpu[pxI]/256;
-                                    let b = bGpu[pxI]/256;
+                                let pxI = 0; // pixel index
+                                const totalPixelCount = img.width * img.height;
+                                $("#calculated-pixel-count").text(totalPixelCount);
 
-                                    let input = Array.from({length:3},()=>Math.random());
-                                    let weight = Array.from({length:19},()=>Math.random());
-                                    let bias = Array.from({length:7},()=>Math.random());
-                                    let target = [r,g,b];
+                                for (let i = 0; i < data.length; i += 4) {
+                                    let x = (pxI % img.width);
+                                    let y = Math.floor(pxI / img.width);
+
+                                    let r = data[i];
+                                    let g = data[i + 1];
+                                    let b = data[i + 2];
+                                    let a = data[i + 3];
+
+                                    console.log(`Pixel (${x},${y}) -> R=${r}, G=${g}, B=${b}, A=${a}`);
+
+                                    // Prepare neural data
+                                    let input = Array.from({length: 3}, () => Math.random());
+                                    let weight = Array.from({length: 19}, () => Math.random());
+                                    let bias = Array.from({length: 7}, () => Math.random());
+                                    let target = [r / 256, g / 256, b / 256];
 
                                     appendNeuralDataRow(pxI, input, target, weight, bias);
+
+                                    pxI++;
                                 }
 
                             };
