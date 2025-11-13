@@ -1025,7 +1025,6 @@
 
                             /* timer */
                             let count = 0;
-                            let timer = null;
 
                             /* pixel id initialization */
                             let pixId = -1;
@@ -1037,6 +1036,8 @@
                             /* Cycle Counter Initialization */
                             let cycleCounter = 1;
                             $("#cycle-counter").text(cycleCounter);
+
+                            let animationId;
 
                             // Start timer
                             $("#btn-start-timer").on("click", function() {
@@ -1099,21 +1100,18 @@
                                         }
                                     }
 
-                                    requestAnimationFrame(step); // smoother GPU timing
+                                    animationId = requestAnimationFrame(step); // smoother GPU timing
                                 }
                                 step();
                             });
 
                             // Stop timer
                             $("#btn-stop-timer").on("click", function() {
-                                clearInterval(timer);
-                                timer = null;
+                                cancelAnimationFrame(animationId);
                             });
 
                             // Reset timer
                             $("#btn-reset-timer").on("click", function() {
-                                clearInterval(timer);
-                                timer = null;
                                 count = 0;
                                 $("#timer").text("0");
                             });
