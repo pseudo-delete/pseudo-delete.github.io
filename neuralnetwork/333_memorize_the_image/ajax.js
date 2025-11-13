@@ -31,6 +31,7 @@ $(function()
             },
             success: function(response)
             {
+                console.clear();
                 console.log(`Neural Net ${id} Added: ` + response);
             },
             error: function()
@@ -64,7 +65,7 @@ $(function()
             },
             error: function()
             {
-                console.clear();
+                
                 console.log(`AJAX update error Net ${id}: failure in the process of updating neural rows to the database.`);
             }
         });
@@ -83,7 +84,7 @@ $(function()
                 console.log(response);
             },
             error: function()
-            {console.clear();
+            {
                 console.log(`AJAX db clearing error: failure in the process of clearing all rows of neural table of the database.`);
             }
         });
