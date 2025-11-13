@@ -1,4 +1,6 @@
 <?php
+    include 'connect.php';
+
     $id = $_POST['id'];
     $input = $_POST['input'];
     $target = $_POST['target'];
@@ -13,4 +15,6 @@
     } else {
         echo "Error at net" .$id.": " . $query . "<br>" . $conn->error;
     }
+    
+    $conn -> close();
 ?>
