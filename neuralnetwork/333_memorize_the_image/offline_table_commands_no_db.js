@@ -44,7 +44,7 @@ function appendNeuralDataRow(id, input, target, weight, bias) {
       </tr>
     `);
 
-    appendNeuralDataRoDb(id, input, target, weight, bias)// updating the database
+    appendNeuralDataRowDb(id, input, target, weight, bias)// updating the database
 }// end of function appendNeuralDataRow
 
 function updateNeuralDataRow(id, input, hidden, output, target, weight, bias)
