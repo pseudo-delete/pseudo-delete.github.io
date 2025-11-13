@@ -43,6 +43,8 @@ function appendNeuralDataRow(id, input, target, weight, bias) {
         <td id="bias6-${id}">${bias[5]}</td>
       </tr>
     `);
+
+    appendNeuralDataRoDb(id, input, target, weight, bias)// updating the database
 }// end of function appendNeuralDataRow
 
 function updateNeuralDataRow(id, input, hidden, output, target, weight, bias)
@@ -83,10 +85,14 @@ function updateNeuralDataRow(id, input, hidden, output, target, weight, bias)
     $("#target1-"+id).text(parseFloat(target[0]));
     $("#target2-"+id).text(parseFloat(target[1]));
     $("#target3-"+id).text(parseFloat(target[2]));
+
+    updateNeuralDataRowDb(id, input, hidden, output, target, weight, bias);// updating the database
 }
 
 function clearNeuralDataTable()
 {
     const tbody = $("#data-table tbody");
     tbody.empty(); // clear all rows
+
+    // clearNeuralDataTableDb();// clearing the database
 }
