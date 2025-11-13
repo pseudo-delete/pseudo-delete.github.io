@@ -1,4 +1,4 @@
-<?
+<?php
     $id = $_POST['id'];
     $input = $_POST['input'];
     $target = $_POST['target'];

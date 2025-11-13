@@ -1,4 +1,4 @@
-<?
+<?php
     if ($conn->query("TRUNCATE TABLE `333_memorize_the_image`;") === TRUE) {
         echo $id;
     } else {
