@@ -94,5 +94,5 @@ function clearNeuralDataTable()
     const tbody = $("#data-table tbody");
     tbody.empty(); // clear all rows
 
-    // clearNeuralDataTableDb();// clearing the database
+    clearNeuralDataTableDb();// clearing the database
 }
