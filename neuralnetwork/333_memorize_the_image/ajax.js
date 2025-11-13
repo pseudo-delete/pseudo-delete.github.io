@@ -86,4 +86,8 @@ $(function()
         });
     }
 
+    window.appendNeuralDataRowDb = appendNeuralDataRowDb;
+    window.updateNeuralDataRowDb = updateNeuralDataRowDb;
+    window.clearNeuralDataTableDb = clearNeuralDataTableDb;
+
 });
