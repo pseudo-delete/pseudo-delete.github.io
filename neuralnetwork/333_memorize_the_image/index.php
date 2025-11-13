@@ -7,13 +7,14 @@
 
     <link rel="stylesheet" href="index.css">
 
+    
+    <script src="ajax.js"></script><!-- all about php and ajax, with database functions-->
+
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- <script type="module" src="index.js"></script>all about firebase functions -->
-     
-    <script src="ajax.js"></script><!-- all about php and ajax, with database functions-->
 
     <script src="offline_table_commands_no_db.js"></script><!-- all about offline table, no database functions-->
 </head>
