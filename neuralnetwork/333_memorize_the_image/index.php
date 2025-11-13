@@ -1156,7 +1156,7 @@
         </div>
 
         <div class="data-table-container">
-            <table id="data-table">
+            <table id="data-table" class="transparent">
                 <thead>
                     <tr>
                         <th colspan="1">ID</th>
