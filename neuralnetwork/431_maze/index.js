@@ -14,21 +14,47 @@ $(function()
 
     function NeuralNetwork(inputNeuronsCount, hiddenNeuronsCount, outputNeuronsCount)
     {
-        for(let a = 0; a < inputNeurons; a++)
+        // input neurons value initialization
+        for(let a = 0; a < inputNeuronsCount; a++)
         {
             inputNeurons.push(Math.random());
         }
 
-        for(let b = 0; b < hiddenNeurons; b++)
+        // hidden neurons value initialization
+        // hidden layer biases initialization
+        for(let b = 0; b < hiddenNeuronsCount; b++)
         {
-            hiddenNeurons.push(Math.random());
+            hiddenNeurons.push(0);// initial value 0
+            biasH.push(Math.random());
         }
 
-        for(let c = 0; c < outputNeurons; c++)
+        // output neurons value initialization
+        // output layer biases initialization
+        for(let c = 0; c < outputNeuronsCount; c++)
         {
-            outputNeurons.push(Math.random());
+            outputNeurons.push(0);// initial value 0
+            biasO.push(Math.random());
         }
 
+        // weights initialization from input to hidden
+        for(let d = 0; d < hiddenNeuronsCount; d++)
+        {
+            weights_ih[d] = [];
+            for(let e = 0; e < inputNeuronsCount; e++)
+            {
+                weights_ih[d][e] = Math.random();
+            }
+        }
+
+        // weights initialization from hidden to output
+        for(let f = 0; f < outputNeuronsCount; f++)
+        {
+            weights_ho[f] = [];
+            for(let g = 0; g < hiddenNeuronsCount; g++)
+            {
+                weights_ho[f][g] = Math.random();
+            }
+        }
 
     }
 
