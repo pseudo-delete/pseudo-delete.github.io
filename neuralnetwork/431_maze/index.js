@@ -30,19 +30,24 @@ $(function()
             for(let e = 0; e < inputNeuronsCount; e++)
             {
                 weights_ih[d][e] = Math.random();
-                $(".neural-values-text").append("W h" + (d+1) + "_i" + (e+1) + ": <span id='weighth"+(d+1)+"i"+(e+1)+"-val'>" + weights_ih[d][e] + "</span><br>");
+                $(".neural-values-text").append("W I" + (d+1) + "_H" + (e+1) + ": <span id='weighti"+(d+1)+"h"+(e+1)+"-val'>" + weights_ih[d][e] + "</span><br>");
             }
+            
+            $(".neural-values-text").append("<br>");
         }
 
         $(".neural-values-text").append("<br>");
-
-        // hidden neurons value initialization
+        
         // hidden layer biases initialization
-        for(let b = 0; b < hiddenNeuronsCount; b++)
+        for(let bh = 0; bh < hiddenNeuronsCount; bh++)
         {
             biasH.push(Math.random());
-            $(".neural-values-text").append("Bias H" + (b+1) + ": <span id='biash"+(b+1)+"-val'>" + biasH[b] + "</span><br>");
-
+            $(".neural-values-text").append("Bias H" + (bh+1) + ": <span id='biash"+(bh+1)+"-val'>" + biasH[bh] + "</span><br>");
+        }
+        $(".neural-values-text").append("<br>");
+        // hidden neurons value initialization
+        for(let b = 0; b < hiddenNeuronsCount; b++)
+        {
             hiddenNeurons.push(0);// initial value 0
             $(".neural-values-text").append("Hidden " + (b+1) + ": <span id='hidden"+(b+1)+"-val'>" + hiddenNeurons[b] + "</span><br>");
         }
@@ -56,19 +61,25 @@ $(function()
             for(let g = 0; g < hiddenNeuronsCount; g++)
             {
                 weights_ho[f][g] = Math.random();
-                $(".neural-values-text").append("W o" + (f+1) + "_h" + (g+1) + ": <span id='weighto"+(f+1)+"h"+(g+1)+"-val'>" + weights_ho[f][g] + "</span><br>");
+                $(".neural-values-text").append("W H" + (f+1) + "_O" + (g+1) + ": <span id='weighth"+(f+1)+"o"+(g+1)+"-val'>" + weights_ho[f][g] + "</span><br>");
             }
+
+            
+            $(".neural-values-text").append("<br>");
         }
 
         $(".neural-values-text").append("<br>");
 
-        // output neurons value initialization
         // output layer biases initialization
-        for(let c = 0; c < outputNeuronsCount; c++)
+        for(let bo = 0; bo < outputNeuronsCount; bo++)
         {
             biasO.push(Math.random());
-            $(".neural-values-text").append("Bias O" + (c+1) + ": <span id='biaso"+(c+1)+"-val'>" + biasO[c] + "</span><br>");
-
+            $(".neural-values-text").append("Bias O" + (bo+1) + ": <span id='biaso"+(bo+1)+"-val'>" + biasO[bo] + "</span><br>");
+        }
+        $(".neural-values-text").append("<br>");
+        // output neurons value initialization
+        for(let c = 0; c < outputNeuronsCount; c++)
+        {
             outputNeurons.push(0);// initial value 0
             $(".neural-values-text").append("Output " + (c+1) + ": <span id='output"+(c+1)+"-val'>" + outputNeurons[c] + "</span><br>");
         }
