@@ -21,28 +21,6 @@ $(function()
             $(".neural-values-text").append("Input Neuron " + (a+1) + ": <span id='input"+(a+1)+"-val'>" + inputNeurons[a] + "</span><br>");
         }
 
-        // hidden neurons value initialization
-        // hidden layer biases initialization
-        for(let b = 0; b < hiddenNeuronsCount; b++)
-        {
-            hiddenNeurons.push(0);// initial value 0
-            $(".neural-values-text").append("Hidden Neuron " + (b+1) + ": <span id='hidden"+(b+1)+"-val'>" + hiddenNeurons[b] + "</span><br>");
-
-            biasH.push(Math.random());
-            $(".neural-values-text").append("Bias Hidden " + (b+1) + ": <span id='biash"+(b+1)+"-val'>" + biasH[b] + "</span><br>");
-        }
-
-        // output neurons value initialization
-        // output layer biases initialization
-        for(let c = 0; c < outputNeuronsCount; c++)
-        {
-            outputNeurons.push(0);// initial value 0
-            $(".neural-values-text").append("Output Neuron " + (c+1) + ": <span id='output"+(c+1)+"-val'>" + outputNeurons[c] + "</span><br>");
-
-            biasO.push(Math.random());
-            $(".neural-values-text").append("Bias Output " + (c+1) + ": <span id='biaso"+(c+1)+"-val'>" + biasO[c] + "</span><br>");
-        }
-
         // weights initialization from input to hidden
         for(let d = 0; d < hiddenNeuronsCount; d++)
         {
@@ -54,6 +32,17 @@ $(function()
             }
         }
 
+        // hidden neurons value initialization
+        // hidden layer biases initialization
+        for(let b = 0; b < hiddenNeuronsCount; b++)
+        {
+            hiddenNeurons.push(0);// initial value 0
+            $(".neural-values-text").append("Hidden Neuron " + (b+1) + ": <span id='hidden"+(b+1)+"-val'>" + hiddenNeurons[b] + "</span><br>");
+
+            biasH.push(Math.random());
+            $(".neural-values-text").append("Bias Hidden " + (b+1) + ": <span id='biash"+(b+1)+"-val'>" + biasH[b] + "</span><br>");
+        }
+
         // weights initialization from hidden to output
         for(let f = 0; f < outputNeuronsCount; f++)
         {
@@ -63,6 +52,17 @@ $(function()
                 weights_ho[f][g] = Math.random();
                 $(".neural-values-text").append("Weight hidden" + (f+1) + "output" + (g+1) + ": <span id='weighth"+(f+1)+"o"+(g+1)+"-val'>" + weights_ho[f][g] + "</span><br>");
             }
+        }
+
+        // output neurons value initialization
+        // output layer biases initialization
+        for(let c = 0; c < outputNeuronsCount; c++)
+        {
+            outputNeurons.push(0);// initial value 0
+            $(".neural-values-text").append("Output Neuron " + (c+1) + ": <span id='output"+(c+1)+"-val'>" + outputNeurons[c] + "</span><br>");
+
+            biasO.push(Math.random());
+            $(".neural-values-text").append("Bias Output " + (c+1) + ": <span id='biaso"+(c+1)+"-val'>" + biasO[c] + "</span><br>");
         }
 
     }
