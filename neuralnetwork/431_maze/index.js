@@ -18,6 +18,7 @@ $(function()
         for(let a = 0; a < inputNeuronsCount; a++)
         {
             inputNeurons.push(Math.random());
+            $(".neural-values-text").append("Input Neuron " + (a+1) + ": <span id='input"+a+"-val'>" + inputNeurons[a] + "</span><br>");
         }
 
         // hidden neurons value initialization
