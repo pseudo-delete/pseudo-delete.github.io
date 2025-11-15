@@ -24,10 +24,10 @@ $(function()
         $(".neural-values-text").append("<br>");
 
         // weights initialization from input to hidden
-        for(let d = 0; d < hiddenNeuronsCount; d++)
+        for(let d = 0; d < inputNeuronsCount; d++)
         {
             weights_ih[d] = [];
-            for(let e = 0; e < inputNeuronsCount; e++)
+            for(let e = 0; e < hiddenNeuronsCount; e++)
             {
                 weights_ih[d][e] = Math.random();
                 $(".neural-values-text").append("W I" + (d+1) + "_H" + (e+1) + ": <span id='weighti"+(d+1)+"h"+(e+1)+"-val'>" + weights_ih[d][e] + "</span><br>");
@@ -55,10 +55,10 @@ $(function()
         $(".neural-values-text").append("<br>");
 
         // weights initialization from hidden to output
-        for(let f = 0; f < outputNeuronsCount; f++)
+        for(let f = 0; f < hiddenNeuronsCount; f++)
         {
             weights_ho[f] = [];
-            for(let g = 0; g < hiddenNeuronsCount; g++)
+            for(let g = 0; g < outputNeuronsCount; g++)
             {
                 weights_ho[f][g] = Math.random();
                 $(".neural-values-text").append("W H" + (f+1) + "_O" + (g+1) + ": <span id='weighth"+(f+1)+"o"+(g+1)+"-val'>" + weights_ho[f][g] + "</span><br>");
