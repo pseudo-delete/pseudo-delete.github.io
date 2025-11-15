@@ -30,7 +30,7 @@ $(function()
             for(let e = 0; e < inputNeuronsCount; e++)
             {
                 weights_ih[d][e] = Math.random();
-                $(".neural-values-text").append("W i" + (d+1) + "_h" + (e+1) + ": <span id='weighti"+(d+1)+"h"+(e+1)+"-val'>" + weights_ih[d][e] + "</span><br>");
+                $(".neural-values-text").append("W h" + (d+1) + "_i" + (e+1) + ": <span id='weighth"+(d+1)+"i"+(e+1)+"-val'>" + weights_ih[d][e] + "</span><br>");
             }
         }
 
@@ -56,7 +56,7 @@ $(function()
             for(let g = 0; g < hiddenNeuronsCount; g++)
             {
                 weights_ho[f][g] = Math.random();
-                $(".neural-values-text").append("W h" + (f+1) + "_o" + (g+1) + ": <span id='weighth"+(f+1)+"o"+(g+1)+"-val'>" + weights_ho[f][g] + "</span><br>");
+                $(".neural-values-text").append("W o" + (f+1) + "_h" + (g+1) + ": <span id='weighto"+(f+1)+"h"+(g+1)+"-val'>" + weights_ho[f][g] + "</span><br>");
             }
         }
 
