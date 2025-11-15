@@ -50,7 +50,7 @@ $(function()
             for(let e = 0; e < inputNeuronsCount; e++)
             {
                 weights_ih[d][e] = Math.random();
-                $(".neural-values-text").append("Weight input" + (e+1) + "_hidden" + (d+1) + ": <span id='weighti"+(d+1)+"h"+(e+1)+"-val'>" + weights_ih[d][e] + "</span><br>");
+                $(".neural-values-text").append("Weight input" + (d+1) + "_hidden" + (e+1) + ": <span id='weighti"+(d+1)+"h"+(e+1)+"-val'>" + weights_ih[d][e] + "</span><br>");
             }
         }
 
