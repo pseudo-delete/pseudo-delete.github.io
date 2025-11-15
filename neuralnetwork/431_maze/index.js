@@ -26,7 +26,10 @@ $(function()
         for(let b = 0; b < hiddenNeuronsCount; b++)
         {
             hiddenNeurons.push(0);// initial value 0
+            $(".neural-values-text").append("Hidden Neuron " + (b+1) + ": <span id='hidden"+b+"-val'>" + hiddenNeurons[b] + "</span><br>");
+
             biasH.push(Math.random());
+            $(".neural-values-text").append("Bias Hidden " + (b+1) + ": <span id='biash"+b+"-val'>" + biasH[b] + "</span><br>");
         }
 
         // output neurons value initialization
@@ -34,7 +37,10 @@ $(function()
         for(let c = 0; c < outputNeuronsCount; c++)
         {
             outputNeurons.push(0);// initial value 0
+            $(".neural-values-text").append("Output Neuron " + (c+1) + ": <span id='output"+c+"-val'>" + outputNeurons[c] + "</span><br>");
+
             biasO.push(Math.random());
+            $(".neural-values-text").append("Bias Output " + (c+1) + ": <span id='biaso"+c+"-val'>" + biasO[c] + "</span><br>");
         }
 
         // weights initialization from input to hidden
@@ -44,6 +50,7 @@ $(function()
             for(let e = 0; e < inputNeuronsCount; e++)
             {
                 weights_ih[d][e] = Math.random();
+                $(".neural-values-text").append("Weight input" + (d+1) + "_hidden" + (e+1) + ": <span id='weighti"+d+"h"+e+"-val'>" + weights_ih[d][e] + "</span><br>");
             }
         }
 
@@ -54,6 +61,7 @@ $(function()
             for(let g = 0; g < hiddenNeuronsCount; g++)
             {
                 weights_ho[f][g] = Math.random();
+                $(".neural-values-text").append("Weight hidden" + (f+1) + "output" + (g+1) + ": <span id='weighth"+f+"o"+g+"-val'>" + weights_ho[f][g] + "</span><br>");
             }
         }
 
@@ -63,7 +71,7 @@ $(function()
     // 4 input neurons - for sides of direction: up, right, down, left 
     // 3 hidden neurons - for decision making if to turn left, right or go forward
     // 1 output neuron - for the final decision
-    var nn = new NeuralNetwork(4, 3, 1); // 4 input neurons, 3 hidden neurons,  
+    NeuralNetwork(4, 3, 1); // 4 input neurons, 3 hidden neurons,  
     // 1 output neuron
     console.log(nn);
 });
