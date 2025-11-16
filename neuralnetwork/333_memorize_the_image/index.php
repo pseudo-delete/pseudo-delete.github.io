@@ -1171,7 +1171,7 @@
                                         const x = pxI % img.width;
                                         const y = Math.floor(pxI / img.width);
 
-                                        console.clear();
+                                        // console.clear();
                                         console.log(`Pixel (${x},${y}) -> R=${r}, G=${g}, B=${b}`);
 
                                         // Generate random neural input/weights/bias

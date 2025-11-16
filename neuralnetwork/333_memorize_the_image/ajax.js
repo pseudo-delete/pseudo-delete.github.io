@@ -31,7 +31,7 @@ $(function()
             },
             success: function(response)
             {
-                console.clear();
+                // console.clear();
                 // console.log(`Neural Net ${id} Added: ` + response);
             },
             error: function()
@@ -60,7 +60,7 @@ $(function()
             },
             success: function(response)
             {
-                console.clear();
+                // console.clear();
                 // console.log(`Neural Net ${id} Updated: ` + response);
             },
             error: function()
@@ -80,7 +80,6 @@ $(function()
             type: "POST",
             success: function(response)
             {
-                console.clear();
                 console.log(response);
             },
             error: function()
