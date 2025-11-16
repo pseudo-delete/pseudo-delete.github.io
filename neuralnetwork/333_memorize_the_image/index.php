@@ -610,9 +610,9 @@
                                     dataType: "json",
                                     success: function(response)
                                     {
-                                        $("#input1-val").text(response.input1).text();// input1-val
-                                        $("#input2-val").text(response.input2).text();// input2-val
-                                        $("#input3-val").text(response.input3).text();// input3-val
+                                        $("#input1-val").text(response.input1);// input1-val
+                                        $("#input2-val").text(response.input2);// input2-val
+                                        $("#input3-val").text(response.input3);// input3-val
 
                                         $("#hidden1-val").text(response.hidden1);// hidden1-val
                                         $("#hidden2-val").text(response.hidden2);// hidden2-val
