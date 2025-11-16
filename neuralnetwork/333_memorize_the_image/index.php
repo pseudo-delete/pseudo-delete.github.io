@@ -598,68 +598,74 @@
                             // transferring the information from database data-table to be the current selected value in the network model applying it's values
                             function dbToNetwork(id)
                             {
-                                // make it from php table to network
-                                $.ajax(
-                                {
-                                    url: "php/get_neural_data_row.php",
-                                    type: "POST",
-                                    data: 
+                                return new Promise((resolve, reject) => {
+                                    // make it from php table to network
+                                    $.ajax(
                                     {
-                                        id: id
-                                    },
-                                    dataType: "json",
-                                    success: function(response)
-                                    {
-                                        $("#input1-val").text(response.input1);// input1-val
-                                        $("#input2-val").text(response.input2);// input2-val
-                                        $("#input3-val").text(response.input3);// input3-val
+                                        url: "php/get_neural_data_row.php",
+                                        type: "POST",
+                                        data: 
+                                        {
+                                            id: id
+                                        },
+                                        dataType: "json",
+                                        success: function(response)
+                                        {
+                                            $("#input1-val").text(response.input1);// input1-val
+                                            $("#input2-val").text(response.input2);// input2-val
+                                            $("#input3-val").text(response.input3);// input3-val
 
-                                        $("#hidden1-val").text(response.hidden1);// hidden1-val
-                                        $("#hidden2-val").text(response.hidden2);// hidden2-val
-                                        $("#hidden3-val").text(response.hidden3);// hidden3-val
+                                            $("#hidden1-val").text(response.hidden1);// hidden1-val
+                                            $("#hidden2-val").text(response.hidden2);// hidden2-val
+                                            $("#hidden3-val").text(response.hidden3);// hidden3-val
 
-                                        $("#output1-val").text(response.output1);// output1-val
-                                        $("#output2-val").text(response.output2);// output2-val
-                                        $("#output3-val").text(response.output3);// output3-val
+                                            $("#output1-val").text(response.output1);// output1-val
+                                            $("#output2-val").text(response.output2);// output2-val
+                                            $("#output3-val").text(response.output3);// output3-val
 
-                                        // $("#doc-id-val").text($("#doc-id-"+id).text());// document id value
-                                        $("#id-val").text(response.id);// field id value
+                                            // $("#doc-id-val").text($("#doc-id-"+id).text());// document id value
+                                            $("#id-val").text(response.id);// field id value
 
-                                        $("#weight1-val").text(response.weight1);// weight1-val
-                                        $("#weight2-val").text(response.weight2);// weight2-val
-                                        $("#weight3-val").text(response.weight3);// weight3-val
-                                        $("#weight4-val").text(response.weight4);// weight4-val
-                                        $("#weight5-val").text(response.weight5);// weight5-val
-                                        $("#weight6-val").text(response.weight6);// weight6-val
-                                        $("#weight7-val").text(response.weight7);// weight7-val
-                                        $("#weight8-val").text(response.weight8);// weight8-val
-                                        $("#weight9-val").text(response.weight9);// weight9-val
-                                        $("#weight10-val").text(response.weight10);// weight10-val
-                                        $("#weight11-val").text(response.weight11);// weight11-val
-                                        $("#weight12-val").text(response.weight12);// weight12-val
-                                        $("#weight13-val").text(response.weight13);// weight13-val
-                                        $("#weight14-val").text(response.weight14);// weight14-val
-                                        $("#weight15-val").text(response.weight15);// weight15-val
-                                        $("#weight16-val").text(response.weight16);// weight16-val
-                                        $("#weight17-val").text(response.weight17);// weight17-val
-                                        $("#weight18-val").text(response.weight18);// weight18-val
+                                            $("#weight1-val").text(response.weight1);// weight1-val
+                                            $("#weight2-val").text(response.weight2);// weight2-val
+                                            $("#weight3-val").text(response.weight3);// weight3-val
+                                            $("#weight4-val").text(response.weight4);// weight4-val
+                                            $("#weight5-val").text(response.weight5);// weight5-val
+                                            $("#weight6-val").text(response.weight6);// weight6-val
+                                            $("#weight7-val").text(response.weight7);// weight7-val
+                                            $("#weight8-val").text(response.weight8);// weight8-val
+                                            $("#weight9-val").text(response.weight9);// weight9-val
+                                            $("#weight10-val").text(response.weight10);// weight10-val
+                                            $("#weight11-val").text(response.weight11);// weight11-val
+                                            $("#weight12-val").text(response.weight12);// weight12-val
+                                            $("#weight13-val").text(response.weight13);// weight13-val
+                                            $("#weight14-val").text(response.weight14);// weight14-val
+                                            $("#weight15-val").text(response.weight15);// weight15-val
+                                            $("#weight16-val").text(response.weight16);// weight16-val
+                                            $("#weight17-val").text(response.weight17);// weight17-val
+                                            $("#weight18-val").text(response.weight18);// weight18-val
 
-                                        $("#bias1-val").text(response.bias1);// bias1-val
-                                        $("#bias2-val").text(response.bias2);// bias2-val
-                                        $("#bias3-val").text(response.bias3);// bias3-val
-                                        $("#bias4-val").text(response.bias4);// bias4-val
-                                        $("#bias5-val").text(response.bias5);// bias5-val
-                                        $("#bias6-val").text(response.bias6);// bias6-val
+                                            $("#bias1-val").text(response.bias1);// bias1-val
+                                            $("#bias2-val").text(response.bias2);// bias2-val
+                                            $("#bias3-val").text(response.bias3);// bias3-val
+                                            $("#bias4-val").text(response.bias4);// bias4-val
+                                            $("#bias5-val").text(response.bias5);// bias5-val
+                                            $("#bias6-val").text(response.bias6);// bias6-val
 
-                                        $("#target1-val").text(response.target1);// target1-val
-                                        $("#target2-val").text(response.target2);// target2-val
-                                        $("#target3-val").text(response.target3);// target3-val
-                                    },
-                                    error: function()
-                                    {
-                                        console.log("Transfer from database to Network failed");
-                                    }
-                                });
+                                            $("#target1-val").text(response.target1);// target1-val
+                                            $("#target2-val").text(response.target2);// target2-val
+                                            $("#target3-val").text(response.target3);// target3-val
+
+                                            resolve();
+                                        },
+                                        error: function()
+                                        {
+                                            console.log("Transfer from database to Network failed");
+                                            reject();
+                                        }
+                                    });
+                                })
+                                
                             }
                             /* end of function tableToNetwork(id) */
 
@@ -739,7 +745,7 @@
 
                                 let bias1 = parseFloat($("#bias1-val").text());// to hidden1 bias
                                 let bias2 = parseFloat($("#bias2-val").text());// to output1 bias
-                                let bias3 = parseFloat($("#bias2-val").text());// to hidden2 bias
+                                let bias3 = parseFloat($("#bias3-val").text());// to hidden2 bias
                                 let bias4 = parseFloat($("#bias4-val").text());// to output2 bias
                                 let bias5 = parseFloat($("#bias5-val").text());// to hidden3 bias
                                 let bias6 = parseFloat($("#bias6-val").text());// to output3 bias
@@ -982,8 +988,6 @@
                             $("#btn-start-timer").on("click", function() {
                                 async function step() {
                                     
-                                    $(".tr-neural-data").css("background-color", "transparent");
-
                                     count++;
                                     $("#timer").text(count + " seconds");
 
@@ -1002,10 +1006,9 @@
                                         cycleCounter++;
                                     }
                                     $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
-                                    $("#row-" + pixId).css("background-color", "yellow");
                                     $("#cycle-counter").text(cycleCounter);
 
-                                    dbToNetwork(pixId);
+                                    await dbToNetwork(pixId);// The data loading is now SYNCHRONOUS (waits for the promise to resolve)
                                     if(cycleCounter<=1)
                                     {
                                         fire();

@@ -18,19 +18,18 @@ $(function()
     function appendNeuralDataRowDb(allRows)
     {
         $.ajax({
-        url: "php/append_neural_data_row.php",
-        type: "POST",
-        data: {
-            rows: JSON.stringify(allRows)
-        },
-        success: function(response) {
-            console.log("All pixel data inserted.");
-        },
-        error: function() {
-            console.log("Error inserting pixel data.");
-        }
-    });
-
+            url: "php/append_neural_data_row.php",
+            type: "POST",
+            data: {
+                rows: JSON.stringify(allRows)
+            },
+            success: function(response) {
+                console.log("All pixel data inserted.");
+            },
+            error: function() {
+                console.log("Error inserting pixel data.");
+            }
+        });
     }
 
     // update a row to the neural data table in the database
