@@ -611,6 +611,12 @@
                                         dataType: "json",
                                         success: function(response)
                                         {
+                                            // Check if the response contains an error flag from PHP
+                                            if (response && response.error) {
+                                                // Reject the promise if PHP reported an error (e.g., failed query)
+                                                return reject(new Error("PHP Error: " + response.error));
+                                            }
+                                            
                                             $("#input1-val").text(response.input1);// input1-val
                                             $("#input2-val").text(response.input2);// input2-val
                                             $("#input3-val").text(response.input3);// input3-val
@@ -658,10 +664,12 @@
 
                                             resolve();
                                         },
-                                        error: function()
+                                        error: function(jqXHR, textStatus, errorThrown) 
                                         {
-                                            console.log("Transfer from database to Network failed");
-                                            reject();
+                                            // Log detailed error for debugging
+                                            console.error("AJAX Transfer from database to Network failed:", textStatus, errorThrown, jqXHR.responseText);
+                                            // Signal failure and stop the loop
+                                            reject(new Error("AJAX load failed for ID: " + id));
                                         }
                                     });
                                 })
@@ -1008,18 +1016,26 @@
                                     $("#current-pixel-id-display").text(pixId + " / " + maxPixId);
                                     $("#cycle-counter").text(cycleCounter);
 
-                                    await dbToNetwork(pixId);// The data loading is now SYNCHRONOUS (waits for the promise to resolve)
-                                    if(cycleCounter<=1)
+                                    try
                                     {
-                                        fire();
-                                        train();
-                                    }
-                                    else if(cycleCounter>1)
+                                        await dbToNetwork(pixId);// The data loading is now SYNCHRONOUS (waits for the promise to resolve)
+                                        if(cycleCounter<=1)
+                                        {
+                                            fire();
+                                            train();
+                                        }
+                                        else if(cycleCounter>1)
+                                        {
+                                            train();
+                                        }
+                                        // for(let trainIter=0; trainIter<10; trainIter++)train();
+                                        networkToDb(pixId);
+                                    }catch (e) 
                                     {
-                                        train();
+                                        // Handle rejection (DB or AJAX failure) by stopping the loop
+                                        console.error("STEP LOOP TERMINATED due to DB failure:", e.message);
+                                        return; // Prevents requestAnimationFrame from running again
                                     }
-                                    // for(let trainIter=0; trainIter<10; trainIter++)train();
-                                    networkToDb(pixId);
 
                                     // pixel coordinate display
                                     let uploadedResolutionWidth = parseInt($("#uploaded-image-resolution-width").text());
