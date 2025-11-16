@@ -1185,6 +1185,8 @@
                                         });
                                     }
 
+                                    appendNeuralDataRowDb(allRows);
+
                                 });
                             };
                             img.src = e.target.result;
