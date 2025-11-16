@@ -600,6 +600,10 @@
                             // transferring the information from data-table to be the current selected value in the network model applying it's values
                             function tableToNetwork(id)
                             {
+                                // make it from php table to network
+                                //$.ajax();
+
+
                                 $("#input1-val").text($("#input1-"+id).text());// input1-val
                                 $("#input2-val").text($("#input2-"+id).text());// input2-val
                                 $("#input3-val").text($("#input3-"+id).text());// input3-val
@@ -649,6 +653,9 @@
 
                             function networkToTable(id)
                             {
+                                // make it from network to php table using ajax
+                                //$.ajax();
+
                                 let input = [];
                                 input.push($("#input1-val").text());// input1-val
                                 input.push($("#input2-val").text());// input2-val
@@ -700,7 +707,7 @@
                                 target.push($("#target2-val").text());// target2-val
                                 target.push($("#target3-val").text());// target3-val
 
-                                updateNeuralDataRow(id, input, hidden, output, target, weight, bias);
+                                updateNeuralDataRowDb(id, input, hidden, output, target, weight, bias);
                             }
 
                             
@@ -780,75 +787,9 @@
                                 */
                             }
 
-                            async function fireTF() {
-                                // Ensure TensorFlow uses the GPU if available
-                                await tf.setBackend('webgl');
-                                await tf.ready();
-
-                                // --- 🔹 INPUTS ---
-                                const input1 = parseFloat($("#input1-val").text());
-                                const input2 = parseFloat($("#input2-val").text());
-                                const input3 = parseFloat($("#input3-val").text());
-                                const inputTensor = tf.tensor([[input1, input2, input3]]); // shape [1,3]
-
-                                // --- 🔹 WEIGHTS (input → hidden) ---
-                                const W_input_hidden = tf.tensor([
-                                    [parseFloat($("#weight1-val").text()), parseFloat($("#weight4-val").text()), parseFloat($("#weight11-val").text())], // from input1
-                                    [parseFloat($("#weight3-val").text()), parseFloat($("#weight5-val").text()), parseFloat($("#weight12-val").text())], // from input2
-                                    [parseFloat($("#weight9-val").text()), parseFloat($("#weight10-val").text()), parseFloat($("#weight13-val").text())]  // from input3
-                                ]); // shape [3,3]
-
-                                const bias_hidden = tf.tensor([
-                                    parseFloat($("#bias1-val").text()),  // bias for hidden1
-                                    parseFloat($("#bias3-val").text()),  // bias for hidden2
-                                    parseFloat($("#bias5-val").text())   // bias for hidden3
-                                ]); // shape [3]
-
-                                // --- 🔹 Hidden layer ---
-                                const hidden = tf.sigmoid(inputTensor.matMul(W_input_hidden).add(bias_hidden));
-
-                                // --- 🔹 WEIGHTS (hidden → output) ---
-                                const W_hidden_output = tf.tensor([
-                                    [parseFloat($("#weight2-val").text()), parseFloat($("#weight7-val").text()), parseFloat($("#weight16-val").text())], // from hidden1
-                                    [parseFloat($("#weight6-val").text()), parseFloat($("#weight8-val").text()), parseFloat($("#weight17-val").text())], // from hidden2
-                                    [parseFloat($("#weight14-val").text()), parseFloat($("#weight15-val").text()), parseFloat($("#weight18-val").text())] // from hidden3
-                                ]); // shape [3,3]
-
-                                const bias_output = tf.tensor([
-                                    parseFloat($("#bias2-val").text()),  // output1 bias
-                                    parseFloat($("#bias4-val").text()),  // output2 bias
-                                    parseFloat($("#bias6-val").text())   // output3 bias
-                                ]); // shape [3]
-
-                                // --- 🔹 Output layer ---
-                                const output = tf.sigmoid(hidden.matMul(W_hidden_output).add(bias_output)); // shape [1,3]
-
-                                // --- 🔹 Convert output to RGB ---
-                                const rgb = (await output.mul(256).data());
-                                const r1 = Math.floor(rgb[0]);
-                                const g1 = Math.floor(rgb[1]);
-                                const b1 = Math.floor(rgb[2]);
-
-                                // --- 🔹 Update display ---
-                                $("#output1-val").text(r1 / 256);
-                                $("#output2-val").text(g1 / 256);
-                                $("#output3-val").text(b1 / 256);
-
-                                // --- 🔹 Draw pixel on canvas ---
-                                const xAi = parseInt($("#x-id").text());
-                                const yAi = parseInt($("#y-id").text());
-                                ctxAi.fillStyle = `rgb(${r1}, ${g1}, ${b1})`;
-                                ctxAi.fillRect(xAi, yAi, 1, 1);
-                            }// tensorflow fire()
-
                             $("#btn-clear-neural-val").on('click', function()
                             {
                                 /* Cleaning up the data-table for new collection */
-                                // deleteCollection("image_integration_collection")// Initial delete of all documents in the collection for cleaning up the data-table for use
-                                // .then(() => console.log("All documents deleted"))
-                                // .catch(console.error);
-
-                                // loadTable();
 
                                 clearNeuralDataTable();
                             });
@@ -1299,7 +1240,7 @@
                                         const bias = Array.from({length: 7}, () => Math.random());
                                         const target = [r, g, b];
 
-                                        appendNeuralDataRow(pxI, input, target, weight, bias);
+                                        appendNeuralDataRowDb(pxI, input, target, weight, bias);
                                     }
                                 });
                             };
