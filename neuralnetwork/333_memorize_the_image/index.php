@@ -596,110 +596,110 @@
                                 return 1/(1+Math.exp(-x));
                             }
 
-                            // transferring the information from data-table to be the current selected value in the network model applying it's values
-                            function tableToNetwork(id)
+                            // transferring the information from database data-table to be the current selected value in the network model applying it's values
+                            function dbToNetwork(id)
                             {
                                 // make it from php table to network
-                                //$.ajax();
+                                $.ajax(
+                                {
+                                    url: "php/get_neural_data_row.php",
+                                    type: "POST",
+                                    data: 
+                                    {
+                                        id: id
+                                    },
+                                    dataType: "json",
+                                    success: function(response)
+                                    {
+                                        $("#input1-val").text(response.input1).text();// input1-val
+                                        $("#input2-val").text(response.input2).text();// input2-val
+                                        $("#input3-val").text(response.input3).text();// input3-val
 
+                                        $("#hidden1-val").text(response.hidden1);// hidden1-val
+                                        $("#hidden2-val").text(response.hidden2);// hidden2-val
+                                        $("#hidden3-val").text(response.hidden3);// hidden3-val
 
-                                $("#input1-val").text($("#input1-"+id).text());// input1-val
-                                $("#input2-val").text($("#input2-"+id).text());// input2-val
-                                $("#input3-val").text($("#input3-"+id).text());// input3-val
+                                        $("#output1-val").text(response.output1);// output1-val
+                                        $("#output2-val").text(response.output2);// output2-val
+                                        $("#output3-val").text(response.output3);// output3-val
 
-                                $("#hidden1-val").text($("#hidden1-"+id).text());// hidden1-val
-                                $("#hidden2-val").text($("#hidden2-"+id).text());// hidden2-val
-                                $("#hidden3-val").text($("#hidden3-"+id).text());// hidden3-val
+                                        // $("#doc-id-val").text($("#doc-id-"+id).text());// document id value
+                                        $("#id-val").text(response.id);// field id value
 
-                                $("#output1-val").text($("#output1-"+id).text());// output1-val
-                                $("#output2-val").text($("#output2-"+id).text());// output2-val
-                                $("#output3-val").text($("#output3-"+id).text());// output3-val
+                                        $("#weight1-val").text(response.weight1);// weight1-val
+                                        $("#weight2-val").text(response.weight2);// weight2-val
+                                        $("#weight3-val").text(response.weight3);// weight3-val
+                                        $("#weight4-val").text(response.weight4);// weight4-val
+                                        $("#weight5-val").text(response.weight5);// weight5-val
+                                        $("#weight6-val").text(response.weight6);// weight6-val
+                                        $("#weight7-val").text(response.weight7);// weight7-val
+                                        $("#weight8-val").text(response.weight8);// weight8-val
+                                        $("#weight9-val").text(response.weight9);// weight9-val
+                                        $("#weight10-val").text(response.weight10);// weight10-val
+                                        $("#weight11-val").text(response.weight11);// weight11-val
+                                        $("#weight12-val").text(response.weight12);// weight12-val
+                                        $("#weight13-val").text(response.weight13);// weight13-val
+                                        $("#weight14-val").text(response.weight14);// weight14-val
+                                        $("#weight15-val").text(response.weight15);// weight15-val
+                                        $("#weight16-val").text(response.weight16);// weight16-val
+                                        $("#weight17-val").text(response.weight17);// weight17-val
+                                        $("#weight18-val").text(response.weight18);// weight18-val
 
-                                // $("#doc-id-val").text($("#doc-id-"+id).text());// document id value
-                                $("#id-val").text($("#id-"+id).text());// field id value
+                                        $("#bias1-val").text(response.bias1);// bias1-val
+                                        $("#bias2-val").text(response.bias2);// bias2-val
+                                        $("#bias3-val").text(response.bias3);// bias3-val
+                                        $("#bias4-val").text(response.bias4);// bias4-val
+                                        $("#bias5-val").text(response.bias5);// bias5-val
+                                        $("#bias6-val").text(response.bias6);// bias6-val
 
-                                $("#weight1-val").text($("#weight1-"+id).text());// weight1-val
-                                $("#weight2-val").text($("#weight2-"+id).text());// weight2-val
-                                $("#weight3-val").text($("#weight3-"+id).text());// weight3-val
-                                $("#weight4-val").text($("#weight4-"+id).text());// weight4-val
-                                $("#weight5-val").text($("#weight5-"+id).text());// weight5-val
-                                $("#weight6-val").text($("#weight6-"+id).text());// weight6-val
-                                $("#weight7-val").text($("#weight7-"+id).text());// weight7-val
-                                $("#weight8-val").text($("#weight8-"+id).text());// weight8-val
-                                $("#weight9-val").text($("#weight9-"+id).text());// weight9-val
-                                $("#weight10-val").text($("#weight10-"+id).text());// weight10-val
-                                $("#weight11-val").text($("#weight11-"+id).text());// weight11-val
-                                $("#weight12-val").text($("#weight12-"+id).text());// weight12-val
-                                $("#weight13-val").text($("#weight13-"+id).text());// weight13-val
-                                $("#weight14-val").text($("#weight14-"+id).text());// weight14-val
-                                $("#weight15-val").text($("#weight15-"+id).text());// weight15-val
-                                $("#weight16-val").text($("#weight16-"+id).text());// weight16-val
-                                $("#weight17-val").text($("#weight17-"+id).text());// weight17-val
-                                $("#weight18-val").text($("#weight18-"+id).text());// weight18-val
-
-                                $("#bias1-val").text($("#bias1-"+id).text());// bias1-val
-                                $("#bias2-val").text($("#bias2-"+id).text());// bias2-val
-                                $("#bias3-val").text($("#bias3-"+id).text());// bias3-val
-                                $("#bias4-val").text($("#bias4-"+id).text());// bias4-val
-                                $("#bias5-val").text($("#bias5-"+id).text());// bias5-val
-                                $("#bias6-val").text($("#bias6-"+id).text());// bias6-val
-
-                                $("#target1-val").text($("#target1-"+id).text());// target1-val
-                                $("#target2-val").text($("#target2-"+id).text());// target2-val
-                                $("#target3-val").text($("#target3-"+id).text());// target3-val
+                                        $("#target1-val").text(response.target1);// target1-val
+                                        $("#target2-val").text(response.target2);// target2-val
+                                        $("#target3-val").text(response.target3);// target3-val
+                                    },
+                                    error: function()
+                                    {
+                                        console.log("Transfer from database to Network failed");
+                                    }
+                                });
                             }
                             /* end of function tableToNetwork(id) */
 
-                            function networkToTable(id)
+                            function networkToDb(id)
                             {
                                 // make it from network to php table using ajax
                                 //$.ajax();
 
                                 let input = [];
-                                input.push($("#input1-val").text());// input1-val
-                                input.push($("#input2-val").text());// input2-val
-                                input.push($("#input3-val").text());// input3-val
+                                for(let inputId=1;inputId<=3;inputId++)
+                                {
+                                    input.push($("#input"+inputId+"-val").text());// input1-val:input3-val
+                                }
 
                                 let hidden = [];
-                                hidden.push($("#hidden1-val").text());// hidden1-val
-                                hidden.push($("#hidden2-val").text());// hidden2-val
-                                hidden.push($("#hidden3-val").text());// hidden3-val
+                                for(let hiddenId=1;hiddenId<=3;hiddenId++)
+                                {
+                                    hidden.push($("#hidden"+hiddenId+"-val").text());// hidden1-val:hidden3-val
+                                }
 
                                 let output = [];
-                                output.push($("#output1-val").text());// output1-val
-                                output.push($("#output2-val").text());// output2-val
-                                output.push($("#output3-val").text());// output3-val
+                                for(let outputId=1;outputId<=3;outputId++)
+                                {
+                                    output.push($("#output"+outputId+"-val").text());// output1-val:output3-val
+                                }
 
-                                $("#doc-id-val").text();// document id value
-                                $("#id-val").text();// field id value
+                                $("#id-val").text(id);// field id value
 
                                 let weight = [];
-                                weight.push($("#weight1-val").text());// weight1-val
-                                weight.push($("#weight2-val").text());// weight2-val
-                                weight.push($("#weight3-val").text());// weight3-val
-                                weight.push($("#weight4-val").text());// weight4-val
-                                weight.push($("#weight5-val").text());// weight5-val
-                                weight.push($("#weight6-val").text());// weight6-val
-                                weight.push($("#weight7-val").text());// weight7-val
-                                weight.push($("#weight8-val").text());// weight8-val
-                                weight.push($("#weight9-val").text());// weight9-val
-                                weight.push($("#weight10-val").text());// weight10-val
-                                weight.push($("#weight11-val").text());// weight11-val
-                                weight.push($("#weight12-val").text());// weight12-val
-                                weight.push($("#weight13-val").text());// weight13-val
-                                weight.push($("#weight14-val").text());// weight14-val
-                                weight.push($("#weight15-val").text());// weight15-val
-                                weight.push($("#weight16-val").text());// weight16-val
-                                weight.push($("#weight17-val").text());// weight17-val
-                                weight.push($("#weight18-val").text());// weight18-val
+                                for(let weightId=1;weightId<=18;weightId++)
+                                {
+                                    weight.push($("#weight"+weightId+"-val").text());// weight1-val:weight18-val
+                                }
 
                                 let bias = [];
-                                bias.push($("#bias1-val").text());// bias1-val
-                                bias.push($("#bias2-val").text());// bias2-val
-                                bias.push($("#bias3-val").text());// bias3-val
-                                bias.push($("#bias4-val").text());// bias4-val
-                                bias.push($("#bias5-val").text());// bias5-val
-                                bias.push($("#bias6-val").text());// bias6-val
+                                for(let biasId=1;biasId<=6;biasId++)
+                                {
+                                    bias.push($("#bias"+biasId+"-val").text());// bias1-val:bias6-val
+                                }
 
                                 let target = [];
                                 target.push($("#target1-val").text());// target1-val
@@ -1092,63 +1092,6 @@
             error = t - output, where t = target color inside the sigmoid range
             then new_weight = learningrate * delta * input 
             bias = learningrate * delta-->
-        </div>
-
-        <div class="data-table-container">
-            <table id="data-table" class="transparent">
-                <thead>
-                    <tr>
-                        <th colspan="1">ID</th>
-                        <th colspan="3">Input</th>
-                        <th colspan="3">Hidden</th>
-                        <th colspan="3">Output</th>
-                        <th colspan="3">Target</th>
-                        <th colspan="18">Weight</th>
-                        <th colspan="6">Bias</th>
-                    </tr>
-                    <tr>
-                        <!-- <th>Document ID</th> -->
-                        <th>Field ID</th>
-                        <th>Input 1</th>
-                        <th>Input 2</th>
-                        <th>Input 3</th>
-                        <th>Hidden 1</th>
-                        <th>Hidden 2</th>
-                        <th>Hidden 3</th>
-                        <th>Output 1</th>
-                        <th>Output 2</th>
-                        <th>Output 3</th>
-                        <th>Target 1</th>
-                        <th>Target 2</th>
-                        <th>Target 3</th>
-                        <th>Weight 1</th>
-                        <th>Weight 2</th>
-                        <th>Weight 3</th>
-                        <th>Weight 4</th>
-                        <th>Weight 5</th>
-                        <th>Weight 6</th>
-                        <th>Weight 7</th>
-                        <th>Weight 8</th>
-                        <th>Weight 9</th>
-                        <th>Weight 10</th>
-                        <th>Weight 11</th>
-                        <th>Weight 12</th>
-                        <th>Weight 13</th>
-                        <th>Weight 14</th>
-                        <th>Weight 15</th>
-                        <th>Weight 16</th>
-                        <th>Weight 17</th>
-                        <th>Weight 18</th>
-                        <th>Bias 1</th>
-                        <th>Bias 2</th>
-                        <th>Bias 3</th>
-                        <th>Bias 4</th>
-                        <th>Bias 5</th>
-                        <th>Bias 6</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
         </div>
       
         <div class="panel-generate">
