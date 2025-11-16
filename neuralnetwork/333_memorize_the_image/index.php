@@ -983,7 +983,6 @@
                             // Start timer
                             $("#btn-start-timer").on("click", function() {
                                 async function step() {
-                                    await fireTF();
                                     
                                     $(".tr-neural-data").css("background-color", "transparent");
 
