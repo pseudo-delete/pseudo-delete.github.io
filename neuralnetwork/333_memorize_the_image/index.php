@@ -1006,7 +1006,7 @@
                                     $("#row-" + pixId).css("background-color", "yellow");
                                     $("#cycle-counter").text(cycleCounter);
 
-                                    tableToNetwork(pixId);
+                                    dbToNetwork(pixId);
                                     if(cycleCounter<=1)
                                     {
                                         fire();
@@ -1017,7 +1017,7 @@
                                         train();
                                     }
                                     for(let trainIter=0; trainIter<10; trainIter++)train();
-                                    networkToTable(pixId);
+                                    networkToDb(pixId);
 
                                     // pixel coordinate display
                                     let uploadedResolutionWidth = parseInt($("#uploaded-image-resolution-width").text());
