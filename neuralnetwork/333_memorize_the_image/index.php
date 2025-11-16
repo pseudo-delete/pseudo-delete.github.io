@@ -1176,7 +1176,7 @@
                             img.onload = function()
                             {
                                 <!-- Make sure TensorFlow.js is loaded -->
-                                clearNeuralDataTable();
+                                clearNeuralDataTableDb();
 
                                 const canvas = $("#canvas-display-image")[0];
                                 const canvasAi = $("#ai-canvas-display")[0];
