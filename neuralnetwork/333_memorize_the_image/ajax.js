@@ -15,7 +15,7 @@ $(function()
     });
 
     // append a new row to the neural data table in the database
-    function appendNeuralDataRowDb(id, input, target, weight, bias)
+    function appendNeuralDataRowDb(allRows)
     {
         $.ajax({
         url: "php/append_neural_data_row.php",
