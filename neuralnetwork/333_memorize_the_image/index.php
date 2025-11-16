@@ -35,7 +35,6 @@
         <div class="div-neural-net-value">
             <h5>Weight, Biases, and Target values</h5>
             <p>
-                Doc ID: <span id="doc-id-val">0</span><br>
                 ID: <span id="id-val">0</span><br><br>
 
                 W1: <span id="weight1-val">0</span><br>
@@ -1016,7 +1015,7 @@
                                     {
                                         train();
                                     }
-                                    for(let trainIter=0; trainIter<10; trainIter++)train();
+                                    // for(let trainIter=0; trainIter<10; trainIter++)train();
                                     networkToDb(pixId);
 
                                     // pixel coordinate display

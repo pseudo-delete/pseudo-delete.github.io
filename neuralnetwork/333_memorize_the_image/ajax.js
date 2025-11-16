@@ -36,7 +36,7 @@ $(function()
             },
             error: function()
             {
-                console.log(`AJAX adding error ${id}: failure in the process of adding neural rows to the database.`);
+                console.log(`AJAX adding error: failure in the process of adding neural rows to the database.`);
             }
         });
     }
