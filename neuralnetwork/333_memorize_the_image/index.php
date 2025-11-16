@@ -1165,23 +1165,26 @@
                                     // Flatten tensor to 1D array
                                     const tensorData = inputTensor.reshape([totalPixelCount, 3]).arraySync();
 
-                                    for (let pxI = 0; pxI < totalPixelCount; pxI++) {
-                                        const [r, g, b] = tensorData[pxI]; // normalized values 0-1
+                                    const allRows = [];
 
-                                        const x = pxI % img.width;
-                                        const y = Math.floor(pxI / img.width);
+                                    for (let pxI = 0; pxI < totalPixelCount; pxI++) 
+                                    {
+                                        const [r, g, b] = tensorData[pxI];
 
-                                        // console.clear();
-                                        console.log(`Pixel (${x},${y}) -> R=${r}, G=${g}, B=${b}`);
-
-                                        // Generate random neural input/weights/bias
                                         const input = Array.from({length: 3}, () => Math.random());
                                         const weight = Array.from({length: 19}, () => Math.random());
                                         const bias = Array.from({length: 7}, () => Math.random());
                                         const target = [r, g, b];
 
-                                        appendNeuralDataRowDb(pxI, input, target, weight, bias);
+                                        allRows.push({
+                                            id: pxI,
+                                            input,
+                                            target,
+                                            weight,
+                                            bias
+                                        });
                                     }
+
                                 });
                             };
                             img.src = e.target.result;

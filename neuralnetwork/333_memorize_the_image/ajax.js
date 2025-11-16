@@ -17,28 +17,20 @@ $(function()
     // append a new row to the neural data table in the database
     function appendNeuralDataRowDb(id, input, target, weight, bias)
     {
-        $.ajax(
-        {
-            url: "php/append_neural_data_row.php",
-            type: "POST",
-            data:
-            {
-                id: id, 
-                input: input,
-                target: target,
-                weight: weight,
-                bias: bias
-            },
-            success: function(response)
-            {
-                // console.clear();
-                // console.log(`Neural Net ${id} Added: ` + response);
-            },
-            error: function()
-            {
-                console.log(`AJAX adding error: failure in the process of adding neural rows to the database.`);
-            }
-        });
+        $.ajax({
+        url: "php/append_neural_data_row.php",
+        type: "POST",
+        data: {
+            rows: JSON.stringify(allRows)
+        },
+        success: function(response) {
+            console.log("All pixel data inserted.");
+        },
+        error: function() {
+            console.log("Error inserting pixel data.");
+        }
+    });
+
     }
 
     // update a row to the neural data table in the database
