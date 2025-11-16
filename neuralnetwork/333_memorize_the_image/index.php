@@ -790,7 +790,7 @@
                             {
                                 /* Cleaning up the data-table for new collection */
 
-                                clearNeuralDataTable();
+                                clearNeuralDataTableDb();
                             });
 
                             function train(){
