@@ -3,6 +3,11 @@ div, canvas
   border: 1px solid black;
 }
 
+/* .maze-container
+{
+  margin-top: 50px;
+} */
+
 .maze-tile
 {
   position: absolute;
