@@ -8,12 +8,12 @@ div, canvas
   position: relative;
 }
 
-.maze-tile
+.maze-tile, #player-tile
 {
   position: absolute;
 }
 
-.player-tile
+#player-tile
 {
   background-color: black;
 }
