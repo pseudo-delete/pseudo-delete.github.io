@@ -2,3 +2,10 @@ div, canvas
 {
   border: 1px solid black;
 }
+
+.maze-container
+{
+  position: absolute;
+  width: auto;
+  height: auto;
+}
