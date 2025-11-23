@@ -1,11 +1,13 @@
 $(function()
 {
+    let mazeContainerHeight = 0;
+
     let tileDiv = [];
     function establishPlatform(TileColumnsCount, TileRowsCount, TileWidth, TileHeight)
     {
-        
+        mazeContainerHeight = (TileRowsCount*TileHeight) + (TileHeight*2);
         $(".maze-container").css("width", (TileColumnsCount*TileWidth)+"px");
-        $(".maze-container").css("height", ((TileRowsCount*TileHeight) + (TileHeight*2))+"px");
+        $(".maze-container").css("height", (mazeContainerHeight)+"px");
 
         for(let x=0;x<TileColumnsCount;x++)
         {
@@ -27,5 +29,12 @@ $(function()
         }
     }
 
+    function movePlayerTile(x,y)
+    {
+        $("#player-tile").css("left", x+"px");
+        $("#player-tile").css("top", y+"px");
+    }
+
     establishPlatform(10,10, 50, 50);
+    movePlayerTile(0, mazeContainerHeight-50);
 });

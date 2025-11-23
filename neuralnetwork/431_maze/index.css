@@ -12,3 +12,8 @@ div, canvas
 {
   position: absolute;
 }
+
+.player-tile
+{
+  background-color: black;
+}
