@@ -24,10 +24,10 @@ $(function()
         $(".neural-values-text").append("<br>");
 
         // weights initialization from input to hidden
-        for(let d = 0; d < inputNeuronsCount; d++)
+        for(let d = 0; d < hiddenNeuronsCount; d++)
         {
             weights_ih[d] = [];
-            for(let e = 0; e < hiddenNeuronsCount; e++)
+            for(let e = 0; e < inputNeuronsCount; e++)
             {
                 weights_ih[d][e] = Math.random();
                 $(".neural-values-text").append("W I" + (d+1) + "_H" + (e+1) + ": <span id='weighti"+(d+1)+"h"+(e+1)+"-val'>" + weights_ih[d][e] + "</span><br>");
@@ -55,10 +55,10 @@ $(function()
         $(".neural-values-text").append("<br>");
 
         // weights initialization from hidden to output
-        for(let f = 0; f < hiddenNeuronsCount; f++)
+        for(let f = 0; f < outputNeuronsCount; f++)
         {
             weights_ho[f] = [];
-            for(let g = 0; g < outputNeuronsCount; g++)
+            for(let g = 0; g < hiddenNeuronsCount; g++)
             {
                 weights_ho[f][g] = Math.random();
                 $(".neural-values-text").append("W H" + (f+1) + "_O" + (g+1) + ": <span id='weighth"+(f+1)+"o"+(g+1)+"-val'>" + weights_ho[f][g] + "</span><br>");
@@ -85,6 +85,61 @@ $(function()
         }
 
     }
+
+    function fire(input, weightinputhidden, biashidden, hidden, weighthiddenoutput, biasoutput, output)
+    {
+        // hidden layer firing
+        for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
+        {
+            for(let inputId=0;inputId<input.length;inputId++)
+            {
+                /* loop simulation:
+                hidden id will be slower, input id will be faster
+
+                for weight ih:
+
+                - weight i1h1
+                - weight i2h1
+                - weight i3h1
+                - weight 14h1
+
+                then,
+                - weight i1h2
+                - weight i2h2
+                - weight i3h2
+                - weight i4h2
+
+                then,
+                - weight i1h3
+                - weight i2h3
+                - weight i3h3
+                - weight i4h3
+
+                hidden1 = sigmoid((weight1*input1) + (weight3*input2) + (weight9*input3) + bias1);
+                
+                */
+            }
+        }
+
+        // output layer firing
+        for(let outputId=0;outputId<output.length;outputId++)
+        {
+            for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
+            {
+                /* loop simulation:
+                output id will be slower, hidden id will be faster
+                */
+            }
+        }
+    }
+
+    function train()
+    {
+
+    }
+
+
+    /* Execution */
 
     // first, a 4-3-1 maze neural network project
     // 4 input neurons - for sides of direction: up, right, down, left 
