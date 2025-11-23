@@ -48,8 +48,8 @@ $(function()
 
     $("#btn-up").on('click', function()
     {
-        posX = $("#player-tile").position.left;
-        posY = $("#player-tile").position.top;
+        posX = $("#player-tile").position().left;
+        posY = $("#player-tile").position().top;
 
         posY -= TileHeight;
         movePlayerTile(posX,posY);
@@ -57,8 +57,8 @@ $(function()
 
     $("#btn-left").on('click', function()
     {
-        posX = $("#player-tile").position.left;
-        posY = $("#player-tile").position.top;
+        posX = $("#player-tile").position().left;
+        posY = $("#player-tile").position().top;
 
         posX -= TileWidth;
         movePlayerTile(posX,posY);
@@ -66,8 +66,8 @@ $(function()
 
     $("#btn-down").on('click', function()
     {
-        posX = $("#player-tile").position.left;
-        posY = $("#player-tile").position.top;
+        posX = $("#player-tile").position().left;
+        posY = $("#player-tile").position().top;
 
         posY += TileHeight;
         movePlayerTile(posX,posY);
@@ -75,10 +75,10 @@ $(function()
 
     $("#btn-right").on('click', function()
     {
-        posX = $("#player-tile").position.left;
-        posY = $("#player-tile").position.top;
+        posX = $("#player-tile").position().left;
+        posY = $("#player-tile").position().top;
 
-        posX = TileWidth;
+        posX += TileWidth;
         movePlayerTile(posX,posY);
     });
 
