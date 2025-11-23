@@ -1,7 +1,7 @@
 $(function()
 {
     let tileDiv = [];
-    function establishPlatform(TileColumnsCount, TileRowsCount)
+    function establishPlatform(TileColumnsCount, TileRowsCount, width, height)
     {
         for(let x=0;x<TileColumnsCount;x++)
         {
@@ -13,9 +13,11 @@ $(function()
                 tileDiv[x][y] = $("#tile-"+x+"-"+y+"");
                 tileDiv[x][y].css("left", (x*32)+"px");
                 tileDiv[x][y].css("top", (y*32)+"px");
+                tileDiv[x][y].css("width", width+"px");
+                tileDiv[x][y].css("height", height+"px");
             }
         }
     }
 
-    establishPlatform(10,10);
+    establishPlatform(10,10, 50, 50);
 });
