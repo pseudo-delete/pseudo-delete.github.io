@@ -9,10 +9,10 @@ $(function()
             for(let y=0;y<TileRowsCount;y++)
             {
                 // create tile at (x,y) iteration by row
-                tileDiv[x][y] = $("<div class='maze-tile' id='tile-"+x+"-"+y+"'></div>");
-                tileDiv.css("left", (x*32)+"px");
-                tileDiv.css("top", (y*32)+"px");
-                $(".maze-container").append(tileDiv);
+                $(".maze-container").append("<div class='maze-tile' id='tile-"+x+"-"+y+"'></div>");
+                tileDiv[x][y] = $("#tile-"+x+"-"+y+"");
+                tileDiv[x][y].css("left", (x*32)+"px");
+                tileDiv[x][y].css("top", (y*32)+"px");
             }
         }
     }
