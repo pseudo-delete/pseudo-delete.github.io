@@ -1,6 +1,8 @@
 $(function()
 {
     let mazeContainerHeight = 0;
+    let TileWidth = 0;
+    let TileHeight = 0;
 
     let tileDiv = [];
     function establishPlatform(TileColumnsCount, TileRowsCount, TileWidth, TileHeight)
