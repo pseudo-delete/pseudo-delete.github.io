@@ -85,58 +85,62 @@ $(function()
         }
 
     }
-
-    function fire(input, weightinputhidden, biashidden, hidden, weighthiddenoutput, biasoutput, output)
+//weightinputhidden, biashidden, weighthiddenoutput, biasoutput, 
+    function fire(inputNeurons, hiddenNeurons, outputNeurons)
     {
+        console.log("input count: " + inputNeurons.length);
+        console.log("hidden count: " + hiddenNeurons.length);
+        console.log("output count: " + outputNeurons.length);
+
         // hidden layer firing
-        for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
-        {
-            for(let inputId=0;inputId<input.length;inputId++)
-            {
-                /* loop simulation:
-                hidden id will be slower, input id will be faster
+        // for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
+        // {
+        //     for(let inputId=0;inputId<input.length;inputId++)
+        //     {
+        //         /* loop simulation:
+        //         hidden id will be slower, input id will be faster
 
-                for weight ih:
+        //         for weight ih:
 
-                - weight i1h1
-                - weight i2h1
-                - weight i3h1
-                - weight 14h1
+        //         - weight i1h1
+        //         - weight i2h1
+        //         - weight i3h1
+        //         - weight 14h1
 
-                then,
-                - weight i1h2
-                - weight i2h2
-                - weight i3h2
-                - weight i4h2
+        //         then,
+        //         - weight i1h2
+        //         - weight i2h2
+        //         - weight i3h2
+        //         - weight i4h2
 
-                then,
-                - weight i1h3
-                - weight i2h3
-                - weight i3h3
-                - weight i4h3
+        //         then,
+        //         - weight i1h3
+        //         - weight i2h3
+        //         - weight i3h3
+        //         - weight i4h3
 
-                hidden1 = sigmoid((weight1*input1) + (weight3*input2) + (weight9*input3) + bias1);
+        //         hidden1 = sigmoid((weight1*input1) + (weight3*input2) + (weight9*input3) + bias1);
                 
-                */
-            }
-        }
+        //         */
+        //     }
+        // }
 
         // output layer firing
-        for(let outputId=0;outputId<output.length;outputId++)
+        // for(let outputId=0;outputId<output.length;outputId++)
+        // {
+        //     for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
+        //     {
+        //         /* loop simulation:
+        //         output id will be slower, hidden id will be faster
+        //         */
+        //     }
+        // }
+    }
+
+        function train()
         {
-            for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
-            {
-                /* loop simulation:
-                output id will be slower, hidden id will be faster
-                */
-            }
+
         }
-    }
-
-    function train()
-    {
-
-    }
 
 
     /* Execution */
@@ -146,6 +150,5 @@ $(function()
     // 3 hidden neurons - for decision making if to turn left, right or go forward
     // 1 output neuron - for the final decision
     NeuralNetwork(4, 3, 1); // 4 input neurons, 3 hidden neurons,  
-    // 1 output neuron
-    console.log(nn);
+    fire();
 });
