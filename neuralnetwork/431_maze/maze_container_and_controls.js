@@ -48,25 +48,37 @@ $(function()
 
     $("#btn-up").on('click', function()
     {
+        posX = $("#player-tile").position.left;
+        posY = $("#player-tile").position.top;
+
         posY -= TileHeight;
         movePlayerTile(posX,posY);
     });
 
     $("#btn-left").on('click', function()
     {
+        posX = $("#player-tile").position.left;
+        posY = $("#player-tile").position.top;
+
         posX -= TileWidth;
         movePlayerTile(posX,posY);
     });
 
     $("#btn-down").on('click', function()
     {
+        posX = $("#player-tile").position.left;
+        posY = $("#player-tile").position.top;
+
         posY += TileHeight;
         movePlayerTile(posX,posY);
     });
 
     $("#btn-right").on('click', function()
     {
-        posX += TileWidth;
+        posX = $("#player-tile").position.left;
+        posY = $("#player-tile").position.top;
+
+        posX = TileWidth;
         movePlayerTile(posX,posY);
     });
 
