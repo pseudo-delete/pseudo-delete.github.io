@@ -39,6 +39,50 @@ $(function()
         $("#player-tile").css("top", y+"px");
     }
 
+    function moveUp()
+    {
+        let pos = $("#player-tile").position();
+        movePlayerTile(pos.left, pos.top-TileHeight);
+    }
+
+    function moveLeft()
+    {
+        let pos = $("#player-tile").position();
+        movePlayerTile(pos.left-TileWidth, pos.top);
+    }
+
+    function moveDown()
+    {
+        let pos = $("#player-tile").position();
+        movePlayerTile(pos.left, pos.top+TileHeight);
+    }
+
+    function moveRight()
+    {
+        let pos = $("#player-tile").position();
+        movePlayerTile(pos.left+TileWidth, pos.top);
+    }
+
+    $("#btn-up").on('click', function()
+    {
+        moveUp();
+    });
+
+    $("#btn-left").on('click', function()
+    {
+        moveLeft();
+    });
+
+    $("#btn-down").on('click', function()
+    {
+        moveDown();
+    });
+
+    $("#btn-right").on('click', function()
+    {
+        moveRight();
+    });
+
     establishPlatform(10,10, 50, 50);
     movePlayerTile(0, mazeContainerHeight-50);
 });
