@@ -137,10 +137,10 @@ $(function()
         // }
     }
 
-        function train()
-        {
+    // function train()
+    // {
 
-        }
+    // }
 
 
     /* Execution */
@@ -150,5 +150,5 @@ $(function()
     // 3 hidden neurons - for decision making if to turn left, right or go forward
     // 1 output neuron - for the final decision
     NeuralNetwork(4, 3, 1); // 4 input neurons, 3 hidden neurons,  
-    fire();
+    fire(inputNeurons, hiddenNeurons, outputNeurons);
 });
