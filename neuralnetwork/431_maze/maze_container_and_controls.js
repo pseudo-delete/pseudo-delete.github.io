@@ -3,6 +3,8 @@ $(function()
     let mazeContainerHeight = 0;
     let TileWidth = 0;
     let TileHeight = 0;
+    let posX = 0;
+    let posY = 0;
 
     let tileDiv = [];
     function establishPlatform(TileColumnsCount, TileRowsCount, TileWidth, TileHeight)
@@ -35,54 +37,37 @@ $(function()
         $("#player-tile").css("height", TileHeight+"px");
     }
 
-    function movePlayerTile(x,y)
+    function movePlayerTile(posX,posY)
     {
-        $("#player-tile").css("left", x+"px");
-        $("#player-tile").css("top", y+"px");
-    }
-
-    function moveUp()
-    {
-        let pos = $("#player-tile").position();
-        movePlayerTile(pos.left, pos.top-TileHeight);
-    }
-
-    function moveLeft()
-    {
-        let pos = $("#player-tile").position();
-        movePlayerTile(pos.left-TileWidth, pos.top);
-    }
-
-    function moveDown()
-    {
-        let pos = $("#player-tile").position();
-        movePlayerTile(pos.left, pos.top+TileHeight);
-    }
-
-    function moveRight()
-    {
-        let pos = $("#player-tile").position();
-        movePlayerTile(pos.left+TileWidth, pos.top);
+        $("#player-tile").css(
+        {
+            left: posX + "px",
+            top: posY + "px"
+        });
     }
 
     $("#btn-up").on('click', function()
     {
-        moveUp();
+        posY -= TileHeight;
+        movePlayerTile(posX,posY);
     });
 
     $("#btn-left").on('click', function()
     {
-        moveLeft();
+        posX -= TileWidth;
+        movePlayerTile(posX,posY);
     });
 
     $("#btn-down").on('click', function()
     {
-        moveDown();
+        posY += TileHeight;
+        movePlayerTile(posX,posY);
     });
 
     $("#btn-right").on('click', function()
     {
-        moveRight();
+        posX += TileWidth;
+        movePlayerTile(posX,posY);
     });
 
     establishPlatform(10,10, 50, 50);
