@@ -3,10 +3,10 @@ div, canvas
   border: 1px solid black;
 }
 
-/* .maze-container
+.maze-container
 {
-  margin-top: 50px;
-} */
+  position: relative;
+}
 
 .maze-tile
 {
