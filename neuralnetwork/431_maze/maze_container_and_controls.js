@@ -3,6 +3,10 @@ $(function()
     let tileDiv = [];
     function establishPlatform(TileColumnsCount, TileRowsCount, width, height)
     {
+        
+        $(".maze-container").css("width", (TileColumnsCount*width)+"px");
+        $(".maze-container").css("height", ((TileRowsCount*height) + (height*2))+"px");
+
         for(let x=0;x<TileColumnsCount;x++)
         {
             tileDiv[x] = [];
@@ -11,8 +15,6 @@ $(function()
                 if(y>0 && y < TileRowsCount+1)
                 {
                     // create tile at (x,y) iteration by row
-                    $(".maze-container").css("width", (TileColumnsCount*width)+"px");
-                    $(".maze-container").css("height", (TileRowsCount*height)+"px");
                     $(".maze-container").append("<div class='maze-tile' id='tile-"+x+"-"+y+"'></div>");
 
                     tileDiv[x][y] = $("#tile-"+x+"-"+y+"");
