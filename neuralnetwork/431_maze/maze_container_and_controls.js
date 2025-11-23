@@ -1,11 +1,11 @@
 $(function()
 {
     let tileDiv = [];
-    function establishPlatform(TileColumnsCount, TileRowsCount, width, height)
+    function establishPlatform(TileColumnsCount, TileRowsCount, TileWidth, TileHeight)
     {
         
-        $(".maze-container").css("width", (TileColumnsCount*width)+"px");
-        $(".maze-container").css("height", ((TileRowsCount*height) + (height*2))+"px");
+        $(".maze-container").css("width", (TileColumnsCount*TileWidth)+"px");
+        $(".maze-container").css("height", ((TileRowsCount*TileHeight) + (TileHeight*2))+"px");
 
         for(let x=0;x<TileColumnsCount;x++)
         {
@@ -20,8 +20,8 @@ $(function()
                     tileDiv[x][y] = $("#tile-"+x+"-"+y+"");
                     tileDiv[x][y].css("left", (x*50)+"px");
                     tileDiv[x][y].css("top", (y*50)+"px");
-                    tileDiv[x][y].css("width", width+"px");
-                    tileDiv[x][y].css("height", height+"px");
+                    tileDiv[x][y].css("width", TileWidth+"px");
+                    tileDiv[x][y].css("height", TileHeight+"px");
                 }
             }
         }
