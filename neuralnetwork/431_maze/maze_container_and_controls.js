@@ -29,6 +29,8 @@ $(function()
         }
 
         $(".maze-container").append("<div id='player-tile'></div>");
+        $("#player-tile").css("width", TileWidth+"px");
+        $("#player-tile").css("height", TileHeight+"px");
     }
 
     function movePlayerTile(x,y)
