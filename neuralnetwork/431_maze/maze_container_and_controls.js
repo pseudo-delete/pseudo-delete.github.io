@@ -3,10 +3,10 @@ $(function()
     let tileDiv = [];
     function establishPlatform(TileColumnsCount, TileRowsCount)
     {
-        for(let y=0;y<TileRowsCount;y++)
+        for(let x=0;y<TileColumnsCount;x++)
         {
             tileDiv[x] = [];
-            for(let x=0;x<TileColumnsCount;x++)
+            for(let y=0;y<TileRowsCount;y++)
             {
                 // create tile at (x,y) iteration by row
                 tileDiv[x][y] = $("<div class='maze-tile' id='tile-"+x+"-"+y+"'></div>");
