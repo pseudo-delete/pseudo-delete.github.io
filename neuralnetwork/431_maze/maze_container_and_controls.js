@@ -3,7 +3,7 @@ $(function()
     let tileDiv = [];
     function establishPlatform(TileColumnsCount, TileRowsCount)
     {
-        for(let x=0;y<TileColumnsCount;x++)
+        for(let x=0;x<TileColumnsCount;x++)
         {
             tileDiv[x] = [];
             for(let y=0;y<TileRowsCount;y++)
