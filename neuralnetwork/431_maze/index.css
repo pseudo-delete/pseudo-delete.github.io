@@ -3,7 +3,7 @@ div, canvas
   border: 1px solid black;
 }
 
-.maze-container
+.maze-tile
 {
   position: absolute;
 }
