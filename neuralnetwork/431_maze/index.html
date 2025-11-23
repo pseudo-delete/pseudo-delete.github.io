@@ -12,22 +12,23 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> 
 
         <script src="neural_network.js"></script>
-        
+        <script src="maze_container_and_controls.js"></script>
     </head>
 
     <body>
-        <div class="maze-container"><!-- Container for maze tiles -->
-            <script src="maze_container_and_controls.js"></script>
-        </div>
+        <div class="main">
+            <div class="maze-container"><!-- Container for maze tiles -->
+            </div>
 
-        <div class="neural-zone"><!-- Zone for neural network display and computation -->
-            <canvas class="neural-canvas" width="400" height="400"></canvas><!-- Canvas for drawing background shapes and lines--><br>
-            <div class="neural-values">
-                <button type="button" id="btn-fire">Fire</button>
-                <p class="neural-values-text">
-                    <!-- Neural network values will be displayed here -->
-                     <!-- use span and loop it using jquery to append the values here -->
-                </p>
+            <div class="neural-zone"><!-- Zone for neural network display and computation -->
+                <canvas class="neural-canvas" width="400" height="400"></canvas><!-- Canvas for drawing background shapes and lines--><br>
+                <div class="neural-values">
+                    <button type="button" id="btn-fire">Fire</button>
+                    <p class="neural-values-text">
+                        <!-- Neural network values will be displayed here -->
+                        <!-- use span and loop it using jquery to append the values here -->
+                    </p>
+                </div>
             </div>
         </div>
     </body>
