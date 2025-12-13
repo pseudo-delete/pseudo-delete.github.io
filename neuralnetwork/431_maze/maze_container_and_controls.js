@@ -1,7 +1,7 @@
 $(function()
 {
     let mazeContainerHeight = 0;
-    let TileWidth = 0;
+    let TileWidth = 50;
     let TileHeight = 0;
     let posX = 0;
     let posY = 0;
@@ -82,6 +82,6 @@ $(function()
         movePlayerTile(posX,posY);
     });
 
-    establishPlatform(10,10, 50, 50);
+    establishPlatform(10,10, TileWidth, 50);
     movePlayerTile(0, mazeContainerHeight-50);
 });
