@@ -100,6 +100,7 @@ $(function()
         // hidden layer 
         for(let hiddenId=0;hiddenId<hiddenNeurons.length;hiddenId++)
         {
+            hiddenNeurons[hiddenId] = 0; // for refreshing the container value to prevent capability of computing the previous value to the current real values of inputs, weights, and biases
             for(let inputId=0;inputId<inputNeurons.length;inputId++)
             {
                 hiddenNeurons[hiddenId] += (weights_ih[hiddenId][inputId] * inputNeurons[inputId]);
