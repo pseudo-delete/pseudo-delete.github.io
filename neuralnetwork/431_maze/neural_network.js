@@ -110,6 +110,19 @@ $(function()
             $("#hidden"+(hiddenId+1)+"-val").text(hiddenNeurons[hiddenId]);
         }
 
+        // output layer
+        for(let outputId=0;outputId<outputNeurons.length;outputId++)
+        {
+            outputNeurons[outputId] = 0; // for refreshing the container value to prevent capability of computing the previous value to the current real values of inputs, weights, and biases
+            for(let hiddenId=0;hiddenId<hiddenNeurons.length;hiddenId++)
+            {
+                outputNeurons[outputId] += (weights_ho[outputId][hiddenId] * hiddenNeurons[hiddenId]);
+            }
+            outputNeurons[outputId] += biasO[outputId];
+            outputNeurons[outputId] = sigmoid(outputNeurons[outputId]);
+            $("#output"+(outputId+1)+"-val").text(outputNeurons[outputId]);
+        }
+
         // for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
         // {
         //     for(let inputId=0;inputId<input.length;inputId++)
