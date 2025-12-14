@@ -170,5 +170,5 @@ $(function()
     // 4 input neurons - for sides of direction: up, right, down, left 
     // 3 hidden neurons - for decision making if to turn left, right or go forward
     // 1 output neuron - for the final decision
-    NeuralNetwork(1, 1, 1); // 4 input neurons, 3 hidden neurons, 1 output  
+    NeuralNetwork(4, 1, 1); // 4 input neurons, 3 hidden neurons, 1 output  
 });
