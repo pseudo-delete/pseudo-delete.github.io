@@ -132,44 +132,6 @@ $(function()
         // let target3 = $("#target3-val").text();// output 3 target
         // let learning_rate = 10;
 
-        // let input1 = parseFloat($("#input1-val").text());
-        // let input2 = parseFloat($("#input2-val").text());
-        // let input3 = parseFloat($("#input3-val").text());
-        
-        // let weight1 = parseFloat($("#weight1-val").text());// input1 - hidden1 weight
-        // let weight2 = parseFloat($("#weight2-val").text());// hidden1 - output1 weight
-        // let weight3 = parseFloat($("#weight3-val").text());// input2 - hidden1 weight 
-        // let weight4 = parseFloat($("#weight4-val").text());// input1 - hidden2 weight
-        // let weight5 = parseFloat($("#weight5-val").text());// input2 - hidden2 weight
-        // let weight6 = parseFloat($("#weight6-val").text());// hidden2 - output1 weight 
-        // let weight7 = parseFloat($("#weight7-val").text());// hidden1 - output2 weight
-        // let weight8 = parseFloat($("#weight8-val").text());// hidden2 - output2 weight 
-        // let weight9 = parseFloat($("#weight9-val").text());// input3 - hidden1 weight
-        // let weight10 = parseFloat($("#weight10-val").text());// input3 - hidden2 weight 
-        // let weight11 = parseFloat($("#weight11-val").text());// input1 - hidden3 weight 
-        // let weight12 = parseFloat($("#weight12-val").text());// input2 - hidden3 weight 
-        // let weight13 = parseFloat($("#weight13-val").text());// input3 - hidden3 weight 
-        // let weight14 = parseFloat($("#weight14-val").text());// hidden3 - output1 weight 
-        // let weight15 = parseFloat($("#weight15-val").text());// hidden3 - output2 weight 
-        // let weight16 = parseFloat($("#weight16-val").text());// hidden1 - output3 weight 
-        // let weight17 = parseFloat($("#weight17-val").text());// hidden2 - output3 weight 
-        // let weight18 = parseFloat($("#weight18-val").text());// hidden3 - output3 weight 
-
-        // let bias1 = parseFloat($("#bias1-val").text());// hidden1 bias
-        // let bias2 = parseFloat($("#bias2-val").text());// output1 bias
-        // let bias3 = parseFloat($("#bias3-val").text());// hidden2 bias
-        // let bias4 = parseFloat($("#bias4-val").text());// output2 bias
-        // let bias5 = parseFloat($("#bias5-val").text());// hidden3 bias
-        // let bias6 = parseFloat($("#bias6-val").text());// output3 bias
-
-        // let hidden1 = parseFloat($("#hidden1-val").text());
-        // let hidden2 = parseFloat($("#hidden2-val").text());
-        // let hidden3 = parseFloat($("#hidden3-val").text());
-
-        // let output1 = parseFloat($("#output1-val").text());
-        // let output2 = parseFloat($("#output2-val").text());
-        // let output3 = parseFloat($("#output3-val").text());
-
         /*
         output layer:
             error_output = target - output
@@ -250,37 +212,6 @@ $(function()
         // weight17 = weight17 + learning_rate * delta_output3 * hidden2;// hidden2 - output3 connection
         // weight18 = weight18 + learning_rate * delta_output3 * hidden3;// hidden3 - output3 connection
         // bias6 = bias6 + learning_rate * delta_output3;
-
-        // assignment of weights and biases to the labels
-        // $("#weight1-val").text(weight1);
-        // $("#weight3-val").text(weight3);
-        // $("#weight9-val").text(weight9);
-        // $("#bias1-val").text(bias1);
-
-        // $("#weight4-val").text(weight4);
-        // $("#weight5-val").text(weight5);
-        // $("#weight10-val").text(weight10);
-        // $("#bias3-val").text(bias3);
-        
-        // $("#weight11-val").text(weight11);
-        // $("#weight12-val").text(weight12);
-        // $("#weight13-val").text(weight13);
-        // $("#bias5-val").text(bias5);
-
-        // $("#weight2-val").text(weight2);
-        // $("#weight6-val").text(weight6);
-        // $("#weight14-val").text(weight14);
-        // $("#bias2-val").text(bias2);
-
-        // $("#weight7-val").text(weight7);
-        // $("#weight8-val").text(weight8);
-        // $("#weight15-val").text(weight15);
-        // $("#bias4-val").text(bias4);
-
-        // $("#weight16-val").text(weight16);
-        // $("#weight17-val").text(weight17);
-        // $("#weight18-val").text(weight18);
-        // $("#bias6-val").text(bias6);
 
         // fire neural network once again
         // fire();
