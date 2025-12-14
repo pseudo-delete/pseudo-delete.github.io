@@ -113,7 +113,7 @@ $(function()
         // output layer
         for(let outputId=0;outputId<outputNeurons.length;outputId++)
         {
-            outputNeurons[outputId] = 0; // for refreshing the container value to prevent capability of computing the previous value to the current real values of inputs, weights, and biases
+            outputNeurons[outputId] = 0; // for refreshing the container value to prevent capability of computing the previous value to the current real values of hiddens, weights, and biases
             for(let hiddenId=0;hiddenId<hiddenNeurons.length;hiddenId++)
             {
                 outputNeurons[outputId] += (weights_ho[outputId][hiddenId] * hiddenNeurons[hiddenId]);
