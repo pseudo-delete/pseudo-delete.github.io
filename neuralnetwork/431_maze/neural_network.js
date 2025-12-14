@@ -93,9 +93,9 @@ $(function()
         console.log("output count: " + outputNeurons.length);
 
         // hidden layer 
-        for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
+        for(let hiddenId=0;hiddenId<hiddenNeurons.length;hiddenId++)
         {
-            for(let inputId=0;inputId<input.length;inputId++)
+            for(let inputId=0;inputId<inputNeurons.length;inputId++)
             {
                 hiddenNeurons[hiddenId] += (weights_ih[hiddenId][inputId] * inputNeurons[inputId]);
             }
