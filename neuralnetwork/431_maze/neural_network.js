@@ -92,7 +92,18 @@ $(function()
         console.log("hidden count: " + hiddenNeurons.length);
         console.log("output count: " + outputNeurons.length);
 
-        // hidden layer firing
+        // hidden layer 
+        for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
+        {
+            for(let inputId=0;inputId<input.length;inputId++)
+            {
+                hiddenNeurons[hiddenId] += (weights_ih[hiddenId][inputId] * inputNeurons[inputId]);
+            }
+            hiddenNeurons[hiddenId] += biasH[hiddenId];
+            hiddenNeurons[hiddenId] = sigmoid(hiddenNeurons[hiddenId]);
+            $("#hidden"+(hiddenId+1)+"-val").text(hiddenNeurons[hiddenId]);
+        }
+
         // for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
         // {
         //     for(let inputId=0;inputId<input.length;inputId++)
