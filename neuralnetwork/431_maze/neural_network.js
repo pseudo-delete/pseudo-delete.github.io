@@ -12,6 +12,11 @@ $(function()
     let weights_ih = []; // weights from input to hidden
     let weights_ho = []; // weights from hidden to output
 
+    function sigmoid(x)
+    {
+        return 1 / (1 + Math.exp(-x));
+    }
+
     function NeuralNetwork(inputNeuronsCount, hiddenNeuronsCount, outputNeuronsCount)
     {
         // input neurons value initialization
