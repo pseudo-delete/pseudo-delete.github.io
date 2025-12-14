@@ -97,7 +97,7 @@ $(function()
         console.log("hidden count: " + hiddenNeurons.length);
         console.log("output count: " + outputNeurons.length);
 
-        // hidden layer 
+        // hidden layer firing
         for(let hiddenId=0;hiddenId<hiddenNeurons.length;hiddenId++)
         {
             hiddenNeurons[hiddenId] = 0; // for refreshing the container value to prevent capability of computing the previous value to the current real values of inputs, weights, and biases
@@ -110,7 +110,7 @@ $(function()
             $("#hidden"+(hiddenId+1)+"-val").text(hiddenNeurons[hiddenId]);
         }
 
-        // output layer
+        // output layer firing
         for(let outputId=0;outputId<outputNeurons.length;outputId++)
         {
             outputNeurons[outputId] = 0; // for refreshing the container value to prevent capability of computing the previous value to the current real values of hiddens, weights, and biases
@@ -122,6 +122,8 @@ $(function()
             outputNeurons[outputId] = sigmoid(outputNeurons[outputId]);
             $("#output"+(outputId+1)+"-val").text(outputNeurons[outputId]);
         }
+
+        // backpropagation
 
         // for(let hiddenId=0;hiddenId<hidden.length;hiddenId++)
         // {
