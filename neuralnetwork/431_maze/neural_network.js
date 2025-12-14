@@ -148,6 +148,11 @@ $(function()
         // }
     }
 
+    $("#btn-fire").on('click', function()
+    {
+        fire(inputNeurons, hiddenNeurons, outputNeurons);
+    });
+
     // function train()
     // {
 
@@ -161,5 +166,4 @@ $(function()
     // 3 hidden neurons - for decision making if to turn left, right or go forward
     // 1 output neuron - for the final decision
     NeuralNetwork(1, 1, 1); // 4 input neurons, 3 hidden neurons, 1 output  
-    fire(inputNeurons, hiddenNeurons, outputNeurons);
 });
