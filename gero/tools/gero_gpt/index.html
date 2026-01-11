@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gero GPT - Offline Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Gero GPT (Offline AI Logic)</h2>
+
+    <input type="text" id="prompt" placeholder="Describe an image..." />
+    <button onclick="generateImage()">🎨 Generate Image</button>
+
+    <h3>Generated Image</h3>
+    <div id="media-preview"></div>
+
+    <script>
+    function generateImage() {
+        const prompt = document.getElementById('prompt').value;
+        fetch('generate_image.php?prompt=' + encodeURIComponent(prompt))
+            .then(res => res.json())
+            .then(data => {
+                const img = document.createElement("img");
+                img.src = data.path + '?t=' + new Date().getTime();
+                img.style.maxWidth = "300px";
+                const div = document.getElementById("media-preview");
+                div.innerHTML = '';
+                div.appendChild(img);
+            });
+    }
+    </script>
+</body>
+</html>

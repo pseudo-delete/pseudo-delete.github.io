@@ -1,0 +1,10 @@
+#portfolio-main-title
+{
+    font-size: 34px;
+}
+
+.projects-div
+{
+    display: flex;
+    flex-direction: column;
+}

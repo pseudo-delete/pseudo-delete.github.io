@@ -1,0 +1,31 @@
+.avatar-div
+{
+    border: 1px solid white;
+    
+}
+.avatar-button
+{
+    color: black;
+}
+.avatar-img
+{
+    width: 100px;
+    height: 150px;
+}
+
+/* .popup
+{
+    display:flex;
+    position:absolute;
+    top:25%;
+    left:25%;
+    width:50%;
+    height:50%;
+    z-index: 1;
+} */
+
+/* .close-popup
+{
+    display:none;
+} */
+

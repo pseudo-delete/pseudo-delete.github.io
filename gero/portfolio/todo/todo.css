@@ -1,0 +1,157 @@
+/* *
+{
+    border: 1px solid black;
+} */
+
+button, input[type='checkbox']
+{
+    cursor: pointer;
+}
+
+body
+{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#brand-name-container
+{
+    align-items: center;
+    background-color: #3498db;  /* Calm sky blue */
+    color: white;
+    display: flex;
+    height: 5%;
+    justify-content: center;
+    margin-left: 45%;
+    margin-right: 45%;
+    margin-top: 3%;
+    text-align: center;
+}
+
+#brand-name
+{
+    font-size: 36px;
+    margin: 1%
+}
+
+#add-task-container
+{
+    /* background-color: gray; */
+    display: flex;
+    justify-content:center;
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+#inner-add-task-container
+{
+    display: inline-flex;
+    width: auto;
+    height: auto;
+}
+
+.check
+{
+    width: 20px;
+    height: 20px;
+}
+
+#btn-add-task
+{
+    font-size: 21px;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+.btn-edit, .btn-del
+{
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+#btn-add-task img, .btn-edit img, .btn-del img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* or 'cover' depending on what you want */
+    display: block;
+}
+
+#no-task-label-container
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#no-task-label
+{
+    font-size: 18px;
+}
+
+.task-label
+{
+    overflow-wrap: break-word;
+    white-space: normal;
+    box-sizing: border-box;
+}
+
+.task-label, .task-label-task-id
+{
+    font-size: 18px;
+}
+
+#task-input
+{
+    font-size: 21px;
+    width: 50vh;
+    flex:none;
+}
+
+/*Task container*/
+.task-card
+{/* Discoverable on todo.js, this exists.*/
+    display: flex;
+    flex-direction: column;
+    border-width: 2px;
+    height: auto;
+    margin-top: 1%;
+}
+
+#task-list-container, #completed-task-container
+{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 1%;
+}
+
+.inner-div-description
+{
+    margin-left: 1%;
+    max-width: 1250px;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.div-description
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.div-command
+{ /* class could be found inside todo.js*/
+    margin-top: 1%;
+    margin-left: 0;
+    /* align-self: flex-end; */
+}
+
+#title-completed
+{
+    margin-left: 15%;
+    margin-right: 15%;
+}

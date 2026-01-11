@@ -1,0 +1,7 @@
+[20-Jun-2025 22:28:54 Europe/Berlin] Blend Error: Python script failed for frame 1. Command: python C:^\xampp^\htdocs^\gero_gpt/scripts/deepfake_blender.py C:^\xampp^\htdocs^\gero_gpt/deepfake_input/frames/video_6855c48182f696.83296699/frame_001.jpg C:^\xampp^\htdocs^\gero_gpt/media/images/6854774921acf4.13512040.jpg C:^\xampp^\htdocs^\gero_gpt/deepfake_output/blended_frames/video_6855c48182f696.83296699/frame_001_gen01.jpg 48 235 384 384 0 0 0 0. Return: 1. Output: Traceback (most recent call last):
+  File "C:\xampp\htdocs\gero_gpt/scripts/deepfake_blender.py", line 4, in <module>
+    import cv2
+ModuleNotFoundError: No module named 'cv2'
+
+
+"C:\Users\Gero\AppData\Local\Microsoft\WindowsApps\python.exe" python -m pip install opencv-python

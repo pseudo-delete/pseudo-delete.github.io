@@ -1,0 +1,36 @@
+:root
+{
+    --conpadlr: 18%;/*.container padding left and right in .container*/
+}
+
+nav, div
+{
+    border: 1px solid black;
+}
+
+.container
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--conpadlr);
+    padding-right: var(--conpadlr);
+}
+
+.top-div
+{
+    width: 100%;
+    text-align: center;
+}
+
+.left-right-div-container
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-div, .right-div
+{
+    width: 35%;
+    height: 200px;
+    margin: 20px;
+}

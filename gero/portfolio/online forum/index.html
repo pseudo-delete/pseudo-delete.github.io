@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Forum</title>
+        <link rel="stylesheet" href="index.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <script type="text/javascript" src="index.js"></script>
+    </head>
+
+    <body>
+        <div class="main-container">
+            <nav>
+                <label>Account Name</label>
+            </nav>
+
+            <div class="input-post-container">
+                <textarea id="input-post"></textarea>
+                <button id="btn-post" type="button">Post</button><!-- Add JQuery Command here that adds the template in the posts-container-->
+            </div>
+
+            <div class="posts-container"><!-- Where all posts will be displayed-->
+                <!-- Template -->
+                <div class="post-card-container">
+                    <div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+
+                    <div>
+                        <label><span id="like-count">0</span> Likes</label>
+                    </div>
+
+                    <div>
+                        <button type="button">Like</button>
+                    </div>
+                </div>
+                <!-- End of Template-->
+            </div>
+        </div>
+    </body>
+</html>

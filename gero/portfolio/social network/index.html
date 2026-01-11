@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Network</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="social_network.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" defer></script>
+    <script src="social_network.js" defer></script>
+</head>
+<body>
+    <div class="div-title">
+        <div>
+            <img id="logo" src="people.png"/>
+        </div>
+
+        <div>
+            <strong><label id="title">Social Network</label></strong>
+        </div>
+    </div>
+
+    <center><h2>Create Post</h2></center>
+    <div class="post-control">
+        
+        <div class="inner-post-control"  id="inner-post-control-textarea">
+            <textarea id="post-input" placeholder="Type post text here..."></textarea>
+        </div>
+        <div class="inner-post-control" id="inner-post-control-commands">
+            <button id="post-button">Post</button>
+        </div>
+    </div>
+
+    <h2 id="posts-main-title">Posts</h2>
+    <div class="div-post-outer-container">
+        <label id="no-post-label" hidden="true">No Post</label>
+        <!-- div-post-container will appear here dynamically, could be found on social_network.js -->
+    </div>
+</body>
+</html>

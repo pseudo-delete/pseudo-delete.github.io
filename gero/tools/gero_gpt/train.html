@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Train Media</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        .form-row {
+            margin-bottom: 12px;
+        }
+        input[type="text"], input[type="file"], select {
+            width: 100%;
+            max-width: 100%;
+            padding: 6px;
+            font-size: 14px;
+        }
+        button {
+            padding: 6px 12px;
+            margin-top: 8px;
+        }
+        #upload-preview img {
+            max-width: 100%;
+            height: auto;
+        }
+        .media-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .media-item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 8px 0;
+        }
+        .media-item small {
+            word-break: break-all;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<h2>Train / Manage Media</h2>
+
+<form action="upload.php" method="POST" enctype="multipart/form-data">
+    <div class="form-row">
+        <label>Media Type:</label>
+        <select name="type" id="type-select">
+            <option value="image">Image</option>
+            <option value="video">Video</option>
+            <option value="audio">Audio</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label>Label:</label>
+        <input type="text" name="label" required>
+    </div>
+    <div class="form-row">
+        <label>File:</label>
+        <input type="file" name="file" id="file-input" required onchange="previewUpload()">
+    </div>
+    <div id="upload-preview" class="form-row"></div>
+    <button type="submit">Upload</button>
+</form>
+
+<hr>
+<h3>Uploaded Media</h3>
+<div id="media-list">Loading...</div>
+<a href="index.html">← Back to Chat</a>
+
+<script>
+function previewUpload() {
+    const fileInput = document.getElementById('file-input');
+    const preview = document.getElementById('upload-preview');
+    preview.innerHTML = '';
+
+    const type = document.getElementById('type-select').value;
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    if (type === 'image') {
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+    } else {
+        preview.innerHTML = '<small>No preview available for this media type.</small>';
+    }
+}
+
+function loadMediaList() {
+    fetch('get_media.php')
+        .then(res => res.json())
+        .then(media => {
+            const list = document.getElementById('media-list');
+            list.innerHTML = '';
+
+            media.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'media-item';
+
+                let preview = '';
+                if (item.type === 'image') {
+                    const imgPath = `assets/uploads/images/${item.filename}`;
+                    preview = `<img src="${imgPath}" alt="${item.label}">`;
+                }
+
+                div.innerHTML = `
+                    <strong>${item.type.toUpperCase()}</strong><br>
+                    <input type="text" value="${item.label}" id="label-${item.id}">
+                    <button onclick="editLabel(${item.id})">Edit</button>
+                    <button onclick="deleteMedia(${item.id})">Delete</button>
+                    ${preview}
+                    <small>${item.filename}</small>
+                `;
+                list.appendChild(div);
+            });
+        });
+}
+
+function editLabel(id) {
+    const newLabel = document.getElementById(`label-${id}`).value;
+    fetch('get_media.php', {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: `id=${id}&label=${encodeURIComponent(newLabel)}`
+    }).then(() => loadMediaList());
+}
+
+function deleteMedia(id) {
+    if (!confirm("Delete this media?")) return;
+    fetch('get_media.php', {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: `id=${id}`
+    }).then(() => loadMediaList());
+}
+
+window.onload = loadMediaList;
+</script>
+</body>
+</html>

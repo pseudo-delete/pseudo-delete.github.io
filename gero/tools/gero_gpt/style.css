@@ -1,0 +1,30 @@
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    background: #f9f9f9;
+}
+
+#chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 8px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+#media-preview {
+    margin-top: 10px;
+}

@@ -1,0 +1,113 @@
+*
+{
+    color: white;
+}
+
+button
+{
+    color: black;
+    cursor: pointer;
+}
+button.page-buttons a
+{
+    color: black !important;
+}
+
+td
+{
+    border: 1px solid black;
+    width: 100px;
+    height: 150px;
+}
+#td-bracket
+{
+    border: 1px solid white;
+    width: 100px;
+    height: 150px;
+}
+
+.page-display
+{
+    max-width: 100%;
+    max-height: auto;
+    align-content: center;
+}
+
+.bracket-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items : center;
+}
+/* .bracket-container
+{
+    position: absolute;
+    z-index: 1;
+} */
+
+.play-summary-container
+{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items : center;
+}
+/* .play-summary-container
+{
+    position: absolute;
+    z-index: 1;
+} */
+
+
+.hidden-audio
+{
+  display: none;
+}
+
+
+@keyframes fadeToWhite {
+  0%
+    {
+        background-color: black;
+        opacity: 100%;
+    }
+  11%
+    { background-color: black;}
+  46% { background-color: crimson; }
+  51% { background-color: black; }
+  56%
+    {
+        background-color: white;
+        opacity: 100%;
+    }
+  /* 100% { background-image: url("img/Cosmic_Vastness.png"); } */
+  61%
+  {
+    z-index: 0;
+  }
+  100%
+    {
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+.intro-curtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: url("img/arena/L1_Local_Arena_inside.png"); */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    animation: fadeToWhite 25s forwards;
+}
+
+#cycle
+{
+    color: white;
+}

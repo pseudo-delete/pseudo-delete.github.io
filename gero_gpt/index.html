@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gero GPT - Media Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Gero GPT</h1>
+  <nav>
+    <a href="index.html">🧠 Chat & Generate</a>
+    <a href="deepfake.php">🧠 Deepfake videos</a>
+    <a href="train.php">📂 Train / Manage Media</a>
+    <a href="generated_output.php">🎨 Generated Output</a>
+    <a href="help.html">❓ Help</a>
+  </nav>
+
+  <!-- IMAGE GENERATION -->
+  <section>
+    <h2>🖼️ Generate Image</h2>
+    <form id="imageForm">
+      <label>Prompt:</label><br>
+      <input type="text" name="prompt" required><br><br>
+
+      <label>Generation:</label><br>
+      <select name="generation" id="generation">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <!-- Add more options dynamically if needed -->
+      </select>
+      <br><br>
+
+      <button type="submit">Generate Image</button>
+    </form>
+    <div id="imageResult"></div>
+  </section>
+
+  <!-- AUDIO GENERATION -->
+  <section>
+    <h2>🎵 Generate Audio</h2>
+    <form id="audioForm">
+      <label>Prompt:</label><br>
+      <input type="text" name="prompt" required><br><br>
+      <button type="submit">Generate Audio</button>
+    </form>
+    <div id="audioResult"></div>
+  </section>
+
+  <!-- VIDEO GENERATION -->
+  <section>
+    <h2>🎬 Generate Video</h2>
+    <form id="videoForm">
+      <label>Prompt:</label><br>
+      <input type="text" name="prompt" required><br><br>
+      <button type="submit">Generate Video</button>
+    </form>
+    <div id="videoResult"></div>
+  </section>
+
+  <script>
+    document.getElementById('imageForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const res = await fetch('generate_image.php', { method: 'POST', body: formData });
+      const data = await res.json();
+      const out = document.getElementById('imageResult');
+      out.innerHTML = data.success
+        ? `<h3>✅ Image Generated</h3><img src="media/generated_images/${data.filename}" width="300">`
+        : `<h3>❌ Error</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+    });
+
+    document.getElementById('audioForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const res = await fetch('generate_audio.php', { method: 'POST', body: formData });
+      const data = await res.json();
+      const out = document.getElementById('audioResult');
+      out.innerHTML = data.success
+        ? `<h3>✅ Audio Generated</h3><audio controls src="media/generated_audio/${data.filename}"></audio>`
+        : `<h3>❌ Error</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+    });
+
+    document.getElementById('videoForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const res = await fetch('generate.api.php', { method: 'POST', body: formData });
+      const data = await res.json();
+      const out = document.getElementById('videoResult');
+      out.innerHTML = data.success
+        ? `<h3>✅ Video Generated</h3><video controls width="400" src="media/generated_videos/${data.filename}"></video>`
+        : `<h3>❌ Error</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+    });
+  </script>
+</body>
+</html>

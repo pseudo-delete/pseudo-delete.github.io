@@ -1,0 +1,36 @@
+ffmpeg version 7.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 14.2.0 (Rev1, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+Input #0, image2, from 'C:\xampp\htdocs\gero_gpt/media/images/506172913_1233001748270116_5644085662150255866_n.jpg':
+  Duration: 00:00:00.04, start: 0.000000, bitrate: 9556 kb/s
+  Stream #0:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 503x640 [SAR 1:1 DAR 503:640], 25 fps, 25 tbr, 25 tbn
+Input #1, image2, from 'C:\xampp\htdocs\gero_gpt/media/images/horny asian.jpg':
+  Duration: 00:00:00.04, start: 0.000000, bitrate: 48394 kb/s
+  Stream #1:0: Video: mjpeg (Baseline), yuvj420p(pc, bt470bg/unknown/unknown), 1574x2019 [SAR 1:1 DAR 1574:2019], 25 fps, 25 tbr, 25 tbn
+Stream mapping:
+  Stream #0:0 (mjpeg) -> scale:default
+  Stream #1:0 (mjpeg) -> scale:default
+  blend:default -> Stream #0:0 (mjpeg)
+Press [q] to stop, [?] for help
+[swscaler @ 000001910b0cdc40] deprecated pixel format used, make sure you did set range correctly
+[swscaler @ 000001910baff5c0] deprecated pixel format used, make sure you did set range correctly
+Output #0, image2, to 'C:\xampp\htdocs\gero_gpt/media/generated_images/image_1749883363.jpg':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Video: mjpeg, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 512x512 [SAR 503:640 DAR 503:640], q=2-31, 200 kb/s, 25 fps, 25 tbn
+      Metadata:
+        encoder         : Lavc61.19.101 mjpeg
+      Side data:
+        cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+[image2 @ 000001910b093340] The specified filename 'C:\xampp\htdocs\gero_gpt/media/generated_images/image_1749883363.jpg' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 000001910b093340] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+[out#0/image2 @ 000001910b09dac0] video:29KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame=    1 fps=0.0 q=5.7 Lsize=N/A time=00:00:00.04 bitrate=N/A speed=1.41x    

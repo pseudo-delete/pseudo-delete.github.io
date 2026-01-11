@@ -1,0 +1,25 @@
+
+Okay, just do this in my generate_image.php:
+- blend random images from images for generation 1 output
+- increment the new output as generation count of parent images + 1
+
+For index.php update, include this features:
+- have  a label and tag underneath each picture after prompt generation
+- don't use prompt as search for generation 0(images folder)
+- for generation 0, just use random images and blend 2 pictures.
+- for generation 1 above, use prompt for matching tags
+- for generation 2 above, use prompt for matching both tags and label
+- for generation 3, use prompt for matching both tags, label, and filename
+
+ Video upload failed: ffmpeg failed or no frames.
+
+"C:\xampp\htdocs\tools\bin\ffmpeg.exe" -hide_banner -loglevel error -i "C:\xampp\htdocs\gero_gpt\deepfake_input\videos\video_68517c9db6ef55.42326788.mp4" -qscale:v 2 "C:\xampp\htdocs\gero_gpt\deepfake_input\frames\video_xxx\frame_%03d.jpg"
+
+mkdir "C:\xampp\htdocs\gero_gpt\deepfake_input\frames\video_68517c9db6ef55.42326788"
+C:\xampp\htdocs\gero_gpt\deepfake_input\frames\video_68517c9db6ef55.42326788\test.txt
+
+
+"C:\xampp\htdocs\tools\bin\ffmpeg.exe" -hide_banner -loglevel error -i "C:\xampp\htdocs\gero_gpt\deepfake_input\videos\video_68517c9db6ef55.42326788.mp4" -qscale:v 2 "C:\xampp\htdocs\gero_gpt\deepfake_input\frames\video_68517c9db6ef55.42326788\frame_%03d.jpg"
+
+
+Frame extraction failed: Video not found.
