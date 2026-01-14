@@ -1,0 +1,5 @@
+100 15 minute confirmation, 10 init 15 minute sell confirmation:
+Description:
+If 15 minute got buy confirmation, 100USDT value will be the initial entry in 1 minute
+if 15 minute got sell confirmation, 10USDT value will be the initial entry in 1 minute
+Both got 1USDT DCA for every 1 minute buy signal opportunity until profit
