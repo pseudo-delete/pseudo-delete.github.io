@@ -1,0 +1,15 @@
+Player vs Neural Network
+    * Build 3x3 grid first(In div)
+    * Shape will be canvas
+    * Lines will be canvas
+    * I'm not sure if the square should be drawn or it should be div, but the concept in my head is that:
+        - There should be a database for click coordination so that the place clicked will be recorded once, touch move.
+    * Database must have coordinates of combinations of X and O for pattern referencing, not sure again if the database must get other X and Os in the platform, 
+        or only the triple winner combo.
+    * Neural network's reinforcement learning will be based on the existing moves by the player, depending also if who wins.
+        - If the neural network wins, no learning, but if the neural network loses, it will learn, but there should be existing combos for this and there should be path for it's learning.
+            - If this combo have been played in it's record
+        - Winning combo of the won player will be recorded and will be evaluated in the neural network's play combo for that matching combo, I know this will be messy and confusing because a certain scenario/combo will have possible other options to play, so I need to think ways to do this without confusing my AI.
+
+Neural Network vs Neural Network(You will look as a spectator)(Additional feature soon)
+    * I think, at first, they will have random values, but over time, they will learn at each other's randomness if what's effective, learning through who wins
