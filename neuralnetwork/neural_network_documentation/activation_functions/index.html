@@ -3,9 +3,52 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Activation Functions - GERO AI</title>
     </head>
     <body>
-        <p>Instruction: Transfer the activation functions here</p>
+        <h1>Activation Functions</h1>
+        <p>
+            Activation functions are a crucial component of neural networks, determining the output of a neuron given an input or set of inputs. They introduce non-linearity into the model, allowing it to learn complex patterns in the data. Common activation functions include:
+            <ul>
+                <li><strong>Sigmoid:</strong> Outputs values between 0 and 1, useful for binary classification.</li>
+                <li><strong>Tanh:</strong> Outputs values between -1 and 1, often used in hidden layers.</li>
+                <li><strong>ReLU (Rectified Linear Unit):</strong> Outputs the input directly if positive; otherwise, it outputs zero. It is widely used due to its simplicity and efficiency.</li>
+                <li><strong>Leaky ReLU:</strong> A variant of ReLU that allows a small, non-zero gradient when the unit is not active.</li>
+                <li><strong>Softmax:</strong> Used in the output layer for multi-class classification problems, converting logits into probabilities.</li>
+        </p>
+
+        <label>In Summary:</label>
+        <table>
+            <tr>
+                <th>Activation Function</th>
+                <th>Output Range</th>
+                <th>Use Case</th>
+            </tr>
+            <tr>
+                <td>Sigmoid</td>
+                <td>(0,1)</td>
+                <td>Binary classification tasks<br>Probability<br>Yes/No</td>
+            </tr>
+            <tr>
+                <td>Tanh</td>
+                <td>(-1,1)</td>
+                <td>Hidden layers in neural networks.(Older Nets)</td>
+            </tr>
+            <tr>
+                <td>ReLU</td>
+                <td>[0, ∞)</td>
+                <td>Hidden layers in neural networks.(Modern Nets)</td>
+            </tr>
+            <tr>
+                <td>Leaky ReLU</td>
+                <td>(-∞, ∞)</td>
+                <td>Hidden layers. Addresses the "dying ReLU" problem.</td>
+            </tr>
+            <tr>
+                <td>Softmax</td>
+                <td>(0,1)</td>
+                <td>Multi-class classification output layer.</td>
+            </tr>
+        </table>
     </body>
 </html>
