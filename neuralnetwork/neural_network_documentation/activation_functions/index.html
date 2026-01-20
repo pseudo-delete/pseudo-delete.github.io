@@ -25,6 +25,7 @@
                     <th>Output Range</th>
                     <th>Use Case</th>
                     <th>Equation</th>
+                    <th>JQuery</th>
                 </tr>
             </thead>
 
@@ -34,6 +35,16 @@
                     <td>(0,1)</td>
                     <td>Binary classification tasks<br>Probability<br>Yes/No</td>
                     <td>σ(x) = 1 / (1 + e^(-x))</td>
+                    <td>
+                        <pre>
+                            <code>
+                                function sigmoid(x)
+                                {
+                                    return 1 / (1 + Math.exp(-x));
+                                }
+                            </code>
+                        </pre>
+                    </td>
                 </tr>
                 <tr>
                     <td>Tanh</td>
