@@ -19,36 +19,47 @@
 
         <label>In Summary:</label>
         <table>
-            <tr>
-                <th>Activation Function</th>
-                <th>Output Range</th>
-                <th>Use Case</th>
-            </tr>
-            <tr>
-                <td>Sigmoid</td>
-                <td>(0,1)</td>
-                <td>Binary classification tasks<br>Probability<br>Yes/No</td>
-            </tr>
-            <tr>
-                <td>Tanh</td>
-                <td>(-1,1)</td>
-                <td>Hidden layers in neural networks.(Older Nets)</td>
-            </tr>
-            <tr>
-                <td>ReLU</td>
-                <td>[0, ∞)</td>
-                <td>Hidden layers in neural networks.(Modern Nets)</td>
-            </tr>
-            <tr>
-                <td>Leaky ReLU</td>
-                <td>(-∞, ∞)</td>
-                <td>Hidden layers. Addresses the "dying ReLU" problem.</td>
-            </tr>
-            <tr>
-                <td>Softmax</td>
-                <td>(0,1)</td>
-                <td>Multi-class classification output layer.</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Activation Function</th>
+                    <th>Output Range</th>
+                    <th>Use Case</th>
+                    <th>Equation</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Sigmoid</td>
+                    <td>(0,1)</td>
+                    <td>Binary classification tasks<br>Probability<br>Yes/No</td>
+                    <td>σ(x) = 1 / (1 + e^(-x))</td>
+                </tr>
+                <tr>
+                    <td>Tanh</td>
+                    <td>(-1,1)</td>
+                    <td>Hidden layers in neural networks.(Older Nets)</td>
+                    <td>tanh(x) = (e^x - e^(-x)) / (e^x + e^(-x))</td>
+                </tr>
+                <tr>
+                    <td>ReLU</td>
+                    <td>[0, ∞)</td>
+                    <td>Hidden layers in neural networks.(Modern Nets)</td>
+                    <td>ReLU(x) = max(0, x)</td>
+                </tr>
+                <tr>
+                    <td>Leaky ReLU</td>
+                    <td>(-∞, ∞)</td>
+                    <td>Hidden layers. Addresses the "dying ReLU" problem.</td>
+                    <td>Leaky ReLU(x) = max(αx, x)</td>
+                </tr>
+                <tr>
+                    <td>Softmax</td>
+                    <td>(0,1)</td>
+                    <td>Multi-class classification output layer.</td>
+                    <td>softmax(x_i) = e^(x_i) / Σ(e^(x_j))</td>
+                </tr>
+            </tbody>
         </table>
     </body>
 </html>
