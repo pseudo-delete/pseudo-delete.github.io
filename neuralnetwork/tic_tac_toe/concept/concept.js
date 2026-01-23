@@ -1,4 +1,4 @@
 $(function()
 {
-    $("body").load("../Concept.txt");
+    $("#game-concept-description").load("../Concept.txt");
 });
