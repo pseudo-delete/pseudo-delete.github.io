@@ -21,49 +21,51 @@
         </div>
 
         <div class="ttt-neural-net-structure">
-            Neural Network Structure for Tic Tac Toe AI using ReLU and Softmax Activation Functions
-            <br><br>
-            <ul>
-                <li>Input Layer: 9 neurons (representing the 3x3 Tic Tac Toe board)</li>
-                <li>Hidden Layer: 18 neurons with Leaky ReLU activation function</li>
-                <li>Output Layer: 9 neurons with Softmax activation function (representing the probability of placing an 'X' in each cell)</li>
-            </ul>
+            <pre>
+                Neural Network Structure for Tic Tac Toe AI using ReLU and Softmax Activation Functions
+                <br><br>
+                <ul>
+                    <li>Input Layer: 9 neurons (representing the 3x3 Tic Tac Toe board)</li>
+                    <li>Hidden Layer: 18 neurons with Leaky ReLU activation function</li>
+                    <li>Output Layer: 9 neurons with Softmax activation function (representing the probability of placing an 'X' in each cell)</li>
+                </ul>
 
-            Backpropagation with Leaky ReLU (hidden) + Softmax (output):
+                Backpropagation with Leaky ReLU (hidden) + Softmax (output):
 
-            1. Forward Pass:
-                z_hidden = W1 * input + b1
-                a_hidden = Leaky ReLU(z_hidden) = max(α*z_hidden, z_hidden)
-                z_output = W2 * a_hidden + b2
-                a_output = softmax(z_output)
+                1. Forward Pass:
+                    z_hidden = W1 * input + b1
+                    a_hidden = Leaky ReLU(z_hidden) = max(α*z_hidden, z_hidden)
+                    z_output = W2 * a_hidden + b2
+                    a_output = softmax(z_output)
 
-            2. Loss Calculation:
-                L = -Σ(y_i * log(a_output_i))
-            where y_i is true label (one-hot encoded)
+                2. Loss Calculation:
+                    L = -Σ(y_i * log(a_output_i))
+                where y_i is true label (one-hot encoded)
 
-            3. Backward Pass - Output Layer:
-                dL/dz_output = a_output - y
-                dL/dW2 = (a_output - y) * a_hidden^T
-                dL/db2 = (a_output - y)
+                3. Backward Pass - Output Layer:
+                    dL/dz_output = a_output - y
+                    dL/dW2 = (a_output - y) * a_hidden^T
+                    dL/db2 = (a_output - y)
 
-            4. Backward Pass - Hidden Layer:
-                dL/da_hidden = W2^T * (a_output - y)
-                
-                dL/dz_hidden = dL/da_hidden ⊙ dLeaky ReLU/dz_hidden
-                where:
-                  dLeaky ReLU/dz_hidden = { 1,     if z_hidden > 0
-                                           { α,     if z_hidden ≤ 0
-                
-                dL/dW1 = dL/dz_hidden * input^T
-                dL/db1 = dL/dz_hidden
+                4. Backward Pass - Hidden Layer:
+                    dL/da_hidden = W2^T * (a_output - y)
+                    
+                    dL/dz_hidden = dL/da_hidden ⊙ dLeaky ReLU/dz_hidden
+                    where:
+                    dLeaky ReLU/dz_hidden = { 1,     if z_hidden > 0
+                                            { α,     if z_hidden ≤ 0
+                    
+                    dL/dW1 = dL/dz_hidden * input^T
+                    dL/db1 = dL/dz_hidden
 
-            5. Weight Updates:
-                W2 = W2 - learning_rate * dL/dW2
-                b2 = b2 - learning_rate * dL/db2
-                W1 = W1 - learning_rate * dL/dW1
-                b1 = b1 - learning_rate * dL/db1
+                5. Weight Updates:
+                    W2 = W2 - learning_rate * dL/dW2
+                    b2 = b2 - learning_rate * dL/db2
+                    W1 = W1 - learning_rate * dL/dW1
+                    b1 = b1 - learning_rate * dL/db1
 
-            Key: ⊙ means element-wise multiplication (Hadamard product)
+                Key: ⊙ means element-wise multiplication (Hadamard product)
+            </pre>
         </div>
     </body>
 </html>
