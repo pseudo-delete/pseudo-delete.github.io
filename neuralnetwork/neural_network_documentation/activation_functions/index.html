@@ -99,6 +99,21 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Parameter ReLU</td>
+                    <td>(-∞, +∞)</td>
+                    <td>Hidden layers. Used in deep CNN. Overkill for small games/simple bots</td>
+                    <td>PReLU(x) = max(αx, x)</td>
+                    <td>
+                        <pre>
+                            <code>
+                                function prelu(x, alpha) {
+                                    return (x >= 0) ? x : alpha * x;
+                                }
+                            </code>
+                        </pre>
+                    </td>
+                </tr>
+                <tr>
                     <td>Softmax</td>
                     <td>(0,1)</td>
                     <td>Multi-class classification output layer.</td>
