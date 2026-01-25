@@ -14,7 +14,7 @@ $(document).ready(function() {
         if (currentPlayerIndex == 0)currentPlayerIndex = 1;
         else if(currentPlayerIndex == 1)currentPlayerIndex = 0;
 
-        $("#move-counter").text(function(i, val) { return +val + 1 });
+        $("#move-count").text(parseInt($(this).text()) + 1);
 
         // Add logic for computer's move and checking for win/draw
     });
