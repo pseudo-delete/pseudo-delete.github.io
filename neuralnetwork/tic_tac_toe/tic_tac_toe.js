@@ -1,3 +1,4 @@
+import { getBoardState } from './board_state.js';
 $(document).ready(function() {
     // let board = [
     //     ["", "", ""],
