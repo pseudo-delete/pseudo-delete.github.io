@@ -1,0 +1,100 @@
+<html xmlns="http://www.w3.org/1999/xhtml"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loss Functions - GERO AI</title>
+</head>
+<body>
+    <div class="header">
+        <h1> - GERO AI - Neural Network Types</h1>
+        <button><a href="../">Back to Neural Network Main Documentation</a></button>
+    </div>
+    <h1>Loss Functions</h1>
+    <p>
+        Loss functions are used to measure the difference between the predicted output and the actual output of a neural network. They guide the training process by providing a metric for how well the model is performing. Common loss functions include:
+        <ul>
+            <li><strong>Mean Squared Error (MSE):</strong> Used for regression tasks, it calculates the average squared difference between predicted and actual values.</li>
+            <li><strong>Cross-Entropy Loss:</strong> Used for classification tasks, it measures the performance of a classification model whose output is a probability value between 0 and 1.</li>
+            <li><strong>Hinge Loss:</strong> Used in support vector machines (SVMs), it penalizes predictions that are incorrect or not confident enough.</li>
+            <li><strong>Kullback-Leibler Divergence:</strong> Measures how one probability distribution diverges from a second, expected probability distribution.</li>
+        </ul>
+    </p>
+
+    <label>In Summary:</label>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Loss Function</th>
+                <th>Description</th>
+                <th>Equation</th>
+                <th>JQuery</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <!-- MSE -->
+            <tr>
+                <td>MSE (Mean Squared Error)</td>
+                <td>Squared difference between predicted and actual values.</td>
+                <td>MSE = (1/n) * Σ(y_i - ŷ_i)^2</td>
+                <td><pre><code>function mse(actual, predicted) {
+                    let sum = 0;
+                    for (let i = 0; i &lt; actual.length; i++) {
+                        sum += Math.pow(actual[i] - predicted[i], 2);
+                    }
+                    return sum / actual.length;
+                }</code></pre></td>
+
+            </tr>
+
+            <!-- Cross-Entropy -->
+            <!-- Add Cross-Entropy row here -->
+            <tr>
+                <td>Cross-Entropy Loss</td>
+                <td>Measures the performance of a classification model.</td>
+                <td>CE = -Σ(y_i * log(ŷ_i))</td>
+                <td><pre><code>function crossEntropy(actual, predicted) {
+                    let sum = 0;
+                    for (let i = 0; i &lt; actual.length; i++) {
+                        sum += actual[i] * Math.log(predicted[i]);
+                    }
+                    return -sum;
+                }</code></pre></td>
+            </tr>
+
+            <!-- Hinge Loss -->
+            <!-- Add Hinge Loss row here -->
+            <tr>
+                <td>Hinge Loss</td>
+                <td>Penalizes incorrect or not confident enough predictions.</td>
+                <td>Hinge = Σ max(0, 1 - y_i * ŷ_i)</td>
+                <td><pre><code>function hingeLoss(actual, predicted) {
+                    let sum = 0;
+                    for (let i = 0; i &lt; actual.length; i++) {
+                        sum += Math.max(0, 1 - actual[i] * predicted[i]);
+                    }
+                    return sum;
+                }</code></pre></td>
+            </tr>
+
+            <!-- KL Divergence -->
+            <!-- Add KL Divergence row here -->
+            <tr>
+                <td>Kullback-Leibler Divergence</td>
+                <td>Measures divergence between two probability distributions.</td>
+                <td>KL(P || Q) = Σ P(x) * log(P(x) / Q(x))</td>
+                <td><pre><code>function klDivergence(p, q) {
+                    let sum = 0;
+                    for (let i = 0; i &lt; p.length; i++) {
+                        sum += p[i] * Math.log(p[i] / q[i]);
+                    }
+                    return sum;
+                }</code></pre></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</body></html>
