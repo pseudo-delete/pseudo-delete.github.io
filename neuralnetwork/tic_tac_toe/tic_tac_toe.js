@@ -1,5 +1,4 @@
-import { getBoardState } from './board_state.js';
-$(document).ready(function() {
+$(function() {
     // let board = [
     //     ["", "", ""],
     //     ["", "", ""],
@@ -7,6 +6,8 @@ $(document).ready(function() {
     // ];
     let currentPlayer = ["X", "O"]; // X always starts first
     let currentPlayerIndex = 0;
+
+    let boardState = [0,0,0,0,0,0,0,0,0]; // 0 = empty, 1 = X, -1 = O
 
     $(".cell").click(function() {
         
@@ -17,7 +18,7 @@ $(document).ready(function() {
 
         $("#move-count").text(parseInt($("#move-count").text()) + 1);
 
-        $("#board-state").text(getBoardState());
+        $("#board-state").text(window.getBoardState());
 
         // Add logic for computer's move and checking for win/draw
     });

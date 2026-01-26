@@ -1,27 +1,24 @@
-// $(function()
-// {
-    
-// });
-
-let boardState = [0,0,0,0,0,0,0,0,0]; // 0 = empty, 1 = X, -1 = O
-
-export function getBoardState()
+$(function()
 {
-    for(let boardCellIndex = 0; boardCellIndex < 9; boardCellIndex++)
+    function getBoardState()
     {
-        if($("#cell-" + boardCellIndex).text() == "X")
+        for(let boardCellIndex = 0; boardCellIndex < 9; boardCellIndex++)
         {
-            boardState[boardCellIndex] = 1;
+            if($("#cell-" + boardCellIndex).text() == "X")
+            {
+                boardState[boardCellIndex] = 1;
+            }
+            else if($("#cell-" + boardCellIndex).text() == "O")
+            {
+                boardState[boardCellIndex] = -1;
+            }
+            else
+            {
+                boardState[boardCellIndex] = 0;
+            }
         }
-        else if($("#cell-" + boardCellIndex).text() == "O")
-        {
-            boardState[boardCellIndex] = -1;
-        }
-        else
-        {
-            boardState[boardCellIndex] = 0;
-        }
-    }
 
-    return boardState;
-}
+        return boardState;
+    }
+});
+
