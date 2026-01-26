@@ -9,6 +9,27 @@ $(function() {
 
     let boardState = [0,0,0,0,0,0,0,0,0]; // 0 = empty, 1 = X, -1 = O
 
+    function getBoardState()
+    {
+        for(let boardCellIndex = 0; boardCellIndex < 9; boardCellIndex++)
+        {
+            if($("#cell-" + boardCellIndex).text() == "X")
+            {
+                boardState[boardCellIndex] = 1;
+            }
+            else if($("#cell-" + boardCellIndex).text() == "O")
+            {
+                boardState[boardCellIndex] = -1;
+            }
+            else
+            {
+                boardState[boardCellIndex] = 0;
+            }
+        }
+
+        return boardState;
+    }
+
     $(".cell").click(function() {
         
         $(this).text(currentPlayer[currentPlayerIndex]);
@@ -18,7 +39,7 @@ $(function() {
 
         $("#move-count").text(parseInt($("#move-count").text()) + 1);
 
-        $("#board-state").text(window.getBoardState());
+        $("#board-state").text(getBoardState());
 
         // Add logic for computer's move and checking for win/draw
     });
