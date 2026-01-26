@@ -16,6 +16,8 @@ $(document).ready(function() {
 
         $("#move-count").text(parseInt($("#move-count").text()) + 1);
 
+        $("#board-state").text(getBoardState());
+
         // Add logic for computer's move and checking for win/draw
     });
 });
