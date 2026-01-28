@@ -39,7 +39,9 @@ $(function() {
 
         $("#move-count").text(parseInt($("#move-count").text()) + 1);
 
-        $("#board-state").text(getBoardState());
+        let boardState2 = getBoardState();
+
+        $("#board-state").text(boardState2);
 
         // Add logic for computer's move and checking for win/draw
     });
