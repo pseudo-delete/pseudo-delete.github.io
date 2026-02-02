@@ -1,3 +1,4 @@
+import { getBoardState } from "./functions.js";
 $(function() {
     // let board = [
     //     ["", "", ""],
@@ -7,28 +8,28 @@ $(function() {
     let currentPlayer = ["X", "O"]; // X always starts first
     let currentPlayerIndex = 0;
 
-    let boardState = [0,0,0,0,0,0,0,0,0]; // 0 = empty, 1 = X, -1 = O
+    // let boardState = [0,0,0,0,0,0,0,0,0]; // 0 = empty, 1 = X, -1 = O
 
-    function getBoardState()
-    {
-        for(let boardCellIndex = 0; boardCellIndex < 9; boardCellIndex++)
-        {
-            if($("#cell-" + boardCellIndex).text() == "X")
-            {
-                boardState[boardCellIndex] = 1;
-            }
-            else if($("#cell-" + boardCellIndex).text() == "O")
-            {
-                boardState[boardCellIndex] = -1;
-            }
-            else
-            {
-                boardState[boardCellIndex] = 0;
-            }
-        }
+    // function getBoardState()
+    // {
+    //     for(let boardCellIndex = 0; boardCellIndex < 9; boardCellIndex++)
+    //     {
+    //         if($("#cell-" + boardCellIndex).text() == "X")
+    //         {
+    //             boardState[boardCellIndex] = 1;
+    //         }
+    //         else if($("#cell-" + boardCellIndex).text() == "O")
+    //         {
+    //             boardState[boardCellIndex] = -1;
+    //         }
+    //         else
+    //         {
+    //             boardState[boardCellIndex] = 0;
+    //         }
+    //     }
 
-        return boardState;
-    }
+    //     return boardState;
+    // }
 
     function checkWin(board) {
         const winCombos = [
@@ -57,6 +58,8 @@ $(function() {
         let boardState2 = getBoardState();
 
         $("#board-state").text(boardState2);
+
+        $(".board-state-history").append("<div class='board-state-entry'><label id='board-state-" + $("#move-count").text() +"'>" + boardState2 + "</label></div>");
 
         let winner = checkWin(boardState2);
         if (winner) {
