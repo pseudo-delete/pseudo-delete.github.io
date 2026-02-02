@@ -61,6 +61,10 @@ $(function() {
 
         $(".board-state-history").append("<div class='board-state-entry'><label id='board-state-" + $("#move-count").text() +"'>" + boardState2 + "</label></div>");
 
+        // Check if boardstate is not in the record
+        // If not, add it to the record with initialized random neural net values then
+        // repeatedly train/update if the best move is already occupied/marked in the board
+
         let winner = checkWin(boardState2);
         if (winner) {
             if (winner === 'draw') {
@@ -71,6 +75,9 @@ $(function() {
             // Optionally disable cells or reset the game
         }
 
+        /* Learning Phase */
         // Add logic for computer's move and checking for win/draw
+        // Learn/training occurs when: 
+        // If X, which is the player/human, wins over O, which is the computer/AI:
     });
 });
