@@ -1,35 +1,8 @@
-import { getBoardState } from "./functions.js";
+import { getBoardState } from "./board_state.js";
+import { initializeNewNeuralState } from "./neural_net.js";
 $(function() {
-    // let board = [
-    //     ["", "", ""],
-    //     ["", "", ""],
-    //     ["", "", ""]
-    // ];
     let currentPlayer = ["X", "O"]; // X always starts first
     let currentPlayerIndex = 0;
-
-    // let boardState = [0,0,0,0,0,0,0,0,0]; // 0 = empty, 1 = X, -1 = O
-
-    // function getBoardState()
-    // {
-    //     for(let boardCellIndex = 0; boardCellIndex < 9; boardCellIndex++)
-    //     {
-    //         if($("#cell-" + boardCellIndex).text() == "X")
-    //         {
-    //             boardState[boardCellIndex] = 1;
-    //         }
-    //         else if($("#cell-" + boardCellIndex).text() == "O")
-    //         {
-    //             boardState[boardCellIndex] = -1;
-    //         }
-    //         else
-    //         {
-    //             boardState[boardCellIndex] = 0;
-    //         }
-    //     }
-
-    //     return boardState;
-    // }
 
     function checkWin(board) {
         const winCombos = [
@@ -62,6 +35,7 @@ $(function() {
         $(".board-state-history").append("<div class='board-state-entry'><label id='board-state-" + $("#move-count").text() +"'>" + boardState2 + "</label></div>");
 
         // Check if boardstate is not in the record
+        initializeNewNeuralState();
         // If not, add it to the record with initialized random neural net values then
         // repeatedly train/update if the best move is already occupied/marked in the board
 
