@@ -1,3 +1,5 @@
+let boardState = [0,0,0,0,0,0,0,0,0]; // 0 = empty, 1 = X, -1 = O
+
 export function getBoardState()
 {
     for(let boardCellIndex = 0; boardCellIndex < 9; boardCellIndex++)
