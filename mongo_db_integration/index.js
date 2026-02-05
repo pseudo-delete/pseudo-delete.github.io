@@ -1,4 +1,4 @@
-import { insertInformation } from "./add_information.mongodb";
+import { insertInformation } from "./add_information";
 
 $(function()
 {
