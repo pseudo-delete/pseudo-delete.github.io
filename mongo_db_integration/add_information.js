@@ -16,7 +16,7 @@ async function connect() {
 }
 
 async function insertInformation(name, age) {
-  const database = await connect();
+  const database = await connect(); 
 
   const res = await database
     .collection('mongodb_integration_test_collection')
