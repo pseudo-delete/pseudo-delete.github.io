@@ -12,7 +12,7 @@
 // Select the database to use.
 use('mongodb_integration_test_db');
 
-function insertInformation(name, age) {
+export function insertInformation(name, age) {
     // Insert a single document and capture the result
     const res = db.getCollection('mongodb_integration_test_collection').insertOne(
         { name: name, age: age, date: new Date() }
@@ -28,12 +28,12 @@ function insertInformation(name, age) {
     }
 }
 
-$(function()
-{
-    $("#button-insert").click(function()
-    {
-        let name = $("#input-name").val();
-        let age = $("#input-age").val();
-        insertInformation(name, age);
-    });
-});
+// $(function()
+// {
+//     $("#button-insert").click(function()
+//     {
+//         let name = $("#input-name").val();
+//         let age = $("#input-age").val();
+//         insertInformation(name, age);
+//     });
+// });
