@@ -8,6 +8,20 @@ app.use(express.urlencoded({ extended: true }));
 const client = new MongoClient('mongodb://localhost:27017');
 let db;
 
+exports.handler = async (event, context) => {
+  const data = JSON.parse(event.body);
+  const client = new MongoClient(process.env.MONGO_URI);
+  await client.connect();
+  const db = client.db("mydb");
+  await db.collection("info").insertOne(data);
+  await client.close();
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: "Data inserted successfully!" }),
+  };
+};
+
 async function connectDB() {
   if (!db) {
     await client.connect();
