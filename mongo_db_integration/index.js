@@ -1,5 +1,3 @@
-import { insertInformation } from "./add_information";
-
 $(function()
 {
     // $("#button-insert").click(function()
