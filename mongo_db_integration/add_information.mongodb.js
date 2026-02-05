@@ -14,7 +14,17 @@ use('mongodb_integration_test_db');
 
 // Insert a few documents into the sales collection.
 export function insertInformation(name, age){
-    db.getCollection('mongodb_integration_test_collection').insertMany([
-    { 'item': name, 'age': age, 'date': new Date() }
-    ]);
+    // Insert a single document and capture the result
+    const res = db.getCollection('mongodb_integration_test_collection').insertOne(
+        { name: name, age: age, date: new Date() }
+    );
+
+    // Check the driver return object for success
+    if (res && res.acknowledged && res.insertedId) {
+        console.log('Insert successful, id:', res.insertedId);
+        return { success: true, insertedId: res.insertedId };
+    } else {
+        console.log('Failed to insert information', res);
+        return { success: false, result: res };
+    }
 }
