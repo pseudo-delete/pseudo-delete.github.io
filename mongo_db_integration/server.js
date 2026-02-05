@@ -8,6 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 const client = new MongoClient('mongodb://localhost:27017');
 let db;
 
+// netlify function handler
 exports.handler = async (event, context) => {
   const data = JSON.parse(event.body);
   const client = new MongoClient(process.env.MONGO_URI);
@@ -21,6 +22,7 @@ exports.handler = async (event, context) => {
     body: JSON.stringify({ message: "Data inserted successfully!" }),
   };
 };
+// end of netlify function handler
 
 async function connectDB() {
   if (!db) {
