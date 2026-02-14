@@ -13,6 +13,11 @@
     height: 150px;
 }
 
+#selected-avatar-name
+{
+    color: black;
+}
+
 /* .popup
 {
     display:flex;

@@ -6,3 +6,10 @@ setTimeout(() => {
     document.body.style.backgroundRepeat = 'no-repeat';
 }, 2500);// 25 seconds = 25000 milliseconds
 
+$(function (){
+    $('#button-play').on('click', function () {
+        const sound = $('#play-sound')[0]; // get native audio element
+        sound.currentTime = 0;
+        sound.play();
+    });
+});

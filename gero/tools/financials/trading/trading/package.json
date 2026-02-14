@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start:no-ssl": "set NODE_TLS_REJECT_UNAUTHORIZED=0&& node server.js",
+    "start:no-ssl-unix": "NODE_TLS_REJECT_UNAUTHORIZED=0 node server.js"
   },
   "keywords": ["okx", "trading", "crypto", "dashboard"],
   "author": "",
