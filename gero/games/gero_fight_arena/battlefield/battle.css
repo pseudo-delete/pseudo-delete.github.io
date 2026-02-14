@@ -1,0 +1,68 @@
+/* body
+{
+    background-image: url('../img/arena/L1_Local_Arena_inside.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+} */
+ *
+{
+    color: white;
+}
+
+button
+{
+    color: black;
+    cursor: pointer;
+}
+button#button-play
+{
+    background-color: crimson;
+    border: 1px solid white;
+    width: 100px;
+    height: 50px;
+    font-style: bold;
+    font-family:'Courier New', Courier, monospace;
+}
+
+@keyframes fadeToWhite {
+  0%
+    {
+        background-color: black;
+        opacity: 100%;
+    }
+  11%
+    { background-color: black;}
+  46% { background-color: crimson; }
+  51% { background-color: black; }
+  56%
+    {
+        background-color: white;
+        opacity: 100%;
+    }
+  /* 100% { background-image: url("img/Cosmic_Vastness.png"); } */
+  61%
+  {
+    z-index: 0;
+  }
+  100%
+    {
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+.intro-curtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: url("img/arena/L1_Local_Arena_inside.png"); */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    animation: fadeToWhite 25s forwards;
+}
