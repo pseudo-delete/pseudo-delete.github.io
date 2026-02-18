@@ -80,8 +80,8 @@
                 <label>Arena Competition: Local</label>
                 <label>Next Battle: <span>Player 1</span>vs <span>Player 2</span></label>
                 <div>
-                    <button class="page-buttons" type="button"><a href="#">Hall of Fame</a></button>
-                    <button class="page-buttons" type="button"><a href="#">Rankings</a></button><button class="page-buttons" type="button"><a href="#">Competitors</a></button>
+                    <button class="page-buttons" type="button"><a href="#">Hall of Fame(Not Available)</a></button>
+                    <button class="page-buttons" type="button"><a href="#">Rankings(Coming Soon)</a></button><button class="page-buttons" type="button"><a href="#">Competitors</a></button>
                 </div>
             </div>
         </div>
