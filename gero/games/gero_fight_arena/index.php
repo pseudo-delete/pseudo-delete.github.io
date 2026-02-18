@@ -93,6 +93,9 @@
             });
         </script> -->
     </body>
+    <footer>
+        <p>Copyright &copy; 2024 Gero. All rights reserved.</p>
+    </footer>
 </html>
 
 

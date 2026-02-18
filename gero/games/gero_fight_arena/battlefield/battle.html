@@ -26,20 +26,31 @@
             <div class="player-area">
                 <h2>Player 1</h2>
                 <div class="player-info">
+                    <img src="../img/character_avatar/default.png" alt="Player 1 Avatar" class="player-avatar"/>
                     <p>Name: <span id="player1-name">Warrior</span></p>
+                    <p>Damage: <span id="player1-damage-points">100</span></p>
                     <p>Health: <span id="player1-health">100</span></p>
                 </div>
-                <button id="attack-player1">Attack Player 1</button>
+                <button class="attack-button" id="attack-player1">Attack Player 1</button>
+            </div>
+
+            <div class="vs">
+                <span>Turn <span id="turn-number">1</span></span>
+                <span id="vs-text">VS</span>
+                <button class="attack-button" id="btn-attack">Attack!</button>
             </div>
 
             <div class="player-area">
                 <h2>Player 2</h2>
                 <div class="player-info">
+                    <img src="../img/character_avatar/default.png" alt="Player 2 Avatar" class="player-avatar"/>
                     <p>Name: <span id="player2-name">Mage</span></p>
+                    <p>Damage: <span id="player2-damage-points">100</span></p>
                     <p>Health: <span id="player2-health">100</span></p>
                 </div>
-                <button id="attack-player2">Attack Player 2</button>
+                <button class="attack-button" id="attack-player2">Attack Player 2</button>
             </div>
+            <audio id="attack-sound" src="../sound/battlefield/attack.mp3" preload="auto"></audio><!-- attack sound effect for both players-->
         </div>
     </body>
 </html>

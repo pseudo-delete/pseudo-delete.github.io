@@ -74,3 +74,35 @@ button#button-play
     align-items: center;
     justify-content: center;
 }
+.player-area
+{
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.player-avatar
+{
+    width: 150px;
+    height: auto;
+    border-radius: 5%;
+    margin-bottom: 20px;
+}
+
+.vs
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100vh;
+}
+#vs-text
+{
+    font-size: 48px;
+    font-weight: bold;
+    color: crimson;
+}
