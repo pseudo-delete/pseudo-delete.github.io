@@ -10,6 +10,13 @@ $(function()
         window.location.href = '../';
     }
 
+    function playBattleMusic()
+    {
+        const music = $('#battle-music')[0]; // get native audio element
+        music.currentTime = 0;
+        music.play();
+    }
+
     $('body').css(
     {
         'background-image': 'url("../img/arena/L1_Local_Arena_inside.png")',
@@ -26,6 +33,7 @@ $(function()
             $(this).remove();
         });
         $('.intro-curtain, .intro-curtain * ').css('z-index', '-1');
+        playBattleMusic();
     });
 
     $('.attack-button').on('click', function()
